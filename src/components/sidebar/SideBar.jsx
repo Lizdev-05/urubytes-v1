@@ -20,16 +20,20 @@ const SideBar = () => {
         onClick={() => setOpen(!open)}
       />
 
-      <div className="flex gap-x-4 items-cente">
+      <div
+        className={`flex gap-x-4 items-center ${open && "flex-row-reverse "}`}
+      >
         <img
           src={uLogoImg}
           alt="Urubytes"
-          className={`cursor-pointer duration-500 ${open && "rotate-[360deg]"}`}
+          className={`cursor-pointer duration-500 ${
+            open && "rotate-[360deg]"
+          } ${open && "scale-0"}`}
         />
         <img
           src={logo}
           alt="Urubytes"
-          className={`text-white origin-left font-medium text-xl duration-200 ${
+          className={`text-white font-medium text-xl duration-200 pl-16 ${
             !open && "scale-0"
           }`}
         />
