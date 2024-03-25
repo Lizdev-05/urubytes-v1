@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import collapseImg from "../../assets/collapse.png";
+import uLogoImg from "../../assets/u-logo.png";
+import logo from "../../assets/logo.png";
 
 const SideBar = () => {
   const [open, setOpen] = useState(true);
@@ -8,7 +10,7 @@ const SideBar = () => {
     <div
       className={` ${
         open ? "w-72" : "w-20 "
-      } bg-primary-blue h-screen p-5  pt-8 relative`}
+      } bg-primary-blue h-screen p-5  pt-12 relative`}
     >
       <img
         src={collapseImg}
@@ -17,6 +19,21 @@ const SideBar = () => {
         }`}
         onClick={() => setOpen(!open)}
       />
+
+      <div className="flex gap-x-4 items-cente">
+        <img
+          src={uLogoImg}
+          alt="Urubytes"
+          className={`cursor-pointer duration-500 ${open && "rotate-[360deg]"}`}
+        />
+        <img
+          src={logo}
+          alt="Urubytes"
+          className={`text-white origin-left font-medium text-xl duration-200 ${
+            !open && "scale-0"
+          }`}
+        />
+      </div>
     </div>
   );
 };
