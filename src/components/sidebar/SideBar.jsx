@@ -104,7 +104,12 @@ const SideBar = () => {
                 <img src={Menu.src} alt={Menu.title} />
 
                 <span
-                  className={`${!open && "hidden"} origin-left duration-200`}
+                  style={{
+                    transitionDelay: `${i + 3}00ms`,
+                  }}
+                  className={` ${
+                    !open && "opacity-0 translate-x-28 overflow-hidden"
+                  } origin-left duration-200`}
                 >
                   {Menu.title}
                 </span>
