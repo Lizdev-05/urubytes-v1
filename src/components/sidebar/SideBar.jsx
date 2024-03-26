@@ -76,12 +76,14 @@ const SideBar = () => {
               ${Menu.gap ? "mt-9" : "mt-2"} `}
               key={i}
             >
-              <img src={Menu.src} />
+              <img src={Menu.src} alt={Menu.title} />
               <span
                 style={{
                   transitionDelay: `${i + 3}00ms`,
                 }}
-                className={`${!open && "hidden"} origin-left duration-200`}
+                className={` ${
+                  !open && "opacity-0 translate-x-28 overflow-hidden"
+                } origin-left duration-200`}
               >
                 {Menu.title}
               </span>
@@ -99,7 +101,7 @@ const SideBar = () => {
                 className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm items-center gap-x-4 
                `}
               >
-                <img src={Menu.src} />
+                <img src={Menu.src} alt={Menu.title} />
 
                 <span
                   className={`${!open && "hidden"} origin-left duration-200`}
