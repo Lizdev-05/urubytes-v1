@@ -11,8 +11,8 @@ const Dashboard = () => {
   return (
     <div className="bg-gray-300 h-screen w-screen ">
       <form className="bg-white">
-        <div className="relative p-8 flex">
-          <div className="absolute inset-y-0 start-24 flex items-center ps-3 pointer-events-none">
+        <div className="relative p-8 flex justify-between">
+          <div className="absolute inset-y-0 start-16 flex items-center ps-3 pointer-events-none">
             <svg
               className="w-4 h-4 text-gray-500 dark:text-gray-400"
               aria-hidden="true"
@@ -32,7 +32,7 @@ const Dashboard = () => {
           <input
             type="search"
             id="default-search"
-            className="block ms-12 ps-24 text-sm text-gray-200 border border-gray-300 rounded-full bg-gray-50 dark:bg-gray-150 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white-500 w-4/5 focus:ring-2 focus:outline-none focus:ring-blue-200"
+            className="block ps-20 text-sm text-gray-200 border border-gray-300 rounded-full bg-gray-50 dark:bg-gray-150 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white-500 w-11/12 focus:ring-2 focus:outline-none focus:ring-blue-200"
             placeholder="Search"
             required
           />
@@ -41,7 +41,7 @@ const Dashboard = () => {
             id="dropdownDefaultButton"
             data-dropdown-toggle="dropdown"
             type="button"
-            className="relative inline-flex items-center ml-10 p-3 text-sm font-medium text-center text-white"
+            className="relative inline-flex items-center ml-16 p-3 text-sm font-medium text-center text-white"
             onClick={toggleDropdown}
           >
             <svg
