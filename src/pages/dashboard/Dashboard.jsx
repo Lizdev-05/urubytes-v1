@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import dashboardLens from "../../assets/dashboard-lens.png";
 
 const Dashboard = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -107,7 +108,30 @@ const Dashboard = () => {
           </ul>
         </div>
       </form>
-      <div className="bg-white"></div>
+      <div className=" p-6 my-8 mx-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-white dark:border-gray-300 dark:hover:bg-gray-200">
+        <div className=" ">
+          <h1 className="text-3xl font-semibold ">Welcome To Urubytes</h1>
+          <div className=" px-4 py-2 my-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 bg-primary-blue dark:border-gray-300 dark:hover:bg-blue-500">
+            <div className="flex justify-between px-8">
+              <div className="my-8 leading-10 text-white">
+                <h2 className="text-4xl font-semibold mb-4">
+                  Let's help you get properly set up for Urubytes
+                </h2>
+                <p className="leading-6">
+                  Start by connecting your data sources to <br />
+                  Urubytes or take the guided tour
+                </p>
+                <button className="bg-yellow-color hover:bg-yellow-600 text-white font-bold py-1 px-10 rounded mt-6">
+                  Take The Tour
+                </button>
+              </div>
+              <div>
+                <img src={dashboardLens} alt="dashboard-lens" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
