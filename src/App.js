@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./App.css";
 import SideBar from "./components/sidebar/SideBar";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -13,6 +14,7 @@ function App() {
     <div className="flex">
       <BrowserRouter>
         <SideBar />
+
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/internalInsight" element={<InternalInsight />} />
