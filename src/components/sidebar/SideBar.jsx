@@ -39,7 +39,7 @@ const SideBar = () => {
     <div
       className={` ${
         open ? "w-72" : "w-20 "
-      } bg-primary-blue p-5  pt-12 relative duration-300`}
+      } bg-primary-blue p-5 h-screen pt-12 relative duration-300`}
     >
       <img
         src={collapseImg}

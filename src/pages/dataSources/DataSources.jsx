@@ -41,9 +41,11 @@ const DataSources = () => {
   ];
 
   return (
-    <div className="bg-grey-bg h-[982px] w-screen  ">
+    // <div className="bg-grey-bg h-[982px] w-screen  ">
+    <div className="bg-grey-bg h-screen w-screen  ">
       <Navbar />
-      <div className=" p-6 px-12 m-4 h-[833px] bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300">
+      {/* <div className=" p-6 px-12 m-4 h-[833px] bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300"> */}
+      <div className=" p-4 px-12 m-4 bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300">
         <div className=" ">
           <div className="flex justify-between ">
             <h1 className="text-3xl font-semibold ">Data Sources</h1>
@@ -62,7 +64,7 @@ const DataSources = () => {
               </button>
             </div>
           </div>
-          <p className="leading-6 py-4 text-xl">
+          <p className="leading-6 py-4 text-[18]">
             Get started extracting byte-sized insights from your business data.
             Just tell us where to look first and you can ask any question about
             your business.
@@ -178,7 +180,7 @@ const DataSources = () => {
           </div>
         </div>
         <div>
-          <h1 className="text text-4xl font-bold">Integrations</h1>
+          <h1 className="text-4xl font-bold">Integrations</h1>
           <p className="text-xl font-semi-bold leading-10 ">
             Do you currently use these apps? Integrate now to get a unified view
             of your data
