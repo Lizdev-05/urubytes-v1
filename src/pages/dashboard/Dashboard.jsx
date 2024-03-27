@@ -9,10 +9,10 @@ const Dashboard = () => {
   return (
     <div className="bg-gray-300 h-full w-screen ">
       <Navbar />
-      <div className=" p-6 px-16 m-8 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-white dark:border-gray-300 dark:hover:bg-gray-200">
+      <div className=" p-6 px-16 m-4 bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300 ">
         <div className=" ">
           <h1 className="text-3xl font-semibold ">Welcome To Urubytes</h1>
-          <div className=" px-2 py-2 my-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 bg-primary-blue dark:border-gray-300 dark:hover:bg-blue-500">
+          <div className=" px-2 py-2 my-6 border border-gray-200 rounded-lg shadow  bg-primary-blue dark:border-gray-300 dark:hover:bg-blue-500">
             <div className="flex justify-between px-8">
               <div className="my-8 leading-10 text-white">
                 <h2 className="text-3xl font-semibold mb-4">

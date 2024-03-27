@@ -7,7 +7,7 @@ const InternalInsight = () => {
     <div className="bg-gray-300 h-screen w-screen overflow-hidden ">
       <Navbar />
       <div className="grid grid-cols-4 p-2 my-6 gap-1 h-full overflow-hidden ">
-        <div class=" block col-span-1 py-4 px-8 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-100 ">
+        <div class=" block col-span-1 py-4 px-8 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100 ">
           <form class="max-w-md mx-auto">
             <div class="relative">
               <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -42,7 +42,7 @@ const InternalInsight = () => {
           </p>
         </div>
 
-        <div class="col-span-3 block py-4 px-8 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-100 ">
+        <div class="col-span-3 block py-4 px-8 bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-100 ">
           <div className="flex justify-end">
             <button className="bg-yellow-color hover:bg-yellow-600 text-white font-bold py-3 px-8 rounded mt-6">
               View Data Source
