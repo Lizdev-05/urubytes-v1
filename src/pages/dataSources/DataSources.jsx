@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import internalInsights from "../../assets/ic_baseline-insights.png";
-import marketInsights from "../../assets/market-research2.png";
 import { FaPlus } from "react-icons/fa";
 import Navbar from "../../components/navbar/Navbar";
 import { Typography } from "@material-tailwind/react";
 import DefaultPagination from "./Pagination";
+import IntegrationCards from "../../components/integrationCards/IntegrationCards";
 
 const DataSources = () => {
   const TABLE_HEAD = [
@@ -41,9 +41,9 @@ const DataSources = () => {
   ];
 
   return (
-    <div className="bg-gray-300 h-set-height w-screen  ">
+    <div className="bg-grey-bg h-[982px] w-screen  ">
       <Navbar />
-      <div className=" p-6 px-12 m-4 bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300">
+      <div className=" p-6 px-12 m-4 h-[833px] bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300">
         <div className=" ">
           <div className="flex justify-between ">
             <h1 className="text-3xl font-semibold ">Data Sources</h1>
@@ -170,12 +170,20 @@ const DataSources = () => {
                     )}
                   </tbody>
                 </table>
-                <div className="flex justify-end mt-4">
+                <div className="flex justify-end mt-2">
                   <DefaultPagination />
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          <h1 className="text text-4xl font-bold">Integrations</h1>
+          <p className="text-xl font-semi-bold leading-10 ">
+            Do you currently use these apps? Integrate now to get a unified view
+            of your data
+          </p>
+          <IntegrationCards />
         </div>
       </div>
     </div>

@@ -30,7 +30,8 @@ const Navbar = () => {
           <input
             type="search"
             id="default-search"
-            className="block ps-20 text-sm text-gray-200 border border-gray-300 rounded-full bg-gray-50 dark:bg-gray-150 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white-500 w-11/12 focus:ring-2 focus:outline-none focus:ring-blue-200"
+            // className="block ps-20 text-sm text-gray-200 border border-gray-300 rounded-full bg-gray-50 dark:bg-gray-150 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white-500 w-11/12 focus:ring-2 focus:outline-none focus:ring-blue-200"
+            class="block  p-4 ps-20 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-300  dark:bg-gray-100  dark:placeholder-gray-400 dark:text-gray-900  w-11/12 focus:ring-2 focus:outline-none focus:ring-blue-200"
             placeholder="Search"
             required
           />

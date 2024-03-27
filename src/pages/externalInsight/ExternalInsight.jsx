@@ -4,9 +4,9 @@ import { FaArrowUpLong } from "react-icons/fa6";
 
 const ExternalInsight = () => {
   return (
-    <div className="bg-gray-300 h-screen w-screen overflow-hidden ">
+    <div className="bg-grey-bg h-screen w-screen overflow-hidden ">
       <Navbar />
-      <div className="grid grid-cols-4 p-2 my-6 gap-1 h-full overflow-hidden ">
+      <div className="grid grid-cols-4 p-2 my-1 gap-1 h-full overflow-hidden ">
         <div class=" block col-span-1 py-4 px-8 bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-100 ">
           <form class="max-w-md mx-auto">
             <div class="relative">
@@ -30,7 +30,7 @@ const ExternalInsight = () => {
               <input
                 type="search"
                 id="default-search"
-                class="block w-full p-4 ps-10 text-sm text-gray-100 border border-gray-300 rounded-lg bg-gray-50  dark:bg-gray-100  dark:placeholder-gray-400 dark:text-white  "
+                class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-300  dark:bg-gray-100  dark:placeholder-gray-400 dark:text-gray-900  "
                 placeholder="New Search"
                 required
               />

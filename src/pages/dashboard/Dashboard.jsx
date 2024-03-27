@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import dashboardLens from "../../assets/dashboard-lens.png";
 import internalInsights from "../../assets/ic_baseline-insights2.png";
 import marketInsights from "../../assets/market-research2.png";
@@ -7,9 +7,9 @@ import Navbar from "../../components/navbar/Navbar";
 
 const Dashboard = () => {
   return (
-    <div className="bg-gray-300 h-full w-screen ">
+    <div className="bg-grey-bg h-full w-screen ">
       <Navbar />
-      <div className=" p-6 px-16 m-4 bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300 ">
+      <div className=" p-6 px-16 m-3  bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300 ">
         <div className=" ">
           <h1 className="text-3xl font-semibold ">Welcome To Urubytes</h1>
           <div className=" px-2 py-2 my-6 border border-gray-200 rounded-lg shadow  bg-primary-blue dark:border-gray-300 dark:hover:bg-blue-500">
