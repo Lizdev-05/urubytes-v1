@@ -8,6 +8,8 @@ import frame2 from "../../assets/marketInsight/frame2.png";
 import frame3 from "../../assets/marketInsight/frame3.png";
 import frame4 from "../../assets/marketInsight/frame4.png";
 import frame5 from "../../assets/marketInsight/frame5.png";
+import DefaultPagination from "../dataSources/Pagination";
+import Paginate from "../../components/Paginate";
 
 const MarketInsightResult = () => {
   return (
@@ -101,6 +103,22 @@ const MarketInsightResult = () => {
                     <img src={frame5} alt={frame5} />{" "}
                   </li>
                 </ul>
+              </div>
+              <div className="my-4 ">
+                <hr className=" border-t border-grey-bg w-full " />
+              </div>
+
+              <div className="flex justify-between">
+                <div className="flex items-center gap-2">
+                  <p className=" text-[14px]">Reference:</p>
+                  <Paginate />
+                </div>
+                <div className="flex items-center gap-1 ">
+                  <p className="text-[14px]">View as</p>
+                  <span className="text-yellow-color underline text-[14px]">
+                    Text
+                  </span>
+                </div>
               </div>
               <form class=" mt-8 ">
                 <label
