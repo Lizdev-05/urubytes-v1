@@ -1,5 +1,3 @@
-// export default UploadForm;
-
 import React, { useState } from "react";
 import UploadCard from "./UploadCard";
 import driveImage from "../../../assets/drive.png";
