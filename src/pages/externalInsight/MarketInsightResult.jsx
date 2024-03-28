@@ -3,6 +3,11 @@ import Navbar from "../../components/navbar/Navbar";
 import { FaArrowUpLong } from "react-icons/fa6";
 import BrightImg from "../../assets/bright.png";
 import uLogo from "../../assets/u-logo.png";
+import frame1 from "../../assets/marketInsight/frame1.png";
+import frame2 from "../../assets/marketInsight/frame2.png";
+import frame3 from "../../assets/marketInsight/frame3.png";
+import frame4 from "../../assets/marketInsight/frame4.png";
+import frame5 from "../../assets/marketInsight/frame5.png";
 
 const MarketInsightResult = () => {
   return (
@@ -73,7 +78,30 @@ const MarketInsightResult = () => {
                   </ul>
                 </div>
               </div>
-
+              <div>
+                <ul className="flex justify-end gap-2">
+                  <li>
+                    {" "}
+                    <img src={frame1} alt={frame1} />{" "}
+                  </li>
+                  <li>
+                    {" "}
+                    <img src={frame2} alt={frame2} />{" "}
+                  </li>
+                  <li>
+                    {" "}
+                    <img src={frame3} alt={frame3} />{" "}
+                  </li>
+                  <li>
+                    {" "}
+                    <img src={frame4} alt={frame4} />{" "}
+                  </li>
+                  <li>
+                    {" "}
+                    <img src={frame5} alt={frame5} />{" "}
+                  </li>
+                </ul>
+              </div>
               <form class=" mt-8 ">
                 <label
                   for="default-search"
