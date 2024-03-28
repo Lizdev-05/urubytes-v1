@@ -8,6 +8,7 @@ import ExternalInsight from "./pages/externalInsight/ExternalInsight";
 import DataSources from "./pages/dataSources/DataSources";
 import SavedSearch from "./pages/savedSearch/SavedSearch";
 import GetHelp from "./pages/help/GetHelp";
+import AddSource from "./pages/dataSources/AddSource";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/savedSearch" element={<SavedSearch />} />
           <Route path="/getHelp" element={<GetHelp />} />
           <Route path="/user" element={<Dashboard />} />
+          <Route path="/addSource" element={<AddSource />} />
         </Routes>
       </BrowserRouter>
     </div>

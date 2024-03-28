@@ -5,6 +5,7 @@ import Navbar from "../../components/navbar/Navbar";
 import { Typography } from "@material-tailwind/react";
 import DefaultPagination from "./Pagination";
 import IntegrationCards from "../../components/integrationCards/IntegrationCards";
+import { Link } from "react-router-dom";
 
 const DataSources = () => {
   const TABLE_HEAD = [
@@ -50,10 +51,15 @@ const DataSources = () => {
           <div className="flex justify-between ">
             <h1 className="text-3xl font-semibold ">Data Sources</h1>
             <div className="flex justify-between gap-2">
-              <button className=" text-dark font-semi-bold py-2 px-8 rounded-lg  border border-gray-600 flex items-center gap-2 ">
-                <FaPlus />
-                Add Source
-              </button>
+              <Link
+                to="/addSource"
+                className=" border border-gray-600 rounded-lg  flex items-center "
+              >
+                <button className=" text-dark font-semi-bold py-2 px-8   flex items-center gap-2 ">
+                  <FaPlus />
+                  Add Source
+                </button>
+              </Link>
               <button className=" text-white font-semi-bold py-2 px-4 bg-yellow-color hover:bg-yellow-600 rounded-lg  border flex items-center gap-2 shadow">
                 <img
                   src={internalInsights}
@@ -181,7 +187,7 @@ const DataSources = () => {
         </div>
         <div>
           <h1 className="text-4xl font-bold">Integrations</h1>
-          <p className="text-xl font-semi-bold leading-10 ">
+          <p className="text-xl font-medium leading-10 ">
             Do you currently use these apps? Integrate now to get a unified view
             of your data
           </p>
