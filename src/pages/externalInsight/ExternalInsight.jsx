@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { FaArrowUpLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const ExternalInsight = () => {
   return (
@@ -126,12 +127,14 @@ const ExternalInsight = () => {
                 placeholder="Type Here..."
                 required
               />
-              <button
-                type="submit"
-                class="text-white absolute end-2.5 bottom-2.5 bg-grey-color hover:bg-gray-500  font-medium rounded-lg text-sm px-2 py-2  "
-              >
-                <FaArrowUpLong size={20} />
-              </button>
+              <Link to="/marketInsightResult">
+                <button
+                  type="submit"
+                  class="text-white absolute end-2.5 bottom-2.5 bg-grey-color hover:bg-gray-500  font-medium rounded-lg text-sm px-2 py-2  "
+                >
+                  <FaArrowUpLong size={20} />
+                </button>
+              </Link>
             </div>
           </form>
         </div>

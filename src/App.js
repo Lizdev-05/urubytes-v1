@@ -9,6 +9,7 @@ import DataSources from "./pages/dataSources/DataSources";
 import SavedSearch from "./pages/savedSearch/SavedSearch";
 import GetHelp from "./pages/help/GetHelp";
 import AddSource from "./pages/dataSources/AddSource";
+import MarketInsightResult from "./pages/externalInsight/MarketInsightResult";
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
           <Route path="/getHelp" element={<GetHelp />} />
           <Route path="/user" element={<Dashboard />} />
           <Route path="/addSource" element={<AddSource />} />
+          <Route
+            path="/marketInsightResult"
+            element={<MarketInsightResult />}
+          />
         </Routes>
       </BrowserRouter>
     </div>

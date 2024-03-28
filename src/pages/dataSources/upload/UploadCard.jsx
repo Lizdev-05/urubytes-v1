@@ -17,7 +17,6 @@ const UploadCard = ({ source, title, handleClick, isSelected }) => {
       }`}
       onClick={() => handleClick(source)}
     >
-      {/* <i className={`${iconClass[source]} text-4xl text-blue-500 mb-2`} /> */}
       <img src={imageClass[source]} alt={imageClass[source]} />
 
       <h3 className="text text-xl ">{title}</h3>

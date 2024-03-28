@@ -6,28 +6,28 @@ import airTable from "../../assets/airtable.png";
 const IntegrationCards = () => {
   return (
     <div className="flex justify-start gap-8 items-center my-2">
-      <div class="w-220 h-220 rounded-lg border border-gray-200 py-1 px-6">
-        <div class="flex justify-center">
-          <img src={qbImg} alt="QuickBooks" class=" p-4" />
+      <div className="w-220 h-220 rounded-lg border border-gray-200 py-1 px-6">
+        <div className="flex justify-center">
+          <img src={qbImg} alt="QuickBooks" className=" p-4" />
         </div>
-        <div class="flex justify-center">
-          <h1 class=" font-bold pb-2">QuickBooks</h1>
-        </div>
-      </div>
-      <div class="w-220 h-220 rounded-lg border border-gray-200 py-1 px-6">
-        <div class="flex justify-center">
-          <img src={googleImg} alt="Google" class=" p-4" />
-        </div>
-        <div class="flex justify-center">
-          <h1 class="pb-2 font-bold">Google</h1>
+        <div className="flex justify-center">
+          <h1 className=" font-bold pb-2">QuickBooks</h1>
         </div>
       </div>
-      <div class="w-220 h-220 rounded-lg border border-gray-200 py-1 px-6">
-        <div class="flex justify-center">
-          <img src={airTable} alt="Airtable" class=" p-4" />
+      <div className="w-220 h-220 rounded-lg border border-gray-200 py-1 px-6">
+        <div className="flex justify-center">
+          <img src={googleImg} alt="Google" className=" p-4" />
         </div>
-        <div class="flex justify-center">
-          <h1 class="pb-2 font-bold">QuickBooks</h1>
+        <div className="flex justify-center">
+          <h1 className="pb-2 font-bold">Google</h1>
+        </div>
+      </div>
+      <div className="w-220 h-220 rounded-lg border border-gray-200 py-1 px-6">
+        <div className="flex justify-center">
+          <img src={airTable} alt="Airtable" className=" p-4" />
+        </div>
+        <div className="flex justify-center">
+          <h1 className="pb-2 font-bold">Airtable</h1>
         </div>
       </div>
     </div>
