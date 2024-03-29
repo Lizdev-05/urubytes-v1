@@ -11,10 +11,6 @@ const UploadSource = () => {
     setSelectedSource(source);
   };
 
-  const handleDocumentUpload = (event) => {
-    const selectedFile = event.target.files[0];
-  };
-
   return (
     <div className="border rounded-xl border-gray-300 w-4/5 px-12 py-4 m-auto">
       <div className="flex justify-start gap-8">

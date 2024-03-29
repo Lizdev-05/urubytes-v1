@@ -18,7 +18,6 @@ const UploadCard = ({ source, title, handleClick, isSelected }) => {
       onClick={() => handleClick(source)}
     >
       <img src={imageClass[source]} alt={imageClass[source]} />
-
       <h3 className="text text-xl ">{title}</h3>
     </div>
   );
