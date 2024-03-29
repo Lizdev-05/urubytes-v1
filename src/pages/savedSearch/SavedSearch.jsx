@@ -33,7 +33,8 @@ const SavedSearch = () => {
 
   return (
     // <div className="bg-grey-bg h-[982px] w-screen  ">
-    <div className="bg-grey-bg h-screen w-screen  ">
+
+    <div className="bg-grey-bg h-screen w-screen overflow-hidden ">
       <Navbar />
       {/* <div className=" p-6 px-12 m-4 h-[833px] bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300"> */}
       <div className=" p-4 px-12 m-4 bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300">
@@ -121,7 +122,7 @@ const SavedSearch = () => {
                             {question}
                           </Typography>
                         </td>
-                        <td className="p-4 flex items-center ">
+                        <td className="p-4 flex items-center max-w-[500px] ">
                           <Typography
                             variant="small"
                             color="blue-gray"
