@@ -150,11 +150,11 @@ const MarketInsightResult = () => {
                 >
                   <li
                     className="flex justify-start items-center"
-                    onClick={() => handleFormatSelect("map")}
+                    onClick={() => handleFormatSelect("line-chart")}
                   >
                     <img src={mapImage} alt={mapImage} />
                     <a href="#" className="block px-4 py-2 ">
-                      Map
+                      Line Chart
                     </a>
                   </li>
                   <li
@@ -173,6 +173,15 @@ const MarketInsightResult = () => {
                     <img src={chartImage} alt={chartImage} />
                     <a href="#" className="block px-4 py-2 ">
                       Chart
+                    </a>
+                  </li>
+                  <li
+                    className="flex justify-start items-center"
+                    onClick={() => handleFormatSelect("stack-chart")}
+                  >
+                    <img src={chartImage} alt={chartImage} />
+                    <a href="#" className="block px-4 py-2 ">
+                      Stack Chart
                     </a>
                   </li>
                 </ul>

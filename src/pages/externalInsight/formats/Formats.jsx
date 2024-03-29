@@ -1,6 +1,24 @@
 import React from "react";
+import Charts from "./Charts";
+import StackChart from "./StackChart";
 
 const Formats = ({ selectedFormat, handleFormatClick }) => {
+  const options = {
+    chart: {
+      id: "basic-bar",
+    },
+    xaxis: {
+      categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+    },
+  };
+
+  const series = [
+    {
+      name: "series-1",
+      data: [30, 40, 45, 50, 49, 60, 70, 91],
+    },
+  ];
+
   return (
     <div className="card py-4 px-8">
       {selectedFormat && (
@@ -22,13 +40,44 @@ const Formats = ({ selectedFormat, handleFormatClick }) => {
             </div>
           )}
           {selectedFormat === "chart" && (
-            <div className="mt-4 border-gray-500 border-2 border-dotted rounded-xl p-8 flex flex-col items-center m-auto w-3/4">
-              <p>Click add drive from google drive</p>
+            <div className="">
+              <p>
+                The market share of the major players in the fintech space in
+                Ghana are:
+              </p>
+
+              <Charts
+                options={options}
+                series={series}
+                type="bar"
+                width="500"
+              />
             </div>
           )}
-          {selectedFormat === "map" && (
-            <div className="mt-4 items-start w-3/4">
-              <h2 className="font font-medium text-xl">Add a link below</h2>
+          {selectedFormat === "line-chart" && (
+            <div className="">
+              <p>
+                The market share of the major players in the fintech space in
+                Ghana are:
+              </p>
+
+              <Charts
+                options={options}
+                series={series}
+                type="line"
+                width="500"
+              />
+            </div>
+          )}
+
+          {selectedFormat === "stack-chart" && (
+            <div className="">
+              <p>
+                The market share of the major players in the fintech space in
+                Ghana are:
+              </p>
+
+              <StackChart />
             </div>
           )}
         </div>
