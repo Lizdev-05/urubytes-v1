@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import collapseImg from "../../assets/collapse.png";
 import uLogoImg from "../../assets/u-logo.png";
@@ -14,6 +14,7 @@ import billingImg from "../../assets/marketInsight/billing.png";
 import teamImg from "../../assets/marketInsight/team.png";
 import accountSettingImg from "../../assets/marketInsight/setting.png";
 import logoutImg from "../../assets/marketInsight/logout.png";
+import "./SideBar.css";
 
 const SideBar = () => {
   const [open, setOpen] = useState(true);
@@ -44,6 +45,12 @@ const SideBar = () => {
   const handleBrightClick = () => {
     setShowModalCard(!showModalCard);
   };
+
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setOpen(false);
+    }
+  }, []);
 
   return (
     <div
@@ -102,8 +109,8 @@ const SideBar = () => {
           <hr className="border-t border-white p-0 mx-0 my-2 w-full" />
         </div>
 
-        <hr className="border-t border-white my-2" />
-        <ul className="pt-6">
+        <ul className="pt-8">
+          <hr className="border-t border-white my-2" />
           {bottomMenus.map((Menu, i) => (
             <>
               <li

@@ -7,7 +7,7 @@ const Navbar = () => {
     setDropdownOpen(!dropdownOpen);
   };
   return (
-    <div>
+    <div className="nav">
       <form className="bg-white">
         <div className="relative py-8 px-6 flex justify-between">
           <div className="absolute inset-y-0 start-16 flex items-center ps-3 pointer-events-none">

@@ -1,0 +1,24 @@
+@media only screen and (max-width: 768px) {
+  .marketInsight p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: 0 8px;
+  }
+
+  .main {
+    overflow: visible;
+  }
+
+  .ref {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .format {
+    padding: 1rem 0;
+  }
+
+  .marketResultDiv {
+    padding: 1rem 0;
+  }
+}
