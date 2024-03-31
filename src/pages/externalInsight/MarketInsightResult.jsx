@@ -116,15 +116,6 @@ const MarketInsightResult = () => {
                   <p className="text-[14px]">Reference:</p>
                   <Paginate />
                 </div>
-                {/* <div className="flex items-center gap-1 ">
-                  <p className="text-[14px]">View as</p>
-                  <button
-                    className="text-yellow-color underline text-[14px] cursor-pointer"
-                    onClick={handleFormatClick}
-                  >
-                    {selectedFormat}
-                  </button>
-                </div> */}
 
                 <div className="flex items-center gap-1 ">
                   <p className="text-[14px]">View as</p>
