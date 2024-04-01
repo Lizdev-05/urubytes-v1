@@ -1,0 +1,39 @@
+@media only screen and (max-width: 768px) {
+  .internal {
+    height: 100%;
+  }
+  .source {
+    display: flex;
+    justify-content: center;
+  }
+
+  .source button {
+    font-size: 10px;
+  }
+
+  .internalText h1 {
+    font-size: 1rem;
+    margin: 8px;
+    line-height: 1rem;
+  }
+
+  .mainInternal {
+    padding: 10px;
+  }
+
+  .mainInternal button {
+    margin-top: 1rem;
+  }
+
+  .internalText p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .internalText {
+    display: block;
+    text-align: left;
+
+    padding: 8px;
+  }
+}

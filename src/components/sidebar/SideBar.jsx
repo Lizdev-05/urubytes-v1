@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import collapseImg from "../../assets/collapse.png";
 import uLogoImg from "../../assets/u-logo.png";
@@ -10,9 +10,16 @@ import dataSourcesIcon from "../../assets/data-sources.png";
 import savedSearchIcon from "../../assets/saved-search.png";
 import getHelpIcon from "../../assets/help-icon.png";
 import brightIcon from "../../assets/bright.png";
+import billingImg from "../../assets/marketInsight/billing.png";
+import teamImg from "../../assets/marketInsight/team.png";
+import accountSettingImg from "../../assets/marketInsight/setting.png";
+import logoutImg from "../../assets/marketInsight/logout.png";
+import "./SideBar.css";
 
 const SideBar = () => {
   const [open, setOpen] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [showModalCard, setShowModalCard] = useState(false);
 
   const Menus = [
     { title: "Dashboard", link: "/", src: dashbordIcon },
@@ -35,11 +42,21 @@ const SideBar = () => {
     { title: "Bright ahedor ", link: "/user", src: brightIcon },
   ];
 
+  const handleBrightClick = () => {
+    setShowModalCard(!showModalCard);
+  };
+
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setOpen(false);
+    }
+  }, []);
+
   return (
     <div
       className={` ${
         open ? "w-72" : "w-20 "
-      } bg-primary-blue h-screen p-5  pt-12 relative duration-300`}
+      } bg-primary-blue p-5 h-screen pt-12 relative duration-300`}
     >
       <img
         src={collapseImg}
@@ -92,17 +109,17 @@ const SideBar = () => {
           <hr className="border-t border-white p-0 mx-0 my-2 w-full" />
         </div>
 
-        <hr className="border-t border-white my-2" />
-        <ul className="pt-6">
+        <ul className="pt-8">
+          <hr className="border-t border-white my-2" />
           {bottomMenus.map((Menu, i) => (
             <>
               <li
                 key={i}
                 className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm items-center gap-x-4 
                `}
+                onClick={handleBrightClick}
               >
                 <img src={Menu.src} alt={Menu.title} />
-
                 <span
                   style={{
                     transitionDelay: `${i + 3}00ms`,
@@ -120,6 +137,44 @@ const SideBar = () => {
           ))}
         </ul>
       </div>
+
+      {showModalCard && (
+        <div
+          className={`absolute bottom-4 left-0  w-full p-4 z-50  ${
+            open ? "ml-[230px]" : "ml-16"
+          }`}
+        >
+          <div className="bg-white p-8 relative  max-w-lg w-[350px] border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300">
+            <button
+              className="absolute top-9 right-8 hover:translate-x-2 transform transition duration-200"
+              onClick={handleBrightClick}
+            >
+              Close
+            </button>
+
+            <h3 className="text-xl font-semibold mb-4">Organizations</h3>
+            <ul>
+              <li className="flex items-center gap-3 text-[18px] cursor-pointer mb-2">
+                <img src={billingImg} alt={billingImg} />
+                <Link to="/billing">Billing</Link>
+              </li>
+              <li className="flex items-center gap-3 text-[18px] cursor-pointer">
+                <img src={teamImg} alt={teamImg} />
+                Team
+              </li>
+              <hr className="border-t border-gray-400 my-4" />
+              <li className="flex items-center gap-3 text-[18px] cursor-pointer mb-2">
+                <img src={accountSettingImg} alt={accountSettingImg} />
+                Account Setting
+              </li>
+              <li className="flex items-center gap-3 text-[18px] cursor-pointer">
+                <img src={logoutImg} alt={logoutImg} />
+                Logout
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
