@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import internalInsights from "../../assets/ic_baseline-insights.png";
 import { FaPlus } from "react-icons/fa";
 import Navbar from "../../components/navbar/Navbar";
@@ -6,8 +6,25 @@ import { Typography } from "@material-tailwind/react";
 import DefaultPagination from "./Pagination";
 import IntegrationCards from "../../components/integrationCards/IntegrationCards";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const DataSources = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://engine-s6aw.onrender.com/datasources/static/"
+        );
+        setData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   const TABLE_HEAD = [
     // "",
     "Type",
@@ -177,6 +194,74 @@ const DataSources = () => {
                       )
                     )}
                   </tbody>
+                  {/* <tbody>
+                    {data.map(
+                      (
+                        { type, title, dateAdded, status, dateUpdated },
+                        index
+                      ) => (
+                        <tr
+                          key={index}
+                          className=" even:bg-gray-200 even:text-black-color  odd:bg-white odd:text-black-color  p-4"
+                        >
+                          <td className="p-4">
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal"
+                            >
+                              <input type="checkbox" />
+                            </Typography>
+                          </td>
+                          <td className="p-4">
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal"
+                            >
+                              {type}
+                            </Typography>
+                          </td>
+                          <td className="p-4 flex items-center">
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal"
+                            >
+                              {title}
+                            </Typography>
+                          </td>
+                          <td className="p-4">
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal"
+                            >
+                              {status}
+                            </Typography>
+                          </td>
+                          <td className="p-4">
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal"
+                            >
+                              {dateAdded}
+                            </Typography>
+                          </td>
+                          <td className="p-4">
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal"
+                            >
+                              {dateUpdated}
+                            </Typography>
+                          </td>
+                        </tr>
+                      )
+                    )}
+                  </tbody> */}
                 </table>
                 <div className="flex justify-end mt-2">
                   <DefaultPagination />
