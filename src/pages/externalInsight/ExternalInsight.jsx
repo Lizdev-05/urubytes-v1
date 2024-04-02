@@ -498,7 +498,15 @@ const ExternalInsight = () => {
           </form>
           {feedback && (
             <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md">
-              <p className="text-gray-800">{feedback.message}</p>
+              <p className="text-gray-800">{feedback.insights}</p>
+              <p className="text-gray-800">{feedback.sources}</p>
+              {Object.entries(feedback.metadata).map(([key, value]) => (
+                <div key={key}>
+                  <h3 className="text-gray-800">{key}</h3>
+                  <p className="text-gray-800">File Name: {value.file_name}</p>
+                  <p className="text-gray-800">File Path: {value.file_path}</p>
+                </div>
+              ))}
             </div>
           )}
         </div>
