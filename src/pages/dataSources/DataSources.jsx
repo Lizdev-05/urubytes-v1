@@ -9,15 +9,16 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const DataSources = () => {
-  const [data, setData] = useState([]);
+  const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://engine-s6aw.onrender.com/datasources/static/"
+          "https://plankton-app-3slhc.ondigitalocean.app/datasources/static/?orgID=UBOBHVU917"
         );
-        setData(response.data);
+        setTableData(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -25,38 +26,7 @@ const DataSources = () => {
     fetchData();
   }, []);
 
-  const TABLE_HEAD = [
-    // "",
-    "Type",
-    "Title",
-    "Status",
-    "Date Added",
-    "Last Updated",
-  ];
-
-  const TABLE_ROWS = [
-    {
-      type: "PDF",
-      title: "January 2024 Sales",
-      status: "Complete",
-      dateAdded: "23/04/18",
-      dateUpdated: "23/04/18",
-    },
-    {
-      type: "Docx",
-      title: "FebruaryMarketing Report,",
-      status: "Complete",
-      dateAdded: "23/04/18",
-      dateUpdated: "23/04/18",
-    },
-    {
-      type: "PPT",
-      title: "January 2024 Sales",
-      status: "Deleted",
-      dateAdded: "05/03/2024",
-      dateUpdated: "05/03/2024",
-    },
-  ];
+  const TABLE_HEAD = ["Type", "Title", "Status", "Date Added", "Last Updated"];
 
   return (
     // <div className="bg-grey-bg h-[982px] w-screen  ">
@@ -126,10 +96,10 @@ const DataSources = () => {
                       ))}
                     </tr>
                   </thead>
-                  <tbody>
+                  {/* <tbody>
                     {TABLE_ROWS.map(
                       (
-                        { type, title, dateAdded, status, dateUpdated },
+                        { type, name, dateAdded, status, dateUpdated },
                         index
                       ) => (
                         <tr
@@ -193,16 +163,14 @@ const DataSources = () => {
                         </tr>
                       )
                     )}
-                  </tbody>
-                  {/* <tbody>
-                    {data.map(
-                      (
-                        { type, title, dateAdded, status, dateUpdated },
-                        index
-                      ) => (
+                  </tbody> */}
+
+                  <tbody>
+                    {tableData.map(
+                      ({ type, name, status, created_at, updated_at }) => (
                         <tr
-                          key={index}
-                          className=" even:bg-gray-200 even:text-black-color  odd:bg-white odd:text-black-color  p-4"
+                          key={name}
+                          className="even:bg-gray-200 odd:bg-white p-4"
                         >
                           <td className="p-4">
                             <Typography
@@ -228,7 +196,7 @@ const DataSources = () => {
                               color="blue-gray"
                               className="font-normal"
                             >
-                              {title}
+                              {name}
                             </Typography>
                           </td>
                           <td className="p-4">
@@ -246,7 +214,7 @@ const DataSources = () => {
                               color="blue-gray"
                               className="font-normal"
                             >
-                              {dateAdded}
+                              {created_at}
                             </Typography>
                           </td>
                           <td className="p-4">
@@ -255,13 +223,13 @@ const DataSources = () => {
                               color="blue-gray"
                               className="font-normal"
                             >
-                              {dateUpdated}
+                              {updated_at}
                             </Typography>
                           </td>
                         </tr>
                       )
                     )}
-                  </tbody> */}
+                  </tbody>
                 </table>
                 <div className="flex justify-end mt-2">
                   <DefaultPagination />

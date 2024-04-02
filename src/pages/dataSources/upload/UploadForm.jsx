@@ -4,10 +4,12 @@ import driveImage from "../../../assets/drive.png";
 import cloudImg from "../../../assets/cloud.png";
 import { FaPlus } from "react-icons/fa";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const UploadSource = () => {
   const [selectedSource, setSelectedSource] = useState("drive");
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const navigate = useNavigate();
 
   const handleSourceClick = (source) => {
     setSelectedSource(source);
@@ -38,6 +40,7 @@ const UploadSource = () => {
         formData
       );
       console.log("Files uploaded and saved to user storage:", response.data);
+      navigate("/dataSource");
     } catch (error) {
       console.error("Error uploading files:", error);
     }
@@ -78,19 +81,21 @@ const UploadSource = () => {
                   Click or drag files to this area to upload PDF, <br /> DOCX,
                   XLSX, and PPTX files
                 </p>
-                <input
-                  type="file"
-                  multiple
-                  onChange={handleFileChange}
-                  accept=".pdf,.docx,.xlsx,.pptx"
-                  name="source"
-                />
-                <button
-                  onClick={handleFileUpload}
-                  className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4"
-                >
-                  Upload
-                </button>
+                <div className="flex justify-between items-center">
+                  <input
+                    type="file"
+                    multiple
+                    onChange={handleFileChange}
+                    accept=".pdf,.docx,.xlsx,.pptx"
+                    name="source"
+                  />
+                  <button
+                    onClick={handleFileUpload}
+                    className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4"
+                  >
+                    Upload
+                  </button>
+                </div>
               </div>
             </div>
           )}
