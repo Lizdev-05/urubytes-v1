@@ -7,9 +7,11 @@ import "./ExternalInsight.css";
 const ExternalInsight = () => {
   const [query, setQuery] = useState("");
   const [feedback, setFeedback] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
     try {
       const response = await fetch(
@@ -27,11 +29,13 @@ const ExternalInsight = () => {
         const data = await response.json();
         setFeedback(data);
         console.log("Received feedback:", data);
+        setLoading(false);
       } else {
         console.error("Failed to receive feedback:", response.statusText);
       }
     } catch (error) {
       console.error("Error sending request:", error);
+      setLoading(false);
     }
   };
 
@@ -171,19 +175,15 @@ const ExternalInsight = () => {
               </button>
             </div>
           </form>
+          {loading && (
+            <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md">
+              <div className="loadingSpinner"></div>
+            </div>
+          )}
           {feedback && (
-            <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md grid grid-flow-col col-span-3">
-              <p className="text-gray-800 text-2xl col-span-2">
-                {feedback.insights}
-              </p>
-              <p className="text-gray-800 col-span-1">{feedback.sources}</p>
-              {/* {Object.entries(feedback.metadata).map(([key, value]) => (
-                <div key={key}>
-                  <h3 className="text-gray-800">{key}</h3>
-                  <p className="text-gray-800">File Name: {value.file_name}</p>
-                  <p className="text-gray-800">File Path: {value.file_path}</p>
-                </div>
-              ))} */}
+            <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
+              <p className="text-gray-800 text-2xl ">{feedback.insights}</p>
+              <span className="text-gray-800">{feedback.sources}</span>
             </div>
           )}
         </div>
