@@ -171,77 +171,17 @@ const ExternalInsight = () => {
               </button>
             </div>
           </form>
-          {/* {feedback && (
-            <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md">
-              <p className="text-gray-800">{feedback.insights}</p>
-              <div className="flex justify-between mt-4">
-                <div>
-                  <h3 className="text-gray-800">Sources:</h3>
-                  {feedback.sources.map((source, index) => (
-                    <p key={index} className="text-gray-800">
-                      <a
-                        href={source.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {source.title}
-                      </a>
-                    </p>
-                  ))}
-                </div> */}
-
-          {/* <div>
-                  {Object.entries(feedback.metadata).map(([key, value]) => (
-                    <div key={key}>
-                      <h3 className="text-gray-800">{key}</h3>
-                      <p className="text-gray-800">
-                        File Name: {value.file_name}
-                      </p>
-                      <p className="text-gray-800">
-                        File Path: {value.file_path}
-                      </p>
-                    </div>
-                  ))}
-                </div> */}
-
-          {/*                 
-              </div>
-            </div>
-          )} */}
-
           {feedback && (
-            <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md">
-              <p className="text-gray-800">{feedback.insights}</p>
-              <div className="flex justify-between mt-4">
-                <div>
-                  <h3 className="text-gray-800">Sources:</h3>
-                  {Array.isArray(feedback.sources) &&
-                    feedback.sources.map((source, index) => (
-                      <p key={index} className="text-gray-800">
-                        <a
-                          href={source.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {source.title}
-                        </a>
-                      </p>
-                    ))}
+            <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md grid grid-flow-col col-span-3">
+              <p className="text-gray-800 col-span-2">{feedback.insights}</p>
+              <p className="text-gray-800 col-span-1">{feedback.sources}</p>
+              {/* {Object.entries(feedback.metadata).map(([key, value]) => (
+                <div key={key}>
+                  <h3 className="text-gray-800">{key}</h3>
+                  <p className="text-gray-800">File Name: {value.file_name}</p>
+                  <p className="text-gray-800">File Path: {value.file_path}</p>
                 </div>
-                <div>
-                  {Object.entries(feedback.metadata).map(([key, value]) => (
-                    <div key={key}>
-                      <h3 className="text-gray-800">{key}</h3>
-                      <p className="text-gray-800">
-                        File Name: {value.file_name}
-                      </p>
-                      <p className="text-gray-800">
-                        File Path: {value.file_path}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              ))} */}
             </div>
           )}
         </div>
