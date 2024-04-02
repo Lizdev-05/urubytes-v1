@@ -185,14 +185,13 @@ const ExternalInsight = () => {
               <p className="text-gray-600 mb-4 text-[1rem] ">
                 {feedback.insights}
               </p>
-              {/* <span className="text-gray-600 ">{feedback.sources}</span> */}
-              {/* Map over the metadata and get the file name as the source */}
 
               <p>
-                {feedback.metadata.map((meta) => (
-                  <span key={meta.id} className="text-gray-600 ">
-                    Source: {meta.file_name}
-                  </span>
+                {Object.entries(feedback.metadata).map(([key, value]) => (
+                  <div key={key}>
+                    <h3 className="text-gray-600">{key}</h3>
+                    <p className="text-gray-600">Source: {value.file_name}</p>
+                  </div>
                 ))}
               </p>
             </div>
