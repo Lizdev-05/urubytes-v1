@@ -182,7 +182,9 @@ const ExternalInsight = () => {
           )}
           {feedback && (
             <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
-              <p className="text-gray-800 text-xl ">{feedback.insights}</p>
+              <p className="text-gray-600 mb-4 text-[1rem] ">
+                {feedback.insights}
+              </p>
               <span className="text-gray-800">{feedback.sources}</span>
             </div>
           )}
