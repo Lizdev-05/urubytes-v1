@@ -16,6 +16,7 @@ const UploadSource = () => {
   };
 
   const handleFileChange = (event) => {
+    // setSelectedFiles(Array.from(event.target.files));
     setSelectedFiles(Array.from(event.target.files));
   };
 
