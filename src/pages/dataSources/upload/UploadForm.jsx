@@ -37,7 +37,7 @@ const UploadSource = () => {
 
     try {
       const response = await axios.post(
-        "https://plankton-app-3slhc.ondigitalocean.app/datasources/static/",
+        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/",
         formData
       );
       console.log("Files uploaded and saved to user storage:", response.data);
