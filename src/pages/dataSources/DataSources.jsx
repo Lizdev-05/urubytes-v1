@@ -15,7 +15,7 @@ const DataSources = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://plankton-app-3slhc.ondigitalocean.app/datasources/static/?orgID=UBOBHVU917"
+          "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/?orgID=UBOBHVU917"
         );
         setTableData(response.data);
         console.log(response.data);
