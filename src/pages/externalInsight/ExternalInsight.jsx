@@ -189,8 +189,11 @@ const ExternalInsight = () => {
               <p>
                 {Object.entries(feedback.metadata).map(([key, value]) => (
                   <div key={key}>
-                    <h3 className="text-gray-600">{key}</h3>
-                    <p className="text-gray-600">Source: {value.file_name}</p>
+                    Source:
+                    <span className="text-primary-blue">
+                      {" "}
+                      {value.file_name}
+                    </span>
                   </div>
                 ))}
               </p>
