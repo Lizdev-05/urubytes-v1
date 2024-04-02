@@ -185,7 +185,7 @@ const ExternalInsight = () => {
               <p className="text-gray-600 mb-4 text-[1rem] ">
                 {feedback.insights}
               </p>
-              <span className="text-gray-800">{feedback.sources}</span>
+              <span className="text-gray-600 ">{feedback.sources}</span>
             </div>
           )}
         </div>
