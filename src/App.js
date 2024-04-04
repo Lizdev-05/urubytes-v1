@@ -12,6 +12,8 @@ import AddSource from "./pages/dataSources/AddSource";
 import MarketInsightResult from "./pages/externalInsight/MarketInsightResult";
 import Profile from "./pages/profile/Billing";
 import Billing from "./pages/profile/Billing";
+import Register from "./components/auth/register/Register";
+import Login from "./components/auth/login/Login";
 
 function App() {
   const [isProfileModalOpen, setProfileModalOpen] = useState(false);
@@ -23,6 +25,8 @@ function App() {
   return (
     <div className="flex">
       <BrowserRouter>
+        {/* <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} /> */}
         <SideBar onProfileClick={toggleProfileModal} />
         {isProfileModalOpen && <Profile onClose={toggleProfileModal} />}
         <Routes>

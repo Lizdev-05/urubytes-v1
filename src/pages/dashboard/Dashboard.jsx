@@ -99,7 +99,7 @@ import Navbar from "../../components/navbar/Navbar";
 
 const Dashboard = () => {
   return (
-    <div className="bg-grey-bg h-full w-screen">
+    <div className="bg-grey-bg h-screen w-screen">
       <Navbar />
       <div className="p-6 sm:px-16 m-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-white dark:border-gray-300">
         <div className="">

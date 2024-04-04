@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Register.module.css";
-import logo from "../../assets/uru-logo.png";
+import logo from "../../../assets/logo.png";
 import { FaFacebookSquare, FaLinkedin } from "react-icons/fa";
 // import { FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";

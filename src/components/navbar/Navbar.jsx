@@ -9,8 +9,8 @@ const Navbar = () => {
   return (
     <div className="nav">
       <form className="bg-white">
-        <div className="relative py-8 px-6 flex justify-between">
-          <div className="absolute inset-y-0 start-16 flex items-center ps-3 pointer-events-none">
+        <div className="relative py-8 px-6 flex justify-end gap-12 mr-6 ">
+          {/* <div className="absolute inset-y-0 start-16 flex items-center ps-3 pointer-events-none">
             <svg
               className="w-4 h-4 text-gray-500 dark:text-gray-400"
               aria-hidden="true"
@@ -34,7 +34,7 @@ const Navbar = () => {
             class="block  p-4 ps-20 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-300  dark:bg-gray-100  dark:placeholder-gray-400 dark:text-gray-900 w-11/12 focus:ring-2 focus:outline-none focus:ring-blue-200"
             placeholder="Search"
             required
-          />
+          /> */}
 
           <button
             id="dropdownDefaultButton"
@@ -61,6 +61,11 @@ const Navbar = () => {
               <div className="absolute top-0 start-0 rounded-full -z-10 animate-ping bg-red-200 w-full h-full"></div>
             </div>
           </button>
+
+          <div className="flex flex-col bg-[#EB5757] text-white py-1 px-6 items-center">
+            <span className="font-[14px] text-sm">Current Plan</span>
+            <h2 className="font text-xl">BASIC</h2>
+          </div>
         </div>
         <div
           id="dropdown"
