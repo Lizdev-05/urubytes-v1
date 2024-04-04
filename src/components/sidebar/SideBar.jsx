@@ -10,7 +10,7 @@ import dataSourcesIcon from "../../assets/data-sources.png";
 import savedSearchIcon from "../../assets/saved-search.png";
 import getHelpIcon from "../../assets/help-icon.png";
 import brightIcon from "../../assets/bright.png";
-import billingImg from "../../assets/marketInsight/billing.png";
+import billingImg from "../../assets/marketInsight/billings.png";
 import teamImg from "../../assets/marketInsight/team.png";
 import accountSettingImg from "../../assets/marketInsight/setting.png";
 import logoutImg from "../../assets/marketInsight/logout.png";
@@ -35,6 +35,7 @@ const SideBar = () => {
     },
     { title: "Data Sources ", link: "/dataSource", src: dataSourcesIcon },
     { title: "Saved Search", link: "/savedSearch", src: savedSearchIcon },
+    { title: "Billing", link: "/billing", src: billingImg },
   ];
 
   const bottomMenus = [
@@ -154,10 +155,6 @@ const SideBar = () => {
 
             <h3 className="text-xl font-semibold mb-4">Organizations</h3>
             <ul>
-              <li className="flex items-center gap-3 text-[18px] cursor-pointer mb-2">
-                <img src={billingImg} alt={billingImg} />
-                <Link to="/billing">Billing</Link>
-              </li>
               <li className="flex items-center gap-3 text-[18px] cursor-pointer">
                 <img src={teamImg} alt={teamImg} />
                 Team

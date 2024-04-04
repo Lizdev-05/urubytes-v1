@@ -126,7 +126,7 @@ const Billing = () => {
 
               <a
                 href="#"
-                class="inline-flex justify-center w-full px-4 py-3 font-sans text-sm leading-none text-center bg-blue-500 text-white no-underline bg-transparent border border-blue-600 rounded-full cursor-pointer hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700 focus-within:text-white sm:text-base md:text-lg"
+                class="inline-flex justify-center w-full px-4 py-3 font-sans text-sm leading-none text-center bg-primary-blue text-white no-underline  border border-blue-600 rounded-full cursor-pointer hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700 focus-within:text-white sm:text-base md:text-lg"
               >
                 Get Started
               </a>
