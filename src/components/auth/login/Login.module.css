@@ -1,5 +1,5 @@
 .reg {
-  background-image: url("../../assets/register.png");
+  background-image: url("../../../assets/register.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -149,7 +149,7 @@
   }
 
   .formBackground {
-    background-image: url("../../assets/rightpanel.png");
+    background-image: url("../../../assets/rightpanel.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
