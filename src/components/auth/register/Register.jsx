@@ -17,8 +17,13 @@ const Register = () => {
     password: "",
     agreeTerms: false,
   });
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const navigate = useNavigate();
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -123,7 +128,7 @@ const Register = () => {
                       <FaEnvelope className="absolute top-3 right-3 text-gray-400" />
                     </div>
                   </div>
-                  <div>
+                  {/* <div>
                     <label
                       for="password"
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800"
@@ -142,6 +147,34 @@ const Register = () => {
                         required=""
                       />
                       <IoIosEyeOff className="absolute top-3 right-3 text-gray-400" />
+                    </div>
+                  </div> */}
+
+                  <div>
+                    <label
+                      htmlFor="password"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800"
+                    >
+                      Password
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={isPasswordVisible ? "text" : "password"}
+                        name="password"
+                        id="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="*********"
+                        required=""
+                      />
+                      <button
+                        type="button"
+                        onClick={togglePasswordVisibility}
+                        className="absolute top-3 right-3 text-gray-400"
+                      >
+                        {isPasswordVisible ? <IoIosEye /> : <IoIosEyeOff />}
+                      </button>
                     </div>
                   </div>
 
