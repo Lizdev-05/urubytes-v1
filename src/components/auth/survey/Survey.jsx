@@ -1,9 +1,10 @@
 import React from "react";
 import style from "./Survey.module.css";
-import logo from "../../assets/uru-logo.png";
+import logo from "../../../assets/logo.png";
 import { FaFacebookSquare, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const Survey = () => {
   return (
@@ -114,24 +115,16 @@ const Survey = () => {
                   type="submit"
                   className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
-                  Next
+                  <Link to="/interest"> Next</Link>
                 </button>
 
-                {/* <p className="text-sm font-light text-gray-900 dark:text-gray-900">
-                  <a
-                    href="#"
+                <p className="text-sm font-light text-gray-900 dark:text-gray-900 flex justify-end">
+                  <Link
+                    to="/dashboard"
                     className="font-medium text-orange-600 hover:underline dark:text-orange-500"
                   >
                     Skip for now
-                  </a>
-                </p> */}
-                <p className="text-sm font-light text-gray-900 dark:text-gray-900 flex justify-end">
-                  <a
-                    href="#"
-                    className="font-medium text-orange-600 hover:underline dark:text-orange-500"
-                  >
-                    Skip Survey
-                  </a>
+                  </Link>
                 </p>
               </form>
             </div>
@@ -141,18 +134,17 @@ const Survey = () => {
           <img src={logo} alt="logo" className={style.surveyLogo} />
           <h1>Gain Insights, Drive Growth.</h1>
           <p>
-            Connect with local experts, researchers, and industry leaders to
-            gain valuable insights and unlock collaboration opportunities..
+            Integrate all your data sources to unlock insights and drive
+            strategic decisions that propel your business forward.
           </p>
           <p className={style.surveyIcons}>
-            <a href="#contact" className="">
+            <a
+              href="https://www.linkedin.com/company/urubytes"
+              target="_blank"
+              className=" flex items-center justify-center gap-1"
+            >
               <FaLinkedin size={22} color="#1b1b1b" />
-            </a>
-            <a href="#contact" className="">
-              <FaFacebookSquare size={22} color="#1b1b1b" />
-            </a>
-            <a href="#contact" className="">
-              <FaSquareXTwitter size={22} color="#1b1b1b" />
+              <span className="text-[#1b1b1b]">@URUbytes</span>
             </a>
           </p>
         </div>

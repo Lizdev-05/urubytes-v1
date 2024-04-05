@@ -2,16 +2,12 @@ import React from "react";
 import style from "./Register.module.css";
 import logo from "../../../assets/logo.png";
 import { FaFacebookSquare, FaLinkedin } from "react-icons/fa";
-// import { FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { FaUser } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa";
 import { IoIosEyeOff, IoMdEye } from "react-icons/io";
-
-// <FaUser />
-// <IoIosEyeOff />
-// <IoMdEye />
+import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
@@ -19,13 +15,21 @@ const Register = () => {
       <div className={style.regWrapper}>
         <div className={style.regContent}>
           <img src={logo} alt="logo" className={style.regLogo} />
-          <h1>Unlock the Power of Your Network.</h1>
+          <h1>Unlock the Power of Your Data.</h1>
           <p>
-            Access valuable market insights, connect with local experts, and
-            make informed decisions that will propel your business forward.
+            Integrate all your data sources to unlock insights and drive
+            strategic decisions that propel your business forward.
           </p>
           <p className={style.regIcons}>
-            <a href="#contact" className="">
+            <a
+              href="https://www.linkedin.com/company/urubytes"
+              target="_blank"
+              className=" flex items-center justify-center gap-1"
+            >
+              <FaLinkedin size={22} color="#1b1b1b" />
+              <span className="text-[#1b1b1b]">@URUbytes</span>
+            </a>
+            {/* <a href="#contact" className="">
               <FaLinkedin size={22} color="#1b1b1b" />
             </a>
             <a href="#contact" className="">
@@ -33,7 +37,7 @@ const Register = () => {
             </a>
             <a href="#contact" className="">
               <FaSquareXTwitter size={22} color="#1b1b1b" />
-            </a>
+            </a> */}
           </p>
         </div>
         <div className="flex flex-col items-center justify-center px-6 py-8  md:h-screen lg:py-0">
@@ -133,10 +137,9 @@ const Register = () => {
                   type="submit"
                   className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
-                  <a href="/login"> Create an account</a>
+                  <Link to="/survey">Create an account</Link>
                 </button>
                 <div>
-                  {/* create horizontal line, a text that says Or and another horizontal at the back. let the Or be at the middle */}
                   <div className="flex items-center justify-between mt-4">
                     <div className="w-2/5 border-b border-gray-300 md:w-2/5"></div>
                     <p className="text-xs font-light text-gray-700 dark:text-gray-700">
@@ -151,7 +154,7 @@ const Register = () => {
                 <p className="text-sm font-light text-gray-900 dark:text-gray-900">
                   Have an account?{" "}
                   <a
-                    href="/login"
+                    href="/"
                     className="font-medium text-orange-600 hover:underline dark:text-orange-500"
                   >
                     Login here

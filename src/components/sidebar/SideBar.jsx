@@ -22,7 +22,7 @@ const SideBar = () => {
   const [showModalCard, setShowModalCard] = useState(false);
 
   const Menus = [
-    { title: "Dashboard", link: "/", src: dashbordIcon },
+    { title: "Dashboard", link: "/dashboard", src: dashbordIcon },
     {
       title: "Get Insights",
       link: "/internalInsight",

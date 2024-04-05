@@ -6,6 +6,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { FaEnvelope } from "react-icons/fa";
 import { IoIosEyeOff, IoMdEye } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -14,20 +15,23 @@ const Login = () => {
         <div className={style.regContent}>
           <img src={logo} alt="logo" className={style.regLogo} />
           <h1>Log in to start your search! </h1>
-          <p>
-            Welcome back! Log in to access your saved searches, alerts and
-            unlock valuable startup & VC insights.
-          </p>
+          <p>Welcome back! Log in to pick up where you left off</p>
           <p className={style.regIcons}>
-            <a href="#contact" className="">
+            <a
+              href="https://www.linkedin.com/company/urubytes"
+              target="_blank"
+              className=" flex items-center justify-center gap-1"
+            >
               <FaLinkedin size={22} color="#1b1b1b" />
+              <span className="text-[#1b1b1b]">@URUbytes</span>
             </a>
-            <a href="#contact" className="">
+
+            {/* <a href="#contact" className="">
               <FaFacebookSquare size={22} color="#1b1b1b" />
             </a>
             <a href="#contact" className="">
               <FaSquareXTwitter size={22} color="#1b1b1b" />
-            </a>
+            </a> */}
           </p>
         </div>
         <div className="flex flex-col items-center justify-center px-6 py-8  md:h-screen lg:py-0">
@@ -109,12 +113,12 @@ const Login = () => {
                 </button>
                 <p className="text-sm font-light text-gray-900 dark:text-gray-900">
                   Don’t Have an Account?{" "}
-                  <a
-                    href="#"
+                  <Link
+                    to="/register"
                     className="font-medium text-orange-600 hover:underline dark:text-orange-500"
                   >
                     Register here
-                  </a>
+                  </Link>
                 </p>
               </form>
             </div>

@@ -1,8 +1,9 @@
 import React from "react";
 import style from "./Interest.module.css";
-import logo from "../../assets/uru-logo.png";
+import logo from "../../../assets/logo.png";
 import { FaFacebookSquare, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Interest = () => {
   return (
@@ -17,18 +18,13 @@ const Interest = () => {
                 What is your interest?
               </h1>
               <p className="text-sm  text-gray-700 border border-gray-400  rounded-2xl p-4 inline-block mb-2">
-                I'm researching startups for investment.
+                I’m here to explore
               </p>
-
-              <p className="text-sm text-gray-700 border border-gray-400  rounded-2xl p-4 inline-block mb-2">
-                I'm looking for insights on Venture Capital firms.
-              </p>
-
               <p className="text-sm text-gray-700 border border-gray-400  rounded-2xl p-4 inline-block mb-2 ">
-                I'm a startup founder seeking information and resources.
+                I want to know what my competitors are doing
               </p>
               <p className="text-sm text-gray-700 border border-gray-400  rounded-2xl p-4 inline-block mb-2">
-                I'm an industry professional following startup and VC trends.{" "}
+                I’m looking to make sense of my data and get actionable insight
               </p>
             </div>
 
@@ -59,7 +55,7 @@ const Interest = () => {
                   type="submit"
                   className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-lx px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-80 my-8"
                 >
-                  Complete
+                  <Link to="/dashboard">Complete</Link>
                 </button>
               </div>
             </div>
@@ -70,18 +66,17 @@ const Interest = () => {
           <img src={logo} alt="logo" className={style.interestLogo} />
           <h1>Gain Insights, Drive Growth.</h1>
           <p className="">
-            Connect with local experts, researchers, and industry leaders to
-            gain valuable insights and unlock collaboration opportunities..
+            Integrate all your data sources to unlock insights and drive
+            strategic decisions that propel your business forward.
           </p>
           <p className={style.interestIcons}>
-            <a href="#contact" className="">
+            <a
+              href="https://www.linkedin.com/company/urubytes"
+              target="_blank"
+              className=" flex items-center justify-center gap-1"
+            >
               <FaLinkedin size={22} color="#1b1b1b" />
-            </a>
-            <a href="#contact" className="">
-              <FaFacebookSquare size={22} color="#1b1b1b" />
-            </a>
-            <a href="#contact" className="">
-              <FaSquareXTwitter size={22} color="#1b1b1b" />
+              <span className="text-[#1b1b1b]">@URUbytes</span>
             </a>
           </p>
         </div>

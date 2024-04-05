@@ -1,5 +1,5 @@
 .interest {
-  background-image: url("../../assets/companyInfo.png");
+  background-image: url("../../../assets/companyInfo.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -134,7 +134,7 @@
   }
 
   .formBackground {
-    background-image: url("../../assets/rightpanel.png");
+    background-image: url("../../../assets/rightpanel.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
