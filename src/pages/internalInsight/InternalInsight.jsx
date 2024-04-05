@@ -3,6 +3,7 @@ import Navbar from "../../components/navbar/Navbar";
 import { FaArrowUpLong } from "react-icons/fa6";
 import "./InternalInsight.css";
 import { Link } from "react-router-dom";
+import { FaPlus } from "react-icons/fa";
 
 const InternalInsight = () => {
   return (
@@ -46,9 +47,18 @@ const InternalInsight = () => {
 
         <div className="sm:col-span-3 block py-4 px-8 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100 mainInternal">
           <div className="flex justify-end source">
-            <Link to="/dataSource" className="">
+            {/* <Link to="/dataSource" className="">
               <button className="bg-yellow-color hover:bg-yellow-600 text-white font-bold py-3 px-8 rounded mt-6 ">
                 View Data Source
+              </button>
+            </Link> */}
+            <Link
+              to="/addSource"
+              className=" border border-transparent rounded-lg  flex items-center  bg-yellow-color hover:bg-yellow-600 "
+            >
+              <button className=" text-white font-semi-bold py-2 px-8   flex items-center gap-2 ">
+                <FaPlus />
+                Add Source
               </button>
             </Link>
           </div>
