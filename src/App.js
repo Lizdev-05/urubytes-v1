@@ -22,6 +22,8 @@ import Register from "./components/auth/register/Register";
 import Login from "./components/auth/login/Login";
 import Survey from "./components/auth/survey/Survey";
 import Interest from "./components/auth/interest/Interest";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [isProfileModalOpen, setProfileModalOpen] = useState(false);
@@ -35,6 +37,7 @@ function App() {
     <div className="flex">
       {/* <SideBar onProfileClick={toggleProfileModal} /> */}
       {/*  I dont want side bar to show in my register page also */}
+      <ToastContainer />
 
       {location.pathname !== "/" &&
         location.pathname !== "/register" &&
