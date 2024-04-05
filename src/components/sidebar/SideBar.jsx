@@ -34,7 +34,7 @@ const SideBar = () => {
     //   src: marketInsightsIcon,
     // },
     { title: "Data Sources ", link: "/dataSource", src: dataSourcesIcon },
-    { title: "Saved Search", link: "/savedSearch", src: savedSearchIcon },
+    // { title: "Saved Search", link: "/savedSearch", src: savedSearchIcon },
     { title: "Billing", link: "/billing", src: billingImg },
   ];
 

@@ -41,9 +41,9 @@ const AddSources = () => {
 
   return (
     // <div className="bg-grey-bg h-[982px] w-screen  ">
-    <div className="bg-grey-bg h-screen w-screen  ">
+    <div className="bg-grey-bg h-screen w-screen overflow-hidden ">
       <Navbar />
-      <div className=" p-6 px-12 m-4 h-[658px] bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300">
+      <div className=" p-6 px-12 m-4 h-full bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300">
         {/* <div className=" p-4 px-12 m-4 bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300"> */}
         <div className=" ">
           <h1 className="text-3xl font-semibold">Internal Insight</h1>

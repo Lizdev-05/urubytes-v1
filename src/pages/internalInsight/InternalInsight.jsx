@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { FaArrowUpLong } from "react-icons/fa6";
 import "./InternalInsight.css";
+import { Link } from "react-router-dom";
 
 const InternalInsight = () => {
   return (
@@ -45,9 +46,11 @@ const InternalInsight = () => {
 
         <div className="sm:col-span-3 block py-4 px-8 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100 mainInternal">
           <div className="flex justify-end source">
-            <button className="bg-yellow-color hover:bg-yellow-600 text-white font-bold py-3 px-8 rounded mt-6 ">
-              View Data Source
-            </button>
+            <Link to="/dataSource" className="">
+              <button className="bg-yellow-color hover:bg-yellow-600 text-white font-bold py-3 px-8 rounded mt-6 ">
+                View Data Source
+              </button>
+            </Link>
           </div>
           <div className="flex flex-col items-center text-center p-8 internalText">
             <h1 className="m-4 text-3xl font-bold">Ask Urubytes A Question</h1>
