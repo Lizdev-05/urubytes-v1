@@ -28,12 +28,13 @@ const Survey = () => {
       ...prevData,
       [name]: value,
     }));
-
     dispatch(updateRegistrationData({ ...formData, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Survey data submitted:", formData);
+    dispatch(updateRegistrationData(formData));
     navigate("/interest");
   };
 
