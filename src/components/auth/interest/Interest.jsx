@@ -157,7 +157,8 @@ const Interest = () => {
   });
 
   const navigate = useNavigate();
-  const registrationData = useSelector((state) => state.registration);
+
+  const registrationData = useSelector((state) => state.registrationData);
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
@@ -180,7 +181,55 @@ const Interest = () => {
       ...prevData,
       [name]: value,
     }));
+    dispatch(updateRegistrationData({ [name]: value }));
   };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post(
+  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
+  //       registrationData
+  //     );
+  //     console.log(response.data, registrationData);
+  //     navigate("/dashboard");
+  //   } catch (error) {
+  //     console.error("Failed to send data to backend:", error);
+  //   }
+  // };
+
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   // Update local form data
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
+
+  //   dispatch(updateRegistrationData({ [name]: value }));
+  // };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post(
+  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
+  //       registrationData
+  //     );
+  //     console.log(response.data, registrationData);
+  //     navigate("/dashboard");
+  //   } catch (error) {
+  //     console.error("Failed to send data to backend:", error);
+  //   }
+  // };
+
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
+  // };
 
   // const handleChange = (e) => {
   //   const { name, value } = e.target;
