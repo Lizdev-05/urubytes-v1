@@ -186,7 +186,7 @@ const Interest = () => {
   // };
 
   const [formData, setFormData] = useState({
-    interest: "",
+    interests: "",
     referrer: "",
   });
 
@@ -241,7 +241,7 @@ const Interest = () => {
                   <label className="text-sm  text-gray-700 border border-gray-400  rounded-2xl p-4 inline-block mb-2">
                     <input
                       type="radio"
-                      name="interest"
+                      name="interests"
                       className="mr-2"
                       value="Explore"
                       onChange={handleChange}
@@ -251,7 +251,7 @@ const Interest = () => {
                   <label className="text-sm text-gray-700 border border-gray-400  rounded-2xl p-4 inline-block mb-2">
                     <input
                       type="radio"
-                      name="interest"
+                      name="interests"
                       className="mr-2"
                       value="Competitors"
                       onChange={handleChange}
@@ -261,7 +261,7 @@ const Interest = () => {
                   <label className="text-sm text-gray-700 border border-gray-400  rounded-2xl p-4 inline-block mb-2">
                     <input
                       type="radio"
-                      name="interest"
+                      name="interests"
                       className="mr-2"
                       value="Insights"
                       onChange={handleChange}
@@ -336,7 +336,7 @@ const Interest = () => {
                 <button
                   type="submit"
                   onClick={handleSubmit}
-                  disabled={!formData.interest || !formData.referrer}
+                  disabled={!formData.interests || !formData.referrer}
                   className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-lx px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-80 my-8"
                 >
                   Complete
