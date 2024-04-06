@@ -153,7 +153,7 @@ import { updateRegistrationData } from "../../../reducer/action";
 const Interest = () => {
   const [formData, setFormData] = useState({
     interest: "",
-    referralSource: "",
+    referrer: "",
   });
 
   const navigate = useNavigate();
@@ -161,44 +161,9 @@ const Interest = () => {
   const registrationData = useSelector((state) => state.registrationData);
   const dispatch = useDispatch();
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post(
-  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
-  //       registrationData
-  //     );
-  //     console.log(response.data, registrationData);
-  //     navigate("/dashboard");
-  //   } catch (error) {
-  //     console.error("Failed to send data to backend:", error);
-  //   }
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Check if all required fields are present in registrationData
-      const requiredFields = [
-        "name",
-        "email",
-        "password",
-        "industry",
-        "organization",
-        "size",
-        "role",
-        "country",
-        "interests",
-        "referrer",
-      ];
-      const missingFields = requiredFields.filter(
-        (field) => !registrationData[field]
-      );
-      if (missingFields.length > 0) {
-        console.error("Missing required fields:", missingFields);
-        return; // Don't proceed if required fields are missing
-      }
-
-      // Send registration data to backend
       const response = await axios.post(
         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
         registrationData
@@ -352,7 +317,7 @@ const Interest = () => {
                   <label className="text-[13px]  text-gray-700 border border-gray-400  text-center rounded-2xl px-1 py-2 md:inline-block mb-2 mr-2">
                     <input
                       type="radio"
-                      name="referralSource"
+                      name="referrer"
                       className="mr-1"
                       value="FriendColleague"
                       onChange={handleChange}
@@ -362,7 +327,7 @@ const Interest = () => {
                   <label className="text-[13px] text-gray-700 border border-gray-400  text-center rounded-2xl px-3 py-2 md:inline-block mb-2">
                     <input
                       type="radio"
-                      name="referralSource"
+                      name="referrer"
                       className="mr-1"
                       value="PublicationConference"
                       onChange={handleChange}
@@ -372,7 +337,7 @@ const Interest = () => {
                   <label className="text-[13px]  text-gray-700 border border-gray-400  text-center  rounded-2xl px-2 py-2 md:inline-block mb-2 mr-2 ">
                     <input
                       type="radio"
-                      name="referralSource"
+                      name="referrer"
                       className="mr-1"
                       value="SocialMedia"
                       onChange={handleChange}
@@ -382,7 +347,7 @@ const Interest = () => {
                   <label className="text-[13px] text-gray-700 border border-gray-400 text-center rounded-2xl px-2 py-2 md:inline-block mb-2 mr-1 ">
                     <input
                       type="radio"
-                      name="referralSource"
+                      name="referrer"
                       className="mr-1"
                       value="OnlineSearch"
                       onChange={handleChange}
@@ -392,7 +357,7 @@ const Interest = () => {
                   <label className="text-[13px] text-gray-700 border border-gray-400 text-center rounded-2xl px-2 py-2 md:inline-block mb-2">
                     <input
                       type="radio"
-                      name="referralSource"
+                      name="referrer"
                       className="mr-1"
                       value="WebinarNetworking"
                       onChange={handleChange}
@@ -405,7 +370,7 @@ const Interest = () => {
                 <button
                   type="submit"
                   onClick={handleSubmit}
-                  disabled={!formData.interest || !formData.referralSource}
+                  disabled={!formData.interest || !formData.referrer}
                   className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-lx px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-80 my-8"
                 >
                   Complete
