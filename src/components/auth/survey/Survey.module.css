@@ -4,12 +4,16 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  width: 100vw;
 }
 
 .surveyWrapper {
   display: grid;
   grid-template-columns: 60% 40%;
   gap: 1.5rem;
+  padding: 0 4rem;
+  grid-template-columns: 50% 40%;
+  gap: 10%;
   padding: 0 4rem;
 }
 
