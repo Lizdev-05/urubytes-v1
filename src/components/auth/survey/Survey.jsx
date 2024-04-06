@@ -6,6 +6,8 @@ import { IoIosArrowDown } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { updateRegistrationData } from "../../../reducer/action";
 
 const Survey = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +19,8 @@ const Survey = () => {
   });
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const registrationData = useSelector((state) => state.registrationData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,23 +28,38 @@ const Survey = () => {
       ...prevData,
       [name]: value,
     }));
+
+    dispatch(updateRegistrationData({ ...formData, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
-        formData
-      );
-      console.log("Survey data submitted:", response.data);
-      toast.success("Survey data submitted");
-      navigate("/interest");
-    } catch (error) {
-      console.error("Failed to submit survey data:", error);
-      toast.error("Failed to submit survey data");
-    }
+    navigate("/interest");
   };
+
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
+  // };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post(
+  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
+  //       formData
+  //     );
+  //     console.log("Survey data submitted:", response.data);
+  //     toast.success("Survey data submitted");
+  //     navigate("/interest");
+  //   } catch (error) {
+  //     console.error("Failed to submit survey data:", error);
+  //     toast.error("Failed to submit survey data");
+  //   }
+  // };
 
   return (
     <>

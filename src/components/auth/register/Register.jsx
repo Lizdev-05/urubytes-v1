@@ -9,8 +9,12 @@ import { IoIosEyeOff, IoIosEye } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { updateRegistrationData } from "../../../reducer/action";
 
 const Register = () => {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -35,21 +39,34 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
-        formData
-      );
-      console.log("Registration successful:", response.data);
-      toast.success("Registration successful");
-      navigate("/survey");
-
-      navigate("/survey");
-    } catch (error) {
-      console.error("Registration failed:", error);
-      toast.error("Registration failed");
-    }
+    dispatch(
+      updateRegistrationData({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        agreeTerms: formData.agreeTerms,
+      })
+    );
+    navigate("/survey");
   };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post(
+  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
+  //       formData
+  //     );
+  //     console.log("Registration successful:", response.data);
+  //     toast.success("Registration successful");
+  //     navigate("/survey");
+
+  //     navigate("/survey");
+  //   } catch (error) {
+  //     console.error("Registration failed:", error);
+  //     toast.error("Registration failed");
+  //   }
+  // };
 
   return (
     <>

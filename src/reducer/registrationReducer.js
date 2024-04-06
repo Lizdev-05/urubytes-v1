@@ -1,4 +1,4 @@
-import { UPDATE_REGISTRATION_DATA } from "./actions";
+import { UPDATE_REGISTRATION_DATA } from "./action";
 
 const initialState = {
   registrationData: {},

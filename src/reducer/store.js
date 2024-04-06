@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import registrationReducer from "./reducers";
+import registrationReducer from "./registrationReducer";
 
 const store = configureStore({
   reducer: {
