@@ -151,15 +151,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateRegistrationData } from "../../../reducer/action";
 
 const Interest = () => {
-  const [formData, setFormData] = useState({
-    interest: "",
-    referrer: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   interest: "",
+  //   referrer: "",
+  // });
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const registrationData = useSelector((state) => state.registrationData);
-  const dispatch = useDispatch();
+  // const registrationData = useSelector((state) => state.registrationData);
+  // const dispatch = useDispatch();
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
@@ -181,8 +181,21 @@ const Interest = () => {
   //     ...prevData,
   //     [name]: value,
   //   }));
+
   //   dispatch(updateRegistrationData({ [name]: value }));
   // };
+
+  const [formData, setFormData] = useState({
+    interest: "",
+    referrer: "",
+  });
+
+  const navigate = useNavigate();
+
+  const registrationData = useSelector(
+    (state) => state.registration.registrationData
+  );
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -207,52 +220,6 @@ const Interest = () => {
 
     dispatch(updateRegistrationData({ [name]: value }));
   };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post(
-  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
-  //       registrationData
-  //     );
-  //     console.log(response.data, registrationData);
-  //     navigate("/dashboard");
-  //   } catch (error) {
-  //     console.error("Failed to send data to backend:", error);
-  //   }
-  // };
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // };
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post(
-  // "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
-  //       formData
-  //     );
-  //     console.log("Interest data submitted:", response.data);
-  //     toast.success("Survey data submitted");
-  //     navigate("/dashboard");
-  //   } catch (error) {
-  //     console.error("Failed to submit interest data:", error);
-  //     toast.error("Failed to submit interest data");
-  //   }
-  // };
 
   return (
     <>
