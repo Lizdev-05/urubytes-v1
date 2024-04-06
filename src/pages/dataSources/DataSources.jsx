@@ -30,10 +30,10 @@ const DataSources = () => {
 
   return (
     // <div className="bg-grey-bg h-[982px] w-screen  ">
-    <div className="bg-grey-bg h-screen w-screen  ">
+    <div className="bg-grey-bg h-screen w-screen overflow-hidden">
       <Navbar />
       {/* <div className=" p-6 px-12 m-4 h-[833px] bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300"> */}
-      <div className=" p-4 px-12 m-4 bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300">
+      <div className=" p-8 px-12 m-4 bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300 h-full">
         <div className=" ">
           <div className="flex justify-between ">
             <h1 className="text-3xl font-semibold ">Data Sources</h1>
@@ -47,20 +47,25 @@ const DataSources = () => {
                   Add Source
                 </button>
               </Link>
-              <button className=" text-white font-semi-bold py-2 px-4 bg-yellow-color hover:bg-yellow-600 rounded-lg  border flex items-center gap-2 shadow">
-                <img
-                  src={internalInsights}
-                  alt="internal insight"
-                  className="w-8 h-8"
-                />
-                Explore Insight
-              </button>
+
+              <Link to="/internalInsight" className="flex items-center ">
+                <button className=" text-white font-semi-bold py-2 px-4 bg-yellow-color hover:bg-yellow-600 rounded-lg  border flex items-center gap-2 shadow">
+                  <img
+                    src={internalInsights}
+                    alt="internal insight"
+                    className="w-8 h-8"
+                  />
+                  Explore Insight
+                </button>
+              </Link>
             </div>
           </div>
-          <p className="leading-6 py-4 text-[18]">
-            Get started extracting byte-sized insights from your business data.
+
+          <p className="leading-6 pb-4 text-[18]">
+            {/* Get started extracting byte-sized insights from your business data.
             Just tell us where to look first and you can ask any question about
-            your business.
+            your business. */}
+            Here are the files you have uploaded from your device
           </p>
         </div>
         <div className="flex flex-col">
@@ -163,20 +168,22 @@ const DataSources = () => {
                     )}
                   </tbody>
                 </table>
-                <div className="flex justify-end mt-2">
+                <p className="py-4">No upload yet</p>
+                {/* <div className="flex justify-end mt-2">
                   <DefaultPagination />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
         </div>
         <div>
-          <h1 className="text-4xl font-bold">Integrations</h1>
-          <p className="text-xl font-medium leading-10 ">
+          <h1 className="text-4xl font-bold">My Integrations</h1>
+          {/* <p className="text-xl font-medium leading-10 ">
             Do you currently use these apps? Integrate now to get a unified view
             of your data
-          </p>
-          <IntegrationCards />
+          </p> */}
+          {/* <IntegrationCards /> */}
+          <p>There is nothing here</p>
         </div>
       </div>
     </div>

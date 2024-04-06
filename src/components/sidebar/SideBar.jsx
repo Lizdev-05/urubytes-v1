@@ -22,19 +22,19 @@ const SideBar = () => {
   const [showModalCard, setShowModalCard] = useState(false);
 
   const Menus = [
-    { title: "Dashboard", link: "/", src: dashbordIcon },
+    { title: "Dashboard", link: "/dashboard", src: dashbordIcon },
     {
-      title: "Internal Insights",
+      title: "Get Insights",
       link: "/internalInsight",
       src: internalInsightsIcon,
     },
-    {
-      title: "Market Insights",
-      link: "/externalInsight",
-      src: marketInsightsIcon,
-    },
+    // {
+    //   title: "Market Insights",
+    //   link: "/externalInsight",
+    //   src: marketInsightsIcon,
+    // },
     { title: "Data Sources ", link: "/dataSource", src: dataSourcesIcon },
-    { title: "Saved Search", link: "/savedSearch", src: savedSearchIcon },
+    // { title: "Saved Search", link: "/savedSearch", src: savedSearchIcon },
     { title: "Billing", link: "/billing", src: billingImg },
   ];
 
@@ -57,7 +57,7 @@ const SideBar = () => {
     <div
       className={` ${
         open ? "w-72" : "w-20 "
-      } bg-primary-blue p-5  pt-12 relative duration-300`}
+      } bg-primary-blue p-5  pt-12 relative duration-300 overflow-y-auto h-screen flex flex-col `}
     >
       <img
         src={collapseImg}
@@ -85,7 +85,7 @@ const SideBar = () => {
           }`}
         />
       </div>
-      <div className="flex flex-col h-5/6 overflow-hidden">
+      <div className="flex flex-col overflow-hidden flex-grow">
         <div className="pt-6 flex-grow ">
           {Menus.map((Menu, i) => (
             <Link
@@ -110,7 +110,7 @@ const SideBar = () => {
           <hr className="border-t border-white p-0 mx-0 my-2 w-full" />
         </div>
 
-        <ul className="pt-8">
+        <ul className="mt-auto">
           <hr className="border-t border-white my-2" />
           {bottomMenus.map((Menu, i) => (
             <>
