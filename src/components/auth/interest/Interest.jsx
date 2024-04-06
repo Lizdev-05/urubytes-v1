@@ -160,25 +160,26 @@ const Interest = () => {
   const registrationData = useSelector((state) => state.registration);
   const dispatch = useDispatch();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    dispatch(updateRegistrationData({ [name]: value }));
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("your-backend-url", registrationData);
-      console.log(
+      const response = await axios.post(
         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
-        response.data
+        registrationData
       );
-
+      console.log(response.data, registrationData);
       navigate("/dashboard");
     } catch (error) {
       console.error("Failed to send data to backend:", error);
     }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   // const handleChange = (e) => {
@@ -320,6 +321,7 @@ const Interest = () => {
                 <button
                   type="submit"
                   onClick={handleSubmit}
+                  disabled={!formData.interest || !formData.referralSource}
                   className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-lx px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-80 my-8"
                 >
                   Complete
