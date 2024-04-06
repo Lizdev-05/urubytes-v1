@@ -161,9 +161,44 @@ const Interest = () => {
   const registrationData = useSelector((state) => state.registrationData);
   const dispatch = useDispatch();
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post(
+  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
+  //       registrationData
+  //     );
+  //     console.log(response.data, registrationData);
+  //     navigate("/dashboard");
+  //   } catch (error) {
+  //     console.error("Failed to send data to backend:", error);
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Check if all required fields are present in registrationData
+      const requiredFields = [
+        "name",
+        "email",
+        "password",
+        "industry",
+        "organization",
+        "size",
+        "role",
+        "country",
+        "interests",
+        "referrer",
+      ];
+      const missingFields = requiredFields.filter(
+        (field) => !registrationData[field]
+      );
+      if (missingFields.length > 0) {
+        console.error("Missing required fields:", missingFields);
+        return; // Don't proceed if required fields are missing
+      }
+
+      // Send registration data to backend
       const response = await axios.post(
         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
         registrationData
