@@ -1,14 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import SideBar from "./components/sidebar/SideBar";
 import Dashboard from "./pages/dashboard/Dashboard";
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import InternalInsight from "./pages/internalInsight/InternalInsight";
 import ExternalInsight from "./pages/externalInsight/ExternalInsight";
 import DataSources from "./pages/dataSources/DataSources";
@@ -22,6 +16,7 @@ import Register from "./components/auth/register/Register";
 import Login from "./components/auth/login/Login";
 import Survey from "./components/auth/survey/Survey";
 import Interest from "./components/auth/interest/Interest";
+import EmailVerification from "./components/auth/emailVerification/EmailVerification";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -42,7 +37,8 @@ function App() {
       {location.pathname !== "/" &&
         location.pathname !== "/register" &&
         location.pathname !== "/interest" &&
-        location.pathname !== "/survey" && (
+        location.pathname !== "/survey" &&
+        location.pathname !== "/emailVerification" && (
           <SideBar onProfileClick={toggleProfileModal} />
         )}
 
@@ -55,6 +51,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/survey" element={<Survey />} />
         <Route path="/interest" element={<Interest />} />
+        <Route path="/emailVerification" element={<EmailVerification />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/internalInsight" element={<InternalInsight />} />
         <Route path="/externalInsight" element={<ExternalInsight />} />
