@@ -64,6 +64,7 @@ const Login = () => {
       );
 
       console.log("Login successful:", response.data);
+
       toast.success("Login successful");
       navigate("/dashboard");
     } catch (error) {
