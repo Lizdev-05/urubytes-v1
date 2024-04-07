@@ -57,6 +57,7 @@ const Interest = () => {
       );
 
       console.log(response.data);
+
       // toast.success("Survey data submitted");
       toast.success(response.data.message);
       navigate("/dashboard");
