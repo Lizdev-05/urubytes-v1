@@ -22,19 +22,17 @@ const persistConfig = {
   storage,
 };
 
-const persistedReducer = persistReducer(
-  persistConfig,
-  configureStore({
-    reducer: {
-      registration: registrationReducer,
-      login: loginReducer,
-    },
-  })
-);
+const rootReducer = {
+  registration: registrationReducer,
+  login: loginReducer,
+};
 
-let store = configureStore({
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = configureStore({
   reducer: persistedReducer,
 });
+
 let persistor = persistStore(store);
 
 export { store, persistor };
