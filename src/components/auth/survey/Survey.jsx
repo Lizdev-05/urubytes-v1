@@ -38,30 +38,6 @@ const Survey = () => {
     navigate("/interest");
   };
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post(
-  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
-  //       formData
-  //     );
-  //     console.log("Survey data submitted:", response.data);
-  //     toast.success("Survey data submitted");
-  //     navigate("/interest");
-  //   } catch (error) {
-  //     console.error("Failed to submit survey data:", error);
-  //     toast.error("Failed to submit survey data");
-  //   }
-  // };
-
   return (
     <>
       <ToastContainer />
