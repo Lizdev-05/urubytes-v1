@@ -50,24 +50,6 @@ const Register = () => {
     navigate("/survey");
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post(
-  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
-  //       formData
-  //     );
-  //     console.log("Registration successful:", response.data);
-  //     toast.success("Registration successful");
-  //     navigate("/survey");
-
-  //     navigate("/survey");
-  //   } catch (error) {
-  //     console.error("Registration failed:", error);
-  //     toast.error("Registration failed");
-  //   }
-  // };
-
   return (
     <>
       <ToastContainer />
