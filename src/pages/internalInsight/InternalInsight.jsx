@@ -252,10 +252,19 @@ const InternalInsight = () => {
                   />
                 </svg>
               </div>
+              {/* <input
+                type="search"
+                id="default-search"
+                className="block w-full p-4 ps-10 text-sm text-gray-900 border rounded-lg dark:placeholder-gray-400 dark:text-gray-500"
+                placeholder="Type Here..."
+                required
+                value={query}
+                onChange={handleChange}
+              /> */}
               <input
                 type="search"
                 id="default-search"
-                className="block w-full p-4 ps-10 text-sm text-gray-900 border rounded-lg dark:placeholder-gray-400 dark:text-white"
+                className="block w-full p-4 ps-10 text-sm text-blue-500 border rounded-lg dark:placeholder-gray-400 dark:text-gray-500"
                 placeholder="Type Here..."
                 required
                 value={query}
