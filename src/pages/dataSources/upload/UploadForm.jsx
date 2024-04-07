@@ -42,6 +42,9 @@ const UploadSource = () => {
     formData.append("type", "FILE");
 
     console.log("Token:", token);
+    console.log("User ID:", userId);
+    console.log("Org ID:", orgId);
+    console.log("Files to upload:", selectedFiles);
 
     try {
       const response = await axios.post(
@@ -61,6 +64,11 @@ const UploadSource = () => {
       console.error("Error uploading files:", error);
     }
   };
+
+  console.log("Token:", token);
+  console.log("User ID:", userId);
+  console.log("Org ID:", orgId);
+  console.log("Files to upload:", selectedFiles);
 
   return (
     <div className="border rounded-xl border-gray-300 w-4/5 px-12 py-4 m-auto">
