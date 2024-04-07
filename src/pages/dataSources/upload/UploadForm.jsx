@@ -45,7 +45,7 @@ const UploadSource = () => {
 
     try {
       const response = await axios.post(
-        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static",
+        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/",
         formData,
         {
           headers: {
@@ -141,3 +141,14 @@ const UploadSource = () => {
 };
 
 export default UploadSource;
+
+// message:
+// "User registered and logged in successfully"
+// token:
+// "71013e4119c96f7b6b75ab0758c7eb09ced3e10a"
+// user:
+// email: "miranda@gmail.com"
+// isAdmin: false
+// name: "Miranda"
+// orgID:"UBOWKGD475"
+// userID: "UBULRZJ428"
