@@ -41,10 +41,10 @@ const UploadSource = () => {
     formData.append("orgID", orgId);
     formData.append("type", "FILE");
 
-    console.log("Token:", token);
-    console.log("User ID:", userId);
-    console.log("Org ID:", orgId);
-    console.log("Files to upload:", selectedFiles);
+    // console.log("Token:", token);
+    // console.log("User ID:", userId);
+    // console.log("Org ID:", orgId);
+    // console.log("Files to upload:", selectedFiles);
 
     try {
       const response = await axios.post(
