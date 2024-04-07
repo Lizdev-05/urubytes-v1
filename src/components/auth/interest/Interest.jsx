@@ -6,7 +6,10 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { updateRegistrationData } from "../../../reducer/action";
+import {
+  updateLoginData,
+  updateRegistrationData,
+} from "../../../reducer/action";
 
 const Interest = () => {
   const [formData, setFormData] = useState({
