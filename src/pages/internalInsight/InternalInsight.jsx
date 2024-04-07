@@ -4,12 +4,14 @@ import { FaArrowUpLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 import "./InternalInsight.css";
+import { useSelector } from "react-redux";
 
 const InternalInsight = () => {
   const [query, setQuery] = useState("");
   const [mode, setMode] = useState("internal");
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState(null);
+  const token = useSelector((state) => state.login.token);
 
   // const handleSubmit = async (event) => {
   //   event.preventDefault();
@@ -65,6 +67,7 @@ const InternalInsight = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Token ${token}`,
         },
         body: JSON.stringify({ query }),
       });
