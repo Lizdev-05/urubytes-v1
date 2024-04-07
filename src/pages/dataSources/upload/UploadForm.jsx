@@ -42,10 +42,6 @@ const UploadSource = () => {
     formData.append("type", "FILE");
 
     console.log("Token:", token);
-    console.log(
-      "Posting to URL:",
-      "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/"
-    );
 
     try {
       const response = await axios.post(
