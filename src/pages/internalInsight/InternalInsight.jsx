@@ -1,11 +1,97 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { FaArrowUpLong } from "react-icons/fa6";
-import "./InternalInsight.css";
 import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
+import "./InternalInsight.css";
 
 const InternalInsight = () => {
+  const [query, setQuery] = useState("");
+  const [mode, setMode] = useState("internal");
+  const [loading, setLoading] = useState(false);
+  const [feedback, setFeedback] = useState(null);
+
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   setLoading(true);
+
+  //   const url =
+  //     mode === "internal"
+  //       ? "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/internal/"
+  //       : "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/market/";
+
+  //   try {
+  //     const response = await fetch(url, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ query }),
+  //     });
+
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       setFeedback(data);
+  //       console.log("Received feedback:", data);
+  //       setLoading(false);
+  //     } else {
+  //       console.error("Failed to receive feedback:", response.statusText);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error sending request:", error);
+  //     setLoading(false);
+  //   }
+  // };
+
+  // const handleChange = (event) => {
+  //   setQuery(event.target.value);
+  // };
+
+  // const handleToggle = () => {
+  //   setMode(mode === "internal" ? "external" : "internal");
+  // };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+
+    const url =
+      mode === "internal"
+        ? "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/internal/"
+        : "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/market/";
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setFeedback(data);
+        console.log("Received feedback:", data);
+        setLoading(false);
+      } else {
+        console.error("Failed to receive feedback:", response.statusText);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error("Error sending request:", error);
+      setLoading(false);
+    }
+  };
+
+  const handleChange = (event) => {
+    setQuery(event.target.value);
+  };
+
+  const handleToggle = () => {
+    setMode(mode === "internal" ? "external" : "internal");
+  };
+
   return (
     <div className="bg-grey-bg h-screen w-screen overflow-hidden internal">
       <Navbar />
@@ -45,18 +131,45 @@ const InternalInsight = () => {
           </p>
         </div>
 
-        <div className="sm:col-span-3 block py-4 px-8 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100 mainInternal">
+        {/* <div className="sm:col-span-3 block py-4 px-8 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100 mainInternal">
           <div className="flex justify-end source">
-            {/* <Link to="/dataSource" className="">
-              <button className="bg-yellow-color hover:bg-yellow-600 text-white font-bold py-3 px-8 rounded mt-6 ">
-                View Data Source
-              </button>
-            </Link> */}
+          
             <Link
               to="/addSource"
               className=" border border-transparent rounded-lg  flex items-center  bg-yellow-color hover:bg-yellow-600 "
             >
               <button className=" text-white font-semi-bold py-2 px-8   flex items-center gap-2 ">
+                <FaPlus />
+                Add Source
+              </button>
+            </Link>
+          </div> */}
+
+        <div className="sm:col-span-3 block py-4 px-8 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100 mainInternal">
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex space-x-4">
+              <button
+                onClick={() => handleToggle()}
+                className={`px-4 py-2 text-sm rounded-md ${
+                  mode === "internal" ? "bg-blue-500 text-white" : "bg-gray-200"
+                }`}
+              >
+                Internal Insight
+              </button>
+              <button
+                onClick={() => handleToggle()}
+                className={`px-4 py-2 text-sm rounded-md ${
+                  mode === "external" ? "bg-blue-500 text-white" : "bg-gray-200"
+                }`}
+              >
+                External Insight
+              </button>
+            </div>
+            <Link
+              to="/addSource"
+              className="border border-transparent rounded-lg flex items-center bg-yellow-color hover:bg-yellow-600"
+            >
+              <button className="text-white font-semi-bold py-2 px-8 flex items-center gap-2">
                 <FaPlus />
                 Add Source
               </button>
@@ -71,7 +184,7 @@ const InternalInsight = () => {
             </p>
           </div>
 
-          <form className="p-2 mx-auto">
+          {/* <form className="p-2 mx-auto">
             <label
               htmlFor="default-search"
               className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -110,7 +223,73 @@ const InternalInsight = () => {
                 <FaArrowUpLong size={20} />
               </button>
             </div>
+          </form> */}
+          <form onSubmit={handleSubmit} className="p-2 mx-auto">
+            <label
+              htmlFor="default-search"
+              className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+            >
+              Search
+            </label>
+            <div className="relative">
+              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg
+                  className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="search"
+                id="default-search"
+                className="block w-full p-4 ps-10 text-sm text-gray-900 border rounded-lg dark:placeholder-gray-400 dark:text-white"
+                placeholder="Type Here..."
+                required
+                value={query}
+                onChange={handleChange}
+              />
+              <button
+                type="submit"
+                className="text-white absolute end-2.5 bottom-2.5 bg-grey-color hover:bg-gray-500 font-medium rounded-lg text-sm px-2 py-2"
+              >
+                <FaArrowUpLong size={20} />
+              </button>
+            </div>
           </form>
+          {loading && (
+            <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md">
+              <div className="loadingSpinner"></div>
+            </div>
+          )}
+          {feedback && (
+            <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
+              <p className="text-gray-600 mb-4 text-[1rem] ">
+                {feedback.insights}
+              </p>
+
+              <p>
+                {Object.entries(feedback.metadata).map(([key, value]) => (
+                  <div key={key}>
+                    Source:
+                    <span className="text-primary-blue">
+                      {" "}
+                      {value.file_name}
+                    </span>
+                  </div>
+                ))}
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

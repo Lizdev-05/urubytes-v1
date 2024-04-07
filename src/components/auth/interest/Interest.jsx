@@ -24,23 +24,6 @@ const Interest = () => {
   );
   const dispatch = useDispatch();
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post(
-  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
-  //       registrationData
-  //     );
-
-  //     console.log(response.data);
-  //     toast.success("Survey data submitted");
-  //     navigate("/dashboard");
-  //   } catch (error) {
-  //     console.error("Failed to send data to backend:", error);
-  //     toast.error(error.message);
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

@@ -10,22 +10,6 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 const DataSources = () => {
-  // const [tableData, setTableData] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/?orgID=UBOCASY436"
-  //       );
-  //       setTableData(response.data);
-  //       console.log(response.data);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
   const [tableData, setTableData] = useState([]);
 
   const orgId = useSelector((state) => state.login.orgID);
