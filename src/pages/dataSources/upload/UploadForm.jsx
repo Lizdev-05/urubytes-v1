@@ -41,13 +41,15 @@ const UploadSource = () => {
     formData.append("orgID", orgId);
     formData.append("type", "FILE");
 
+    console.log("Token:", token);
+
     try {
       const response = await axios.post(
         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/",
         formData,
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Use the token from the Redux store
+            Authorization: `Bearer ${token}`,
           },
         }
       );
