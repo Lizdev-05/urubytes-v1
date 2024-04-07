@@ -69,7 +69,8 @@ const Login = () => {
       navigate("/dashboard");
     } catch (error) {
       console.error("Login failed:", error);
-      toast.error("Login failed");
+      // toast.error("Login failed");
+      toast.error(error.response.data.message);
     }
   };
 
