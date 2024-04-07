@@ -48,6 +48,7 @@ const Login = () => {
       );
 
       console.log("Login successful:", response.data);
+      console.log("Login response:", response.data);
       toast.success("Login successful");
       navigate("/dashboard");
     } catch (error) {

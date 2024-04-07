@@ -22,6 +22,8 @@ const UploadSource = () => {
 
   const loginState = useSelector((state) => state.login);
   console.log("Login state:", loginState);
+  const state = useSelector((state) => state);
+  console.log("Redux state:", state);
 
   const handleSourceClick = (source) => {
     setSelectedSource(source);
