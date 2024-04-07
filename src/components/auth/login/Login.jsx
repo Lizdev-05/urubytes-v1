@@ -9,7 +9,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
-import { updateLoginData } from "./path/to/your/actions";
+import { updateLoginData } from "../../../reducer/action";
 
 const Login = () => {
   const [formData, setFormData] = useState({
