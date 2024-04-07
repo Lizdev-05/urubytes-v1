@@ -70,7 +70,7 @@ const Login = () => {
     } catch (error) {
       console.error("Login failed:", error);
       // toast.error("Login failed");
-      toast.error(error);
+      toast.error(error.response.data.error);
     }
   };
 
