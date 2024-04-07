@@ -55,6 +55,14 @@ const Login = () => {
         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/login/",
         formData
       );
+      // dispatch(
+      //   updateLoginData({
+      //     userID: response.data.userID,
+      //     orgID: response.data.orgID,
+      //     token: response.data.token,
+      //   })
+      // );
+
       dispatch(
         updateLoginData({
           userID: response.data.userID,
@@ -62,6 +70,11 @@ const Login = () => {
           token: response.data.token,
         })
       );
+      console.log("Dispatched login data:", {
+        userID: response.data.userID,
+        orgID: response.data.orgID,
+        token: response.data.token,
+      });
 
       console.log("Login successful:", response.data);
 
