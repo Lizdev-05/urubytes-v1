@@ -21,6 +21,23 @@ const Interest = () => {
   );
   const dispatch = useDispatch();
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post(
+  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
+  //       registrationData
+  //     );
+
+  //     console.log(response.data);
+  //     toast.success("Survey data submitted");
+  //     navigate("/dashboard");
+  //   } catch (error) {
+  //     console.error("Failed to send data to backend:", error);
+  //     toast.error(error.message);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -28,13 +45,22 @@ const Interest = () => {
         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/register/",
         registrationData
       );
+      dispatch(
+        updateLoginData({
+          userID: response.data.userID,
+          orgID: response.data.orgID,
+          token: response.data.token,
+        })
+      );
 
       console.log(response.data);
-      toast.success("Survey data submitted");
+      // toast.success("Survey data submitted");
+      toast.success(response.data.message);
       navigate("/dashboard");
     } catch (error) {
       console.error("Failed to send data to backend:", error);
-      toast.error(error.message);
+
+      toast.error(error.response.data.message);
     }
   };
 
