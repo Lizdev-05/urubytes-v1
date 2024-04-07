@@ -37,17 +37,10 @@ const UploadSource = () => {
     selectedFiles.forEach((file) => {
       formData.append("source", file);
     });
-    // formData.append("userID", "UBUFXYG084");
 
-    // formData.append("orgID", "UBOCASY436");
     formData.append("userID", userId);
     formData.append("orgID", orgId);
     formData.append("type", "FILE");
-
-    // console.log("Token:", token);
-    // console.log("User ID:", userId);
-    // console.log("Org ID:", orgId);
-    // console.log("Files to upload:", selectedFiles);
 
     try {
       const response = await axios.post(
