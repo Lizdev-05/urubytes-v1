@@ -49,7 +49,7 @@ const UploadSource = () => {
         formData,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Token ${token}`,
           },
         }
       );
