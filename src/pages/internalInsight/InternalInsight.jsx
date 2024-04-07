@@ -12,7 +12,7 @@ const InternalInsight = () => {
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState(null);
   const token = useSelector((state) => state.login.token);
-  const orgID = useSelector((state) => state.org.orgID);
+  const orgId = useSelector((state) => state.login.orgID);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,7 +30,7 @@ const InternalInsight = () => {
           "Content-Type": "application/json",
           Authorization: `Token ${token}`,
         },
-        body: JSON.stringify({ query, orgID }),
+        body: JSON.stringify({ query, orgId }),
       });
 
       if (response.ok) {
