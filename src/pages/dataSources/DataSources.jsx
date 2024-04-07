@@ -3,8 +3,6 @@ import internalInsights from "../../assets/ic_baseline-insights.png";
 import { FaPlus } from "react-icons/fa";
 import Navbar from "../../components/navbar/Navbar";
 import { Typography } from "@material-tailwind/react";
-import DefaultPagination from "./Pagination";
-import IntegrationCards from "../../components/integrationCards/IntegrationCards";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
