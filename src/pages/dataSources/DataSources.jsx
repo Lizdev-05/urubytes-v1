@@ -7,15 +7,34 @@ import DefaultPagination from "./Pagination";
 import IntegrationCards from "../../components/integrationCards/IntegrationCards";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const DataSources = () => {
+  // const [tableData, setTableData] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/?orgID=UBOCASY436"
+  //       );
+  //       setTableData(response.data);
+  //       console.log(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
   const [tableData, setTableData] = useState([]);
+
+  const orgId = useSelector((state) => state.login.orgID);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/?orgID=UBOCASY436"
+          `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/?orgID=${orgId}`
         );
         setTableData(response.data);
         console.log(response.data);
@@ -24,7 +43,7 @@ const DataSources = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [orgId]);
 
   const TABLE_HEAD = ["Type", "Title", "Status", "Date Added", "Last Updated"];
 
