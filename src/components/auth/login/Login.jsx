@@ -32,53 +32,6 @@ const Login = () => {
     }));
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post(
-  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/login/",
-  //       formData
-  //     );
-  //     console.log("Login successful:", response.data);
-  //     toast.success("Login successful");
-  //     navigate("/dashboard");
-  //   } catch (error) {
-  //     console.error("Login failed:", error);
-  //     toast.error("Login failed");
-  //   }
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post(
-  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/login/",
-  //       formData
-  //     );
-
-  //     dispatch(
-  //       updateLoginData({
-  //         userID: response.data.userID,
-  //         orgID: response.data.orgID,
-  //         token: response.data.token,
-  //       })
-  //     );
-  //     console.log("Dispatched login data:", {
-  //       userID: response.data.userID,
-  //       orgID: response.data.orgID,
-  //       token: response.data.token,
-  //     });
-
-  //     console.log("Login successful:", response.data);
-
-  //     toast.success(response.data.message);
-  //     navigate("/dashboard");
-  //   } catch (error) {
-  //     console.error("Login failed:", error);
-  //     toast.error(error.response.data.error);
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

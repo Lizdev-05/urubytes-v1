@@ -8,22 +8,55 @@ const ExternalInsight = () => {
   const [query, setQuery] = useState("");
   const [feedback, setFeedback] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [mode, setMode] = useState("internal");
+
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   setLoading(true);
+
+  //   try {
+  //     const response = await fetch(
+  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/market/",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({ query }),
+  //       }
+  //     );
+
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       setFeedback(data);
+  //       console.log("Received feedback:", data);
+  //       setLoading(false);
+  //     } else {
+  //       console.error("Failed to receive feedback:", response.statusText);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error sending request:", error);
+  //     setLoading(false);
+  //   }
+  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
 
+    const url =
+      mode === "internal"
+        ? "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/internal/"
+        : "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/market/";
+
     try {
-      const response = await fetch(
-        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/market/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ query }),
-        }
-      );
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query }),
+      });
 
       if (response.ok) {
         const data = await response.json();
@@ -41,6 +74,10 @@ const ExternalInsight = () => {
 
   const handleChange = (event) => {
     setQuery(event.target.value);
+  };
+
+  const handleToggle = () => {
+    setMode(mode === "internal" ? "external" : "internal");
   };
 
   return (
