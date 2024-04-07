@@ -47,7 +47,7 @@ const DataSources = () => {
       {/* <div className=" p-6 px-12 m-4 h-[833px] bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300"> */}
       <div className=" p-8 px-12 m-4 bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300 h-full">
         <div className=" ">
-          <div className="flex justify-between ">
+          <div className="flex justify-between items-center">
             <h1 className="text-3xl font-semibold ">Data Sources</h1>
             <div className="flex justify-between gap-2">
               <Link
@@ -72,119 +72,115 @@ const DataSources = () => {
               </Link>
             </div>
           </div>
-
-          <p className="leading-6 pb-4 text-[18]">
-            {/* Get started extracting byte-sized insights from your business data.
-            Just tell us where to look first and you can ask any question about
-            your business. */}
-            Here are the files you have uploaded from your device
-          </p>
         </div>
         <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-              <div className="overflow-hidden">
-                <table className="w-full min-w-max table-auto text-left">
-                  <thead className="bg-black-color text-light-white">
-                    <tr>
-                      <th className="border-b border-blue-gray-100  p-4">
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal leading-none opacity-70"
-                        >
-                          <input type="checkbox" />
-                        </Typography>
-                      </th>
-
-                      {TABLE_HEAD.map((head) => (
-                        <th
-                          key={head}
-                          className="border-b border-blue-gray-100  p-4"
-                        >
+              {tableData.length === 0 ? (
+                <p className="py-4">No upload yet</p>
+              ) : (
+                <div className="overflow-hidden">
+                  <p className="leading-6 pb-4 text-[18]">
+                    Here are the files you have uploaded from your device
+                  </p>
+                  <table className="w-full min-w-max table-auto text-left">
+                    <thead className="bg-black-color text-light-white">
+                      <tr>
+                        <th className="border-b border-blue-gray-100  p-4">
                           <Typography
                             variant="small"
                             color="blue-gray"
-                            className="font-normal leading-none "
+                            className="font-normal leading-none opacity-70"
                           >
-                            {head}
+                            <input type="checkbox" />
                           </Typography>
                         </th>
-                      ))}
-                    </tr>
-                  </thead>
 
-                  <tbody>
-                    {tableData.map(
-                      ({ type, name, status, created_at, updated_at }) => (
-                        <tr
-                          key={name}
-                          className="even:bg-gray-200 odd:bg-white p-4"
-                        >
-                          <td className="p-4">
+                        {TABLE_HEAD.map((head) => (
+                          <th
+                            key={head}
+                            className="border-b border-blue-gray-100  p-4"
+                          >
                             <Typography
                               variant="small"
                               color="blue-gray"
-                              className="font-normal"
+                              className="font-normal leading-none "
                             >
-                              <input type="checkbox" />
+                              {head}
                             </Typography>
-                          </td>
-                          <td className="p-4">
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal"
-                            >
-                              {type}
-                            </Typography>
-                          </td>
-                          <td className="p-4 flex items-center">
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal"
-                            >
-                              {name}
-                            </Typography>
-                          </td>
-                          <td className="p-4">
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal"
-                            >
-                              {status}
-                            </Typography>
-                          </td>
-                          <td className="p-4">
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal"
-                            >
-                              {created_at}
-                            </Typography>
-                          </td>
-                          <td className="p-4">
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal"
-                            >
-                              {updated_at}
-                            </Typography>
-                          </td>
-                        </tr>
-                      )
-                    )}
-                  </tbody>
-                </table>
-                <p className="py-4">No upload yet</p>
-                {/* <div className="flex justify-end mt-2">
-                  <DefaultPagination />
-                </div> */}
-              </div>
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      {tableData.map(
+                        ({ type, name, status, created_at, updated_at }) => (
+                          <tr
+                            key={name}
+                            className="even:bg-gray-200 odd:bg-white p-4"
+                          >
+                            <td className="p-4">
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal"
+                              >
+                                <input type="checkbox" />
+                              </Typography>
+                            </td>
+                            <td className="p-4">
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal"
+                              >
+                                {type}
+                              </Typography>
+                            </td>
+                            <td className="p-4 flex items-center">
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal"
+                              >
+                                {name}
+                              </Typography>
+                            </td>
+                            <td className="p-4">
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal"
+                              >
+                                {status}
+                              </Typography>
+                            </td>
+                            <td className="p-4">
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal"
+                              >
+                                {created_at}
+                              </Typography>
+                            </td>
+                            <td className="p-4">
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal"
+                              >
+                                {updated_at}
+                              </Typography>
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </div>
           </div>
         </div>
