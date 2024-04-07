@@ -29,12 +29,18 @@ const DataSources = () => {
   const [tableData, setTableData] = useState([]);
 
   const orgId = useSelector((state) => state.login.orgID);
+  const token = useSelector((state) => state.login.token);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/?orgID=${orgId}`
+          `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/?orgID=${orgId}`,
+          {
+            headers: {
+              Authorization: `Token ${token}`,
+            },
+          }
         );
         setTableData(response.data);
         console.log(response.data);
