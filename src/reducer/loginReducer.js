@@ -18,4 +18,7 @@ const loginReducer = (state = initialLoginState, action) => {
   }
 };
 
+console.log("Current state:", state);
+console.log("Received action:", action);
+
 export default loginReducer;

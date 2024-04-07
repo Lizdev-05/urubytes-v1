@@ -16,6 +16,9 @@ const UploadSource = () => {
   const orgId = useSelector((state) => state.login.orgID);
   const token = useSelector((state) => state.login.token);
 
+  const loginState = useSelector((state) => state.login);
+  console.log("Login state:", loginState);
+
   const handleSourceClick = (source) => {
     setSelectedSource(source);
   };
