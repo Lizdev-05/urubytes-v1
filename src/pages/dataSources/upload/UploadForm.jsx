@@ -42,10 +42,15 @@ const UploadSource = () => {
     formData.append("type", "FILE");
 
     console.log("Token:", token);
+    console.log(
+      "Posting to URL:",
+      "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/"
+    );
 
     try {
       const response = await axios.post(
         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/",
+
         formData,
         {
           headers: {
@@ -54,6 +59,7 @@ const UploadSource = () => {
         }
       );
       console.log("Files uploaded and saved to user storage:", response.data);
+      console.log("Response:", response);
       navigate("/dataSource");
     } catch (error) {
       console.error("Error uploading files:", error);
