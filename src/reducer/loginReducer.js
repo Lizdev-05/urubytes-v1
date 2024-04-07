@@ -11,10 +11,19 @@ const loginReducer = (state = initialLoginState, action) => {
   console.log("Received action:", action);
   switch (action.type) {
     case UPDATE_LOGIN_DATA:
-      return {
-        ...state,
-        ...action.payload,
-      };
+      if (action.payload.user) {
+        return {
+          ...state,
+          userID: action.payload.user.userID,
+          orgID: action.payload.user.orgID,
+          token: action.payload.token,
+        };
+      } else {
+        return {
+          ...state,
+          ...action.payload,
+        };
+      }
     default:
       return state;
   }
