@@ -1,9 +1,9 @@
 import { UPDATE_LOGIN_DATA } from "./action";
 
 const initialLoginState = {
-  userID: null,
-  orgID: null,
-  token: null,
+  userID: "",
+  orgID: "",
+  token: "",
 };
 
 const loginReducer = (state = initialLoginState, action) => {
