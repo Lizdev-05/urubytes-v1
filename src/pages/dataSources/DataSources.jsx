@@ -31,6 +31,9 @@ const DataSources = () => {
   const orgId = useSelector((state) => state.login.orgID);
   const token = useSelector((state) => state.login.token);
 
+  console.log("Org ID:", orgId);
+  console.log("Token:", token);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
