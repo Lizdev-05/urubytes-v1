@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateLoginData } from "../../../reducer/action";
+import { updateLoginData } from "../../reducer/action";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
