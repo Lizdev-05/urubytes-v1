@@ -47,6 +47,7 @@ const Register = () => {
         agreeTerms: formData.agreeTerms,
       })
     );
+    console.log("Registration data:", formData);
     navigate("/survey");
   };
 
