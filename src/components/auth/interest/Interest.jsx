@@ -39,8 +39,8 @@ const Interest = () => {
       //   })
       // );
       const data = {
-        userID: response.user.userID,
-        orgID: response.user.orgID,
+        userID: response.data.userID,
+        orgID: response.data.orgID,
         token: response.token,
       };
       dispatch(updateLoginData(data));
