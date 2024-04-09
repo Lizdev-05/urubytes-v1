@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateLoginData } from "../../reducer/action";
+import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -6,11 +10,37 @@ const Navbar = () => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
+
+  const dispatch = useDispatch();
+
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post(
+        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/logout/"
+      );
+      console.log("Logout successful:", response.data);
+      toast.success("Logout successful");
+
+      dispatch(
+        updateLoginData({
+          userID: "",
+          orgID: "",
+          token: "",
+        })
+      );
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
+
   return (
-    <div className="nav">
-      <form className="bg-white">
-        <div className="relative py-4 px-6 flex justify-end gap-12 mr-6 ">
-          <button
+    <>
+      <ToastContainer />
+
+      <div className="nav">
+        <form className="bg-white">
+          <div className="relative py-2 px-4 flex justify-end gap-4 mr-6 ">
+            {/* <button
             id="dropdownDefaultButton"
             data-dropdown-toggle="dropdown"
             type="button"
@@ -34,59 +64,66 @@ const Navbar = () => {
               6
               <div className="absolute top-0 start-0 rounded-full -z-10 animate-ping bg-red-200 w-full h-full"></div>
             </div>
-          </button>
+          </button> */}
 
-          <div className="flex flex-col bg-[#EB5757] text-white py-1 px-6 items-center">
-            <span className="font-[14px] text-sm">Current Plan</span>
-            <h2 className="font text-xl">BASIC</h2>
+            <div className="flex flex-col bg-[#EB5757] text-white py-1 px-6 items-center --btn --btn-danger">
+              <span className=" text-[12px]">Current Plan</span>
+              <h4 className="font text-[16px]">BASIC</h4>
+            </div>
+
+            <div className="flex items-center">
+              <button onClick={handleLogout} className="--btn --btn-danger">
+                Logout
+              </button>
+            </div>
           </div>
-        </div>
-        <div
-          id="dropdown"
-          className={`${
-            dropdownOpen ? "block" : "hidden"
-          } z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-white flex flex-col absolute top-16 end-8`}
-        >
-          <ul
-            className="py-2 text-sm text-gray-700 dark:text-gray-500"
-            aria-labelledby="dropdownDefaultButton"
+          <div
+            id="dropdown"
+            className={`${
+              dropdownOpen ? "block" : "hidden"
+            } z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-white flex flex-col absolute top-16 end-8`}
           >
-            <li>
-              <a
-                href="#"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-400 dark:hover:text-white"
-              >
-                Dashboard
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-400 dark:hover:text-white"
-              >
-                Settings
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-400 dark:hover:text-white"
-              >
-                Earnings
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-400 dark:hover:text-white"
-              >
-                Sign out
-              </a>
-            </li>
-          </ul>
-        </div>
-      </form>
-    </div>
+            <ul
+              className="py-2 text-sm text-gray-700 dark:text-gray-500"
+              aria-labelledby="dropdownDefaultButton"
+            >
+              <li>
+                <a
+                  href="#"
+                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-400 dark:hover:text-white"
+                >
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-400 dark:hover:text-white"
+                >
+                  Settings
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-400 dark:hover:text-white"
+                >
+                  Earnings
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-blue-400 dark:hover:text-white"
+                >
+                  Sign out
+                </a>
+              </li>
+            </ul>
+          </div>
+        </form>
+      </div>
+    </>
   );
 };
 

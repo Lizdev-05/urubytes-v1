@@ -36,7 +36,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/accounts/login/",
+        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/login/",
         formData
       );
       dispatch(
@@ -48,7 +48,6 @@ const Login = () => {
       );
 
       console.log("Login successful:", response.data);
-      console.log("Login response:", response.data);
       toast.success("Login successful");
       navigate("/dashboard");
     } catch (error) {
