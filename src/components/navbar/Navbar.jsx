@@ -22,7 +22,6 @@ const Navbar = () => {
       );
       console.log("Logout successful:", response.data);
       toast.success("Logout successful");
-      navigate("/login");
 
       dispatch(
         updateLoginData({
@@ -31,6 +30,7 @@ const Navbar = () => {
           token: "",
         })
       );
+      navigate("/login");
     } catch (error) {
       console.error("Logout failed:", error);
     }
