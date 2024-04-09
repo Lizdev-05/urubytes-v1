@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { updateLoginData } from "../../reducer/action";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -12,6 +13,7 @@ const Navbar = () => {
   };
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
@@ -20,6 +22,7 @@ const Navbar = () => {
       );
       console.log("Logout successful:", response.data);
       toast.success("Logout successful");
+      navigate("/login");
 
       dispatch(
         updateLoginData({
