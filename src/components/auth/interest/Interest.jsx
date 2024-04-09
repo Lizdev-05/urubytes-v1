@@ -31,17 +31,21 @@ const Interest = () => {
         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/register/",
         registrationData
       );
-      dispatch(
-        updateLoginData({
-          userID: response.data.userID,
-          orgID: response.data.orgID,
-          token: response.data.token,
-        })
-      );
-
+      // dispatch(
+      //   updateLoginData({
+      //     userID: response.data.userID,
+      //     orgID: response.data.orgID,
+      //     token: response.data.token,
+      //   })
+      // );
+      const data = {
+        userID: response.data.userID,
+        orgID: response.data.orgID,
+        token: response.data.token,
+      };
+      dispatch(updateLoginData(data));
+      dispatch(updateRegistrationData(data));
       console.log(response.data);
-
-      // toast.success("Survey data submitted");
       toast.success(response.data.message);
       navigate("/dashboard");
     } catch (error) {
