@@ -39,19 +39,19 @@ const Interest = () => {
       //   })
       // );
       const data = {
-        userID: response.data.userID,
-        orgID: response.data.orgID,
-        token: response.data.token,
+        userID: response.user.userID,
+        orgID: response.user.orgID,
+        token: response.token,
       };
       dispatch(updateLoginData(data));
       dispatch(updateRegistrationData(data));
       console.log(response.data);
-      toast.success(response.data.message);
+      toast.success(response.message);
       navigate("/dashboard");
     } catch (error) {
       console.error("Failed to send data to backend:", error);
 
-      toast.error(error.response.data.message);
+      toast.error(error.message);
     }
   };
 
