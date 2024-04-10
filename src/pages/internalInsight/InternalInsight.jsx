@@ -285,6 +285,25 @@ const InternalInsight = () => {
         body: JSON.stringify({ query, orgId }),
       });
 
+      //     if (response.ok) {
+      //       const data = await response.json();
+      //       if (feedback) {
+      //         setPreviousQueries([{ query, feedback }, ...previousQueries]);
+      //       }
+      //       setFeedback(data);
+      //       console.log("Received feedback:", data);
+      //       setLoading(false);
+      //       setQuery("");
+      //     } else {
+      //       console.error("Failed to receive feedback:", response);
+      //       setLoading(false);
+      //     }
+      //   } catch (error) {
+      //     console.error("Error sending request:", error);
+      //     setLoading(false);
+      //   }
+      // };
+
       if (response.ok) {
         const data = await response.json();
         if (feedback) {
@@ -350,16 +369,12 @@ const InternalInsight = () => {
             </div>
           </form>
           <h1 className="mt-4 text-3xl font-bold">Library</h1>
-          {/* {previousFeedback && (
-            <div className="mt-4 ml-6 font-thin text-gray-500">
-              <p>Previous Search:</p>
-              <p>{previousFeedback.insights}</p>
-            </div>
-          )} */}
+
           {previousQueries.map((item, index) => (
             <div key={index} onClick={() => handleQueryClick(item)}>
               <p>Previous Search:</p>
               <p>{item.query}</p>
+              <p>{item.feedback.insights}</p>
             </div>
           ))}
         </div>
@@ -470,6 +485,7 @@ const InternalInsight = () => {
               </p>
             </div>
           )} */}
+
           {feedback && (
             <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
               <p className="text-gray-600 mb-4 text-[1rem] ">
