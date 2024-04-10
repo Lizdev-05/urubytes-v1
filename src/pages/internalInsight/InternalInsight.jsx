@@ -11,12 +11,14 @@ const InternalInsight = () => {
   const [mode, setMode] = useState("internal");
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState(null);
+  const [previousFeedback, setPreviousFeedback] = useState(null);
   const token = useSelector((state) => state.login.token);
   const orgId = useSelector((state) => state.login.orgID);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
+    setPreviousFeedback(feedback);
 
     const url =
       mode === "internal"
@@ -38,6 +40,7 @@ const InternalInsight = () => {
         setFeedback(data);
         console.log("Received feedback:", data);
         setLoading(false);
+        setQuery("");
       } else {
         console.error("Failed to receive feedback:", response);
         setLoading(false);
@@ -90,9 +93,12 @@ const InternalInsight = () => {
             </div>
           </form>
           <h1 className="mt-4 text-3xl font-bold">Library</h1>
-          <p className="mt-4 ml-6 font-thin text-gray-500">
-            Nothing here yet...
-          </p>
+          {previousFeedback && (
+            <div className="mt-4 ml-6 font-thin text-gray-500">
+              <p>Previous Search:</p>
+              <p>{previousFeedback.insights}</p>
+            </div>
+          )}
         </div>
 
         <div className="sm:col-span-3 block py-4 px-8 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100 mainInternal">
