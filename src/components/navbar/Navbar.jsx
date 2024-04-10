@@ -16,6 +16,8 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  console.log("Token:", token);
+
   const handleLogout = async () => {
     try {
       const response = await axios.post(
