@@ -28,13 +28,12 @@ const Navbar = () => {
           },
         }
       );
-      // dispatch(
-      //   updateLoginData({
-      //     userID: "",
-      //     orgID: "",
-      //     token: "",
-      //   })
-      // );
+      dispatch(
+        updateLoginData({
+          userID: "",
+          orgID: "",
+        })
+      );
       console.log("Logout successful:", response.data);
       toast.success("Logout successful");
       navigate("/");
@@ -42,31 +41,6 @@ const Navbar = () => {
       console.error("Logout failed:", error);
     }
   };
-
-  // const handleLogout = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/logout/",
-  //       {
-  //         headers: {
-  //           Authorization: `Token ${token}`,
-  //         },
-  //       }
-  //     );
-  //     dispatch(
-  //       updateLoginData({
-  //         userID: "",
-  //         orgID: "",
-  //         token: "",
-  //       })
-  //     );
-  //     console.log("Logout successful:", response.data);
-  //     toast.success("Logout successful");
-  //     navigate("/");
-  //   } catch (error) {
-  //     console.error("Logout failed:", error);
-  //   }
-  // };
 
   return (
     <>
