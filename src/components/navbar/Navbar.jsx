@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateLoginData } from "../../reducer/action";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const token = useSelector((state) => state.login.token);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
