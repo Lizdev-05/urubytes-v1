@@ -11,7 +11,9 @@ const InternalInsight = () => {
   const [mode, setMode] = useState("internal");
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState(null);
-  const [previousFeedback, setPreviousFeedback] = useState(null);
+  // const [previousFeedback, setPreviousFeedback] = useState(null);
+  const [previousQueries, setPreviousQueries] = useState([]);
+  const [selectedQuery, setSelectedQuery] = useState(null);
   const token = useSelector((state) => state.login.token);
   const orgId = useSelector((state) => state.login.orgID);
 
@@ -40,6 +42,7 @@ const InternalInsight = () => {
         setFeedback(data);
         console.log("Received feedback:", data);
         setLoading(false);
+        setPreviousQueries([{ query, feedback: data }, ...previousQueries]);
         setQuery("");
       } else {
         console.error("Failed to receive feedback:", response);
@@ -51,8 +54,11 @@ const InternalInsight = () => {
     }
   };
 
-  const handleChange = (event) => {
-    setQuery(event.target.value);
+  // const handleChange = (event) => {
+  //   setQuery(event.target.value);
+  // };
+  const handleQueryClick = (query) => {
+    setSelectedQuery(query);
   };
 
   const handleToggle = () => {
@@ -93,12 +99,18 @@ const InternalInsight = () => {
             </div>
           </form>
           <h1 className="mt-4 text-3xl font-bold">Library</h1>
-          {previousFeedback && (
+          {/* {previousFeedback && (
             <div className="mt-4 ml-6 font-thin text-gray-500">
               <p>Previous Search:</p>
               <p>{previousFeedback.insights}</p>
             </div>
-          )}
+          )} */}
+          {previousQueries.map((item, index) => (
+            <div key={index} onClick={() => handleQueryClick(item)}>
+              <p>Previous Search:</p>
+              <p>{item.query}</p>
+            </div>
+          ))}
         </div>
 
         <div className="sm:col-span-3 block py-4 px-8 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100 mainInternal">
@@ -188,7 +200,7 @@ const InternalInsight = () => {
               <div className="loadingSpinner"></div>
             </div>
           )}
-          {feedback && (
+          {/* {feedback && (
             <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
               <p className="text-gray-600 mb-4 text-[1rem] ">
                 {feedback.insights}
@@ -204,6 +216,27 @@ const InternalInsight = () => {
                     </span>
                   </div>
                 ))}
+              </p>
+            </div>
+          )} */}
+          {selectedQuery && (
+            <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
+              <p className="text-gray-600 mb-4 text-[1rem] ">
+                {selectedQuery.feedback.insights}
+              </p>
+
+              <p>
+                {Object.entries(selectedQuery.feedback.metadata).map(
+                  ([key, value]) => (
+                    <div key={key}>
+                      Source:
+                      <span className="text-primary-blue">
+                        {" "}
+                        {value.file_name}
+                      </span>
+                    </div>
+                  )
+                )}
               </p>
             </div>
           )}
