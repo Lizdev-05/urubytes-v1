@@ -28,13 +28,13 @@ const Navbar = () => {
           },
         }
       );
-      dispatch(
-        updateLoginData({
-          userID: "",
-          orgID: "",
-          token: "",
-        })
-      );
+      // dispatch(
+      //   updateLoginData({
+      //     userID: "",
+      //     orgID: "",
+      //     token: "",
+      //   })
+      // );
       console.log("Logout successful:", response.data);
       toast.success("Logout successful");
       navigate("/");
