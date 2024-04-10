@@ -287,10 +287,12 @@ const InternalInsight = () => {
 
       if (response.ok) {
         const data = await response.json();
+        if (feedback) {
+          setPreviousQueries([{ query, feedback }, ...previousQueries]);
+        }
         setFeedback(data);
         console.log("Received feedback:", data);
         setLoading(false);
-        setPreviousQueries([{ query, feedback: data }, ...previousQueries]);
         setQuery("");
       } else {
         console.error("Failed to receive feedback:", response);
@@ -302,12 +304,12 @@ const InternalInsight = () => {
     }
   };
 
-  const handleChange = (event) => {
-    setQuery(event.target.value);
+  const handleQueryClick = (query) => {
+    setFeedback(query.feedback);
   };
 
-  const handleQueryClick = (query) => {
-    setSelectedQuery(query);
+  const handleChange = (event) => {
+    setQuery(event.target.value);
   };
 
   const handleToggle = () => {
@@ -468,24 +470,22 @@ const InternalInsight = () => {
               </p>
             </div>
           )} */}
-          {selectedQuery && (
+          {feedback && (
             <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
               <p className="text-gray-600 mb-4 text-[1rem] ">
-                {selectedQuery.feedback.insights}
+                {feedback.insights}
               </p>
 
               <p>
-                {Object.entries(selectedQuery.feedback.metadata).map(
-                  ([key, value]) => (
-                    <div key={key}>
-                      Source:
-                      <span className="text-primary-blue">
-                        {" "}
-                        {value.file_name}
-                      </span>
-                    </div>
-                  )
-                )}
+                {Object.entries(feedback.metadata).map(([key, value]) => (
+                  <div key={key}>
+                    Source:
+                    <span className="text-primary-blue">
+                      {" "}
+                      {value.file_name}
+                    </span>
+                  </div>
+                ))}
               </p>
             </div>
           )}
