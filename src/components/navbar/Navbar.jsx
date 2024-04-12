@@ -51,6 +51,42 @@ const Navbar = () => {
   //   }
   // };
 
+  // const handleLogout = async () => {
+  //   console.log("handleLogout called");
+  //   try {
+  //     console.log("Logging out with token:", token);
+  //     const response = await axios.post(
+  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/logout/",
+  //       {},
+  //       {
+  //         headers: {
+  //           Authorization: `Token ${token}`,
+  //         },
+  //       }
+  //     );
+  //     console.log("Logout response:", response);
+  //     console.log("Dispatching updateLoginData");
+  //     dispatch(
+  //       updateLoginData({
+  //         userID: "",
+  //         orgID: "",
+  //         token: "",
+  //       })
+  //     ).then(() => {
+  //       console.log("updateLoginData dispatched");
+  //       console.log("Logout successful:", response.data);
+  //       toast.success("Logout successful");
+  //       // Purge persisted state
+  //       persistor.purge().then(() => {
+  //         window.location.href = "/";
+  //       });
+  //     });
+  //   } catch (error) {
+  //     console.error("Logout failed:", error);
+  //     toast.error("Logout failed");
+  //   }
+  // };
+
   const handleLogout = async () => {
     console.log("handleLogout called");
     try {
@@ -72,15 +108,12 @@ const Navbar = () => {
           orgID: "",
           token: "",
         })
-      ).then(() => {
-        console.log("updateLoginData dispatched");
-        console.log("Logout successful:", response.data);
-        toast.success("Logout successful");
-        // Purge persisted state
-        persistor.purge().then(() => {
-          window.location.href = "/";
-        });
-      });
+      );
+      console.log("updateLoginData dispatched");
+      console.log("Logout successful:", response.data);
+      toast.success("Logout successful");
+      await persistor.purge();
+      window.location.href = "/";
     } catch (error) {
       console.error("Logout failed:", error);
       toast.error("Logout failed");
