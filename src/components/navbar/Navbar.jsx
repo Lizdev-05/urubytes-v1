@@ -37,6 +37,7 @@ const Navbar = () => {
         updateLoginData({
           userID: "",
           orgID: "",
+          token: "",
         })
       ).then(() => {
         console.log("updateLoginData dispatched");
