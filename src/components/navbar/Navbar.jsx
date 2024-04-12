@@ -23,6 +23,7 @@ const Navbar = () => {
       console.log("Logging out with token:", token);
       const response = await axios.post(
         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/logout/",
+
         {},
         {
           headers: {
