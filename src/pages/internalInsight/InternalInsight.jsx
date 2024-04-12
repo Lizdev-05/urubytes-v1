@@ -16,42 +16,6 @@ const InternalInsight = () => {
   const token = useSelector((state) => state.login.token);
   const orgId = useSelector((state) => state.login.orgID);
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   setLoading(true);
-
-  //   const url =
-  //     mode === "internal"
-  //       ? "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/internal/"
-  //       : "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/market/";
-
-  //   try {
-  //     const response = await fetch(url, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Token ${token}`,
-  //       },
-  //       body: JSON.stringify({ query, orgId }),
-  //     });
-
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       setPreviousQueries([{ query, feedback }, ...previousQueries]);
-  //       setFeedback(data);
-  //       console.log("Received feedback:", data);
-  //       setLoading(false);
-  //       setQuery("");
-  //     } else {
-  //       console.error("Failed to receive feedback:", response);
-  //       setLoading(false);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error sending request:", error);
-  //     setLoading(false);
-  //   }
-  // };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
@@ -137,7 +101,7 @@ const InternalInsight = () => {
 
           {previousQueries.map((item, index) => (
             <div key={index} onClick={() => handleQueryClick(item)}>
-              <p>{item.query}</p>
+              <p className="text-xs leading mb-2">{item.query}</p>
             </div>
           ))}
         </div>
