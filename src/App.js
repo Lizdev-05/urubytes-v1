@@ -19,15 +19,25 @@ import Interest from "./components/auth/interest/Interest";
 import EmailVerification from "./components/auth/emailVerification/EmailVerification";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
+import { useSelector } from "react-redux";
 
 function App() {
   const [isProfileModalOpen, setProfileModalOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleProfileModal = () => {
     setProfileModalOpen(!isProfileModalOpen);
   };
+
+  function ProtectedRoute({ children }) {
+    const token = useSelector((state) => state.login.token);
+    if (!token) {
+      navigate("/");
+      return null;
+    }
+    return children;
+  }
 
   return (
     <div className="flex">
@@ -53,19 +63,86 @@ function App() {
         <Route path="/survey" element={<Survey />} />
         <Route path="/interest" element={<Interest />} />
         <Route path="/emailVerification" element={<EmailVerification />} />
-        <ProtectedRoute path="/dashboard" element={<Dashboard />} />
-        <ProtectedRoute path="/internalInsight" element={<InternalInsight />} />
-        <ProtectedRoute path="/externalInsight" element={<ExternalInsight />} />
-        <ProtectedRoute path="/dataSource" element={<DataSources />} />
-        <ProtectedRoute path="/savedSearch" element={<SavedSearch />} />
-        <ProtectedRoute path="/getHelp" element={<GetHelp />} />
-        <ProtectedRoute path="/user" element={<Dashboard />} />
-        <ProtectedRoute path="/addSource" element={<AddSource />} />
-        <ProtectedRoute
-          path="/marketInsightResult"
-          element={<MarketInsightResult />}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
         />
-        <ProtectedRoute path="/billing" element={<Billing />} />
+        <Route
+          path="/internalInsight"
+          element={
+            <ProtectedRoute>
+              <InternalInsight />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/externalInsight"
+          element={
+            <ProtectedRoute>
+              <ExternalInsight />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dataSource"
+          element={
+            <ProtectedRoute>
+              <DataSources />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/savedSearch"
+          element={
+            <ProtectedRoute>
+              <SavedSearch />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/getHelp"
+          element={
+            <ProtectedRoute>
+              <GetHelp />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/user"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/addSource"
+          element={
+            <ProtectedRoute>
+              <AddSource />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/marketInsightResult"
+          element={
+            <ProtectedRoute>
+              <MarketInsightResult />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/billing"
+          element={
+            <ProtectedRoute>
+              <Billing />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
   );
