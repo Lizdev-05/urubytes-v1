@@ -7,7 +7,7 @@ import InternalInsight from "./pages/internalInsight/InternalInsight";
 import ExternalInsight from "./pages/externalInsight/ExternalInsight";
 import DataSources from "./pages/dataSources/DataSources";
 import SavedSearch from "./pages/savedSearch/SavedSearch";
-import GetHelp from "./pages/help/GetHelp";
+import GetHelp from "./pages/profile/GetHelp";
 import AddSource from "./pages/dataSources/AddSource";
 import MarketInsightResult from "./pages/externalInsight/MarketInsightResult";
 import Profile from "./pages/profile/Billing";
@@ -140,6 +140,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Billing />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/getHelp"
+          element={
+            <ProtectedRoute>
+              <GetHelp />
             </ProtectedRoute>
           }
         />
