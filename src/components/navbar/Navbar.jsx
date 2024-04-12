@@ -20,6 +20,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
+      console.log("Logging out with token:", token);
       const response = await axios.post(
         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/logout/",
         {},
@@ -29,6 +30,7 @@ const Navbar = () => {
           },
         }
       );
+      console.log("Logout response:", response);
       dispatch(
         updateLoginData({
           userID: "",
@@ -37,14 +39,12 @@ const Navbar = () => {
       ).then(() => {
         console.log("Logout successful:", response.data);
         toast.success("Logout successful");
-        // navigate("/");
         window.location.href = "/";
       });
     } catch (error) {
       console.error("Logout failed:", error);
     }
   };
-
   return (
     <>
       <ToastContainer />
