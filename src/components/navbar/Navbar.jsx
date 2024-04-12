@@ -17,6 +17,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   console.log("Token:", token);
+
   const handleLogout = async () => {
     try {
       const response = await axios.post(
@@ -33,10 +34,11 @@ const Navbar = () => {
           userID: "",
           orgID: "",
         })
-      );
-      console.log("Logout successful:", response.data);
-      toast.success("Logout successful");
-      navigate("/");
+      ).then(() => {
+        console.log("Logout successful:", response.data);
+        toast.success("Logout successful");
+        navigate("/");
+      });
     } catch (error) {
       console.error("Logout failed:", error);
     }
