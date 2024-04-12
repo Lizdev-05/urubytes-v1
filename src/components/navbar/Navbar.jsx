@@ -4,7 +4,7 @@ import { updateLoginData } from "../../reducer/action";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { persistor } from "./index";
+import { persistor } from "../../../src/reducer/store";
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
