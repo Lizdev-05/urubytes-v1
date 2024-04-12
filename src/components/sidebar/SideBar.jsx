@@ -141,7 +141,7 @@ const SideBar = () => {
 
       {showModalCard && (
         <div
-          className={`absolute bottom-4 left-0  w-full p-4 z-50  ${
+          className={`fixed bottom-4 left-0  w-full p-4 z-50 ${
             open ? "ml-[230px]" : "ml-16"
           }`}
         >
