@@ -20,7 +20,7 @@ const initialLoginState = {
 //   }
 // };
 
-const loginReducer = (state = initialState, action) => {
+const loginReducer = (state = initialLoginState, action) => {
   console.log("Current state:", state);
   console.log("Received action:", action);
   switch (action.type) {
