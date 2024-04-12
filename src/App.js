@@ -19,6 +19,7 @@ import Interest from "./components/auth/interest/Interest";
 import EmailVerification from "./components/auth/emailVerification/EmailVerification";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
   const [isProfileModalOpen, setProfileModalOpen] = useState(false);
@@ -52,16 +53,19 @@ function App() {
         <Route path="/survey" element={<Survey />} />
         <Route path="/interest" element={<Interest />} />
         <Route path="/emailVerification" element={<EmailVerification />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/internalInsight" element={<InternalInsight />} />
-        <Route path="/externalInsight" element={<ExternalInsight />} />
-        <Route path="/dataSource" element={<DataSources />} />
-        <Route path="/savedSearch" element={<SavedSearch />} />
-        <Route path="/getHelp" element={<GetHelp />} />
-        <Route path="/user" element={<Dashboard />} />
-        <Route path="/addSource" element={<AddSource />} />
-        <Route path="/marketInsightResult" element={<MarketInsightResult />} />
-        <Route path="/billing" element={<Billing />} />
+        <ProtectedRoute path="/dashboard" element={<Dashboard />} />
+        <ProtectedRoute path="/internalInsight" element={<InternalInsight />} />
+        <ProtectedRoute path="/externalInsight" element={<ExternalInsight />} />
+        <ProtectedRoute path="/dataSource" element={<DataSources />} />
+        <ProtectedRoute path="/savedSearch" element={<SavedSearch />} />
+        <ProtectedRoute path="/getHelp" element={<GetHelp />} />
+        <ProtectedRoute path="/user" element={<Dashboard />} />
+        <ProtectedRoute path="/addSource" element={<AddSource />} />
+        <ProtectedRoute
+          path="/marketInsightResult"
+          element={<MarketInsightResult />}
+        />
+        <ProtectedRoute path="/billing" element={<Billing />} />
       </Routes>
     </div>
   );
