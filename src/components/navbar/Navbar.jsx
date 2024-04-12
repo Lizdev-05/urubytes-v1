@@ -4,6 +4,7 @@ import { updateLoginData } from "../../reducer/action";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { persistor } from "./index";
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -17,6 +18,38 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   console.log("Token:", token);
+
+  // const handleLogout = async () => {
+  //   console.log("handleLogout called");
+  //   try {
+  //     console.log("Logging out with token:", token);
+  //     const response = await axios.post(
+  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/logout/",
+  //       {},
+  //       {
+  //         headers: {
+  //           Authorization: `Token ${token}`,
+  //         },
+  //       }
+  //     );
+  //     console.log("Logout response:", response);
+  //     console.log("Dispatching updateLoginData");
+  //     dispatch(
+  //       updateLoginData({
+  //         userID: "",
+  //         orgID: "",
+  //         token: "",
+  //       })
+  //     ).then(() => {
+  //       console.log("updateLoginData dispatched");
+  //       console.log("Logout successful:", response.data);
+  //       toast.success("Logout successful");
+  //       window.location.href = "/";
+  //     });
+  //   } catch (error) {
+  //     console.error("Logout failed:", error);
+  //   }
+  // };
 
   const handleLogout = async () => {
     console.log("handleLogout called");
@@ -43,10 +76,14 @@ const Navbar = () => {
         console.log("updateLoginData dispatched");
         console.log("Logout successful:", response.data);
         toast.success("Logout successful");
-        window.location.href = "/";
+        // Purge persisted state
+        persistor.purge().then(() => {
+          window.location.href = "/";
+        });
       });
     } catch (error) {
       console.error("Logout failed:", error);
+      toast.error("Logout failed");
     }
   };
   return (
