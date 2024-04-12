@@ -37,7 +37,8 @@ const Navbar = () => {
       ).then(() => {
         console.log("Logout successful:", response.data);
         toast.success("Logout successful");
-        navigate("/");
+        // navigate("/");
+        window.location.href = "/";
       });
     } catch (error) {
       console.error("Logout failed:", error);
