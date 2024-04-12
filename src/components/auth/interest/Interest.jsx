@@ -51,7 +51,7 @@ const Interest = () => {
     } catch (error) {
       console.error("Failed to send data to backend:", error);
 
-      toast.error(error.message);
+      toast.error(error.response.data.error || "Failed to register");
     }
   };
 
