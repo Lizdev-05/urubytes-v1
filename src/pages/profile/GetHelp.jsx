@@ -1,29 +1,37 @@
-import React from "react";
+import React, { useRef } from "react";
 import Navbar from "../../components/navbar/Navbar";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 
 const GetHelp = () => {
+  const form = useRef();
+
   const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
-      .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", e.target, "YOUR_USER_ID")
+      .sendForm(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        form.current,
+        {
+          publicKey: process.env.REACT_APP_EMAILJS_PUBLIC_KEY,
+        }
+      )
       .then(
-        (result) => {
-          console.log(result.text);
+        () => {
+          console.log("SUCCESS!");
         },
         (error) => {
-          console.log(error.text);
+          console.log("FAILED...", error.text);
         }
       );
   };
-
   return (
     <div className="bg-grey-bg h-screen w-screen overflow-hidden internal">
       <Navbar />
       <div className="block m-2 py-4 px-8 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100  h-full overflow-hidden">
         <div className=" w-full max-w-[550px]">
-          <form action="https://formbold.com/s/FORM_ID" method="POST">
+          <form ref={form} onSubmit={sendEmail}>
             <h1 className="text-2xl font-semibold text-[#07074D] mb-5">
               Contact Us
             </h1>
@@ -59,7 +67,11 @@ const GetHelp = () => {
               ></textarea>
             </div>
             <div>
-              <button className="hover:shadow-form rounded-md bg-[#E58A13] py-3 px-8 text-base font-semibold text-white outline-none w-full">
+              <button
+                type="submit "
+                value="Send"
+                className="hover:shadow-form rounded-md bg-[#E58A13] py-3 px-8 text-base font-semibold text-white outline-none w-full"
+              >
                 Submit
               </button>
             </div>
