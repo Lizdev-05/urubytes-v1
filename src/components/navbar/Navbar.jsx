@@ -24,7 +24,7 @@ const Navbar = () => {
   //   try {
   //     console.log("Logging out with token:", token);
   //     const response = await axios.post(
-  //       "http://127.0.0.1:8000/auth/logout/",
+  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/logout/",
   //       {},
   //       {
   //         headers: {
@@ -56,7 +56,7 @@ const Navbar = () => {
   //   try {
   //     console.log("Logging out with token:", token);
   //     const response = await axios.post(
-  //       "http://127.0.0.1:8000/auth/logout/",
+  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/logout/",
   //       {},
   //       {
   //         headers: {
@@ -92,7 +92,7 @@ const Navbar = () => {
     try {
       console.log("Logging out with token:", token);
       const response = await axios.post(
-        "http://127.0.0.1:8000/auth/logout/",
+        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/logout/",
         {},
         {
           headers: {

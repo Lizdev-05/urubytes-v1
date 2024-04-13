@@ -17,8 +17,8 @@ const ExternalInsight = () => {
 
     const url =
       mode === "internal"
-        ? "http://127.0.0.1:8000/insights/internal/"
-        : "http://127.0.0.1:8000/insights/market/";
+        ? "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/internal/"
+        : "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/market/";
 
     try {
       const response = await fetch(url, {

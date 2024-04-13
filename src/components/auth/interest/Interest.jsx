@@ -28,7 +28,7 @@ const Interest = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/auth/register/",
+        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/register/",
         registrationData
       );
       // dispatch(
