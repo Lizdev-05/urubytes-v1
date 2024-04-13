@@ -6,14 +6,7 @@ import IntegrationCards from "../../components/integrationCards/IntegrationCards
 import UploadForm from "./upload/UploadForm";
 
 const AddSources = () => {
-  const TABLE_HEAD = [
-    // "",
-    "Type",
-    "Title",
-    "Status",
-    "Date Added",
-    "Last Updated",
-  ];
+  const TABLE_HEAD = ["Type", "Title", "Status", "Date Added", "Last Updated"];
 
   const TABLE_ROWS = [
     {
@@ -40,11 +33,9 @@ const AddSources = () => {
   ];
 
   return (
-    // <div className="bg-grey-bg h-[982px] w-screen  ">
     <div className="bg-grey-bg h-screen w-screen overflow-hidden ">
       <Navbar />
       <div className=" p-6 px-12 m-4 h-full bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300">
-        {/* <div className=" p-4 px-12 m-4 bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300"> */}
         <div className=" ">
           <h1 className="text-3xl font-semibold">Internal Insight</h1>
           <p className="text-sm font-semi-bold my-4 ">

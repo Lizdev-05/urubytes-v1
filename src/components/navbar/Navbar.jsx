@@ -1,55 +1,23 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { updateLoginData } from "../../reducer/action";
+// import { useDispatch, useSelector } from "react-redux";
+// import { updateLoginData } from "../../reducer/action";
 import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { persistor } from "../../../src/reducer/store";
+// import axios from "axios";
+// import { useNavigate } from "react-router-dom";
+// import { persistor } from "../../../src/reducer/store";
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const token = useSelector((state) => state.login.token);
+  // const token = useSelector((state) => state.login.token);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
 
-  console.log("Token:", token);
-
-  // const handleLogout = async () => {
-  //   console.log("handleLogout called");
-  //   try {
-  //     console.log("Logging out with token:", token);
-  //     const response = await axios.post(
-  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/logout/",
-  //       {},
-  //       {
-  //         headers: {
-  //           Authorization: `Token ${token}`,
-  //         },
-  //       }
-  //     );
-  //     console.log("Logout response:", response);
-  //     console.log("Dispatching updateLoginData");
-  //     dispatch(
-  //       updateLoginData({
-  //         userID: "",
-  //         orgID: "",
-  //         token: "",
-  //       })
-  //     ).then(() => {
-  //       console.log("updateLoginData dispatched");
-  //       console.log("Logout successful:", response.data);
-  //       toast.success("Logout successful");
-  //       window.location.href = "/";
-  //     });
-  //   } catch (error) {
-  //     console.error("Logout failed:", error);
-  //   }
-  // };
+  // console.log("Token:", token);
 
   // const handleLogout = async () => {
   //   console.log("handleLogout called");
@@ -72,53 +40,17 @@ const Navbar = () => {
   //         orgID: "",
   //         token: "",
   //       })
-  //     ).then(() => {
-  //       console.log("updateLoginData dispatched");
-  //       console.log("Logout successful:", response.data);
-  //       toast.success("Logout successful");
-  //       // Purge persisted state
-  //       persistor.purge().then(() => {
-  //         window.location.href = "/";
-  //       });
-  //     });
+  //     );
+  //     console.log("updateLoginData dispatched");
+  //     console.log("Logout successful:", response.data);
+  //     toast.success("Logout successful");
+  //     await persistor.purge();
+  //     window.location.href = "/";
   //   } catch (error) {
   //     console.error("Logout failed:", error);
   //     toast.error("Logout failed");
   //   }
   // };
-
-  const handleLogout = async () => {
-    console.log("handleLogout called");
-    try {
-      console.log("Logging out with token:", token);
-      const response = await axios.post(
-        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/logout/",
-        {},
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        }
-      );
-      console.log("Logout response:", response);
-      console.log("Dispatching updateLoginData");
-      dispatch(
-        updateLoginData({
-          userID: "",
-          orgID: "",
-          token: "",
-        })
-      );
-      console.log("updateLoginData dispatched");
-      console.log("Logout successful:", response.data);
-      toast.success("Logout successful");
-      await persistor.purge();
-      window.location.href = "/";
-    } catch (error) {
-      console.error("Logout failed:", error);
-      toast.error("Logout failed");
-    }
-  };
   return (
     <>
       <ToastContainer />
@@ -129,12 +61,6 @@ const Navbar = () => {
             <div className="flex flex-col bg-[#EB5757] text-white py-1 px-6 items-center --btn --btn-danger">
               <span className=" text-[12px]">Current Plan</span>
               <h4 className="font text-[16px]">BASIC</h4>
-            </div>
-
-            <div className="flex items-center">
-              <button onClick={handleLogout} className="--btn --btn-danger">
-                Logout
-              </button>
             </div>
           </div>
           <div

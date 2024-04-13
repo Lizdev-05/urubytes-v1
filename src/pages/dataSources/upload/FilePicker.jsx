@@ -8,7 +8,6 @@ function FileUploader() {
     if (file && validateFileType(file)) {
       setSelectedFile(file);
     } else {
-      // Handle invalid file type (optional: display an error message)
       console.error(
         "Invalid file type. Please upload PDF, DOCX, XLSX, or PPTX files."
       );
@@ -29,9 +28,9 @@ function FileUploader() {
       </p>
       <input
         type="file"
-        className="hidden" // Hide the default file input element
+        className="hidden"
         onChange={handleFileChange}
-        accept=".pdf,.docx,.xlsx,.pptx" // Specify accepted file types
+        accept=".pdf,.docx,.xlsx,.pptx"
       />
     </div>
   );
