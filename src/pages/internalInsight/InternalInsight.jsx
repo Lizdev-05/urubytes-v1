@@ -217,7 +217,7 @@ const InternalInsight = () => {
 
           {feedback && (
             <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
-              <div className="text-gray-600 mb-4">
+              <div className="text-gray-600 mb-4 insights">
                 <Markdown remarkPlugins={[remarkGfm]}>
                   {feedback.insights}
                 </Markdown>
