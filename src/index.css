@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+/* .bg-gradient {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(to right, #3788e5 0%, #e58a13 100%);
+  box-decoration-break: clone;
+} */
+
+.border-gradient {
+  position: relative;
+  overflow: hidden;
+}
+
+.border-gradient:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid;
+  border-image: linear-gradient(
+    to right,
+    #3788e5 0%,
+    #e58a13 25%,
+    #3788e5 50%,
+    #3788e5 75%,
+    #e58a13 100%
+  );
+  border-image-slice: 1;
+  z-index: -1;
+}
+
 .--btn {
   font-size: 1.1rem;
   font-weight: 400;
