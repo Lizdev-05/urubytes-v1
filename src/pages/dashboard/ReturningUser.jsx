@@ -5,7 +5,7 @@ import { FaPlus } from "react-icons/fa";
 import Navbar from "../../components/navbar/Navbar";
 import { Link } from "react-router-dom";
 
-const Dashboard = () => {
+const ReturningUser = () => {
   return (
     <div className="bg-grey-bg h-screen w-screen  overflow-hidden">
       <Navbar />
@@ -13,7 +13,7 @@ const Dashboard = () => {
         <div className="sm:col-span-3 py-6 sm:px-16 bg-white border border-gray-200 rounded-lg shadow dark:bg-white dark:border-gray-300">
           <div className="mt-6 ">
             <h1 className="text-3xl font-semibold">Welcome To Urubytes</h1>
-            <div className="px-2 py-8 my-10 border border-gray-200 rounded-lg shadow bg-primary-blue dark:border-gray-300 dark:hover:bg-blue-500">
+            <div className="px-2 py-2 my-10 border border-gray-200 rounded-lg shadow bg-primary-blue dark:border-gray-300 dark:hover:bg-blue-500">
               <div className="flex flex-col-reverse sm:flex-row justify-between px-8">
                 <div className="my-8 leading-10 text-white">
                   <h2 className="text-3xl font-semibold mb-4">
@@ -27,6 +27,24 @@ const Dashboard = () => {
                 <div>
                   <img src={dashboardLens} alt="dashboard-lens" />
                 </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 className="text-2xl font-semibold">Insight Today</h2>
+            <div className="flex flex-col items-start justify-start py-4 px-12 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-100 transition-transform transform hover:scale-105">
+              <p>
+                Your operational costs have risen by 12% from yesterday to
+                today, with the comparison spanning the last two weeks. This
+                increase highlights a notable uptick in expenses over this
+                timeframe, which may warrant further investigation into the
+                factors....
+              </p>
+              <div className="flex items-center gap-2">
+                <h3 className="text-[#3788E5] font-bold">Reference:</h3>
+                <span className="text-[13px]">
+                  Fuel consumption for picking up...
+                </span>
               </div>
             </div>
           </div>
@@ -97,4 +115,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default ReturningUser;

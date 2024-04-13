@@ -14,6 +14,7 @@ import accountSettingImg from "../../assets/marketInsight/setting.png";
 import logoutImg from "../../assets/marketInsight/logout.png";
 import "./SideBar.css";
 import GetHelp from "../../pages/profile/GetHelp";
+import Logout from "../auth/logout/Logout";
 
 const SideBar = () => {
   const [open, setOpen] = useState(true);
@@ -163,9 +164,9 @@ const SideBar = () => {
                 <img src={accountSettingImg} alt={accountSettingImg} />
                 Account Setting
               </li>
-              <li className="flex items-center gap-3 text-[18px] cursor-pointer">
+              <li className="flex items-center text-red-500 text-[18px] cursor-pointer">
                 <img src={logoutImg} alt={logoutImg} />
-                Logout
+                <Logout />
               </li>
             </ul>
           </div>

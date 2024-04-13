@@ -12,8 +12,6 @@ const UploadSource = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const navigate = useNavigate();
 
-  // const userId = useSelector((state) => state.login.userID);
-  // const orgId = useSelector((state) => state.login.orgID);
   const token = useSelector((state) => state.login.token);
   const userId = useSelector(
     (state) => state.login.userID || state.registration.registrationData.userID
@@ -21,10 +19,6 @@ const UploadSource = () => {
   const orgId = useSelector(
     (state) => state.login.orgID || state.registration.registrationData.orgID
   );
-
-  // const userId = useSelector((state) => state.login.user?.userID);
-  // const orgId = useSelector((state) => state.login.user?.orgID);
-  // const token = useSelector((state) => state.login.token);
 
   const loginState = useSelector((state) => state.login);
   console.log("Login state:", loginState);

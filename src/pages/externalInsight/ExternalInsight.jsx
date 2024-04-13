@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { FaArrowUpLong } from "react-icons/fa6";
-import { Link } from "react-router-dom";
 import "./ExternalInsight.css";
 
 const ExternalInsight = () => {
@@ -196,10 +195,7 @@ const ExternalInsight = () => {
                 {Object.entries(feedback.metadata).map(([key, value]) => (
                   <div key={key}>
                     Source:
-                    <span className="text-primary-blue">
-                      {" "}
-                      {value.file_name}
-                    </span>
+                    <span className="text-primary-blue">{value.file_name}</span>
                   </div>
                 ))}
               </p>

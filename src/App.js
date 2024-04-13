@@ -20,6 +20,7 @@ import EmailVerification from "./components/auth/emailVerification/EmailVerifica
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
+import ReturningUser from "./pages/dashboard/ReturningUser";
 
 function App() {
   const [isProfileModalOpen, setProfileModalOpen] = useState(false);
@@ -41,8 +42,6 @@ function App() {
 
   return (
     <div className="flex">
-      {/* <SideBar onProfileClick={toggleProfileModal} /> */}
-      {/*  I dont want side bar to show in my register page also */}
       <ToastContainer />
 
       {location.pathname !== "/" &&
@@ -52,10 +51,6 @@ function App() {
         location.pathname !== "/emailVerification" && (
           <SideBar onProfileClick={toggleProfileModal} />
         )}
-
-      {/* {location.pathname !== "/"  && (
-        <SideBar onProfileClick={toggleProfileModal} />
-      )} */}
       {isProfileModalOpen && <Profile onClose={toggleProfileModal} />}
       <Routes>
         <Route path="/" element={<Login />} />
@@ -148,6 +143,14 @@ function App() {
           element={
             <ProtectedRoute>
               <GetHelp />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/returningUser"
+          element={
+            <ProtectedRoute>
+              <ReturningUser />
             </ProtectedRoute>
           }
         />

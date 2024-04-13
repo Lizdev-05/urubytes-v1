@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import internalInsights from "../../assets/ic_baseline-insights.png";
+import internalInsights from "../../assets/ic_baseline-insights2.png";
 import { FaPlus } from "react-icons/fa";
 import Navbar from "../../components/navbar/Navbar";
 import { Typography } from "@material-tailwind/react";
@@ -50,22 +50,25 @@ const DataSources = () => {
             <div className="flex justify-between gap-2">
               <Link
                 to="/addSource"
-                className=" border border-gray-600 rounded-lg  flex items-center "
+                className="flex items-center border-gray-400"
               >
-                <button className=" text-dark font-semi-bold py-2 px-8   flex items-center gap-2 ">
-                  <FaPlus />
-                  Add Source
-                </button>
-              </Link>
-
-              <Link to="/internalInsight" className="flex items-center ">
-                <button className=" text-white font-semi-bold py-2 px-4 bg-yellow-color hover:bg-yellow-600 rounded-lg  border flex items-center gap-2 shadow">
+                <button className=" text-dark font-semi-bold py-2 px-4 rounded-lg  border flex items-center gap-2 shadow">
                   <img
                     src={internalInsights}
                     alt="internal insight"
                     className="w-8 h-8"
                   />
                   Explore Insight
+                </button>
+              </Link>
+
+              <Link
+                to="/internalInsight"
+                className=" border border-gray-200 rounded-lg  flex items-center  bg-yellow-color hover:bg-yellow-600  "
+              >
+                <button className=" text-white font-semi-bold py-2 px-8   flex items-center gap-2 ">
+                  <FaPlus />
+                  Add Source
                 </button>
               </Link>
             </div>
