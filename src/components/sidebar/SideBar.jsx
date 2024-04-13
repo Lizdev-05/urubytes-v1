@@ -5,9 +5,7 @@ import uLogoImg from "../../assets/u-logo.png";
 import logo from "../../assets/logo.png";
 import dashbordIcon from "../../assets/Dashboard.svg";
 import internalInsightsIcon from "../../assets/ic_baseline-insights.png";
-import marketInsightsIcon from "../../assets/search-insights.png";
 import dataSourcesIcon from "../../assets/data-sources.png";
-import savedSearchIcon from "../../assets/saved-search.png";
 import getHelpIcon from "../../assets/help-icon.png";
 import brightIcon from "../../assets/bright.png";
 import billingImg from "../../assets/marketInsight/billings.png";
@@ -15,11 +13,12 @@ import teamImg from "../../assets/marketInsight/team.png";
 import accountSettingImg from "../../assets/marketInsight/setting.png";
 import logoutImg from "../../assets/marketInsight/logout.png";
 import "./SideBar.css";
+import GetHelp from "../../pages/profile/GetHelp";
 
 const SideBar = () => {
   const [open, setOpen] = useState(true);
-  const [showModal, setShowModal] = useState(false);
   const [showModalCard, setShowModalCard] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
 
   const Menus = [
     { title: "Dashboard", link: "/dashboard", src: dashbordIcon },
@@ -28,23 +27,21 @@ const SideBar = () => {
       link: "/internalInsight",
       src: internalInsightsIcon,
     },
-    // {
-    //   title: "Market Insights",
-    //   link: "/externalInsight",
-    //   src: marketInsightsIcon,
-    // },
-    { title: "Data Sources ", link: "/dataSource", src: dataSourcesIcon },
-    // { title: "Saved Search", link: "/savedSearch", src: savedSearchIcon },
+    { title: "Data Sources", link: "/dataSource", src: dataSourcesIcon },
     { title: "Billing", link: "/billing", src: billingImg },
   ];
 
   const bottomMenus = [
     { title: "Get Help", link: "/getHelp", src: getHelpIcon },
-    { title: "Bright ahedor ", link: "/user", src: brightIcon },
+    { title: "Bright ahedor", link: "/user", src: brightIcon },
   ];
 
-  const handleBrightClick = () => {
-    setShowModalCard(!showModalCard);
+  const handleHelpClick = (title) => {
+    if (title === "Get Help") {
+      setShowHelp(!showHelp);
+    } else if (title === "Bright ahedor") {
+      setShowModalCard(!showModalCard);
+    }
   };
 
   useEffect(() => {
@@ -113,12 +110,15 @@ const SideBar = () => {
         <ul className="mt-auto">
           <hr className="border-t border-white my-2" />
           {bottomMenus.map((Menu, i) => (
-            <>
-              <li
-                key={i}
-                className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm items-center gap-x-4 
-               `}
-                onClick={handleBrightClick}
+            <React.Fragment key={i}>
+              <Link
+                to={Menu.link}
+                className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm-center gap-x-4`}
+                onClick={
+                  Menu.title === "Bright ahedor"
+                    ? () => setShowModalCard(!showModalCard)
+                    : null
+                }
               >
                 <img src={Menu.src} alt={Menu.title} />
                 <span
@@ -131,10 +131,9 @@ const SideBar = () => {
                 >
                   {Menu.title}
                 </span>
-              </li>
-
+              </Link>
               <hr className="border-t border-white my-2" />
-            </>
+            </React.Fragment>
           ))}
         </ul>
       </div>
@@ -148,7 +147,7 @@ const SideBar = () => {
           <div className="bg-white p-8 relative  max-w-lg w-[350px] border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300">
             <button
               className="absolute top-9 right-8 hover:translate-x-2 transform transition duration-200"
-              onClick={handleBrightClick}
+              onClick={() => setShowModalCard(false)}
             >
               Close
             </button>
@@ -170,6 +169,12 @@ const SideBar = () => {
               </li>
             </ul>
           </div>
+        </div>
+      )}
+
+      {showHelp && (
+        <div className="fixed bottom-4 left-0  w-full p-4 z-50 bg-white">
+          <GetHelp onClose={() => setShowHelp(false)} />
         </div>
       )}
     </div>
