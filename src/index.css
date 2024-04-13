@@ -47,3 +47,62 @@
   color: #fff;
   background: #28a745;
 }
+
+/* Styling For Insights */
+
+.insights h1,
+.insights h2,
+.insights h3,
+.insights h4,
+.insights h5,
+.insights h6 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.insights p {
+  line-height: 1.5;
+  margin: 0;
+}
+
+.insights ul {
+  list-style: disc inside;
+  padding-left: 2rem;
+}
+
+.insights ol {
+  list-style: decimal inside;
+  padding-left: 2rem;
+}
+
+.insights li {
+  margin-bottom: 0.5rem;
+}
+
+.insights strong {
+  font-weight: 600;
+}
+
+.insights em {
+  font-style: italic;
+}
+
+.insights table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.insights th,
+.insights td {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+}
+
+.insights th {
+  text-align: left;
+  background-color: #f5f5f5;
+}
+
+.insights td {
+  vertical-align: top;
+}

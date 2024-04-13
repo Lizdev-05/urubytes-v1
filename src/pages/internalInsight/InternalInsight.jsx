@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 import "./InternalInsight.css";
 import { useSelector } from "react-redux";
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 const InternalInsight = () => {
   const [query, setQuery] = useState("");
@@ -215,9 +217,11 @@ const InternalInsight = () => {
 
           {feedback && (
             <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
-              <p className="text-gray-600 mb-4 text-[1rem] ">
-                {feedback.insights}
-              </p>
+              <div className="text-gray-600 mb-4 insights">
+                <Markdown remarkPlugins={[remarkGfm]}>
+                  {feedback.insights}
+                </Markdown>
+              </div>
 
               <p>
                 {Object.entries(feedback.metadata).map(([key, value]) => (
