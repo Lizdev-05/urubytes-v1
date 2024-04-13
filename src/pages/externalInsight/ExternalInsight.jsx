@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { FaArrowUpLong } from "react-icons/fa6";
 import "./ExternalInsight.css";
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 const ExternalInsight = () => {
   const [query, setQuery] = useState("");
@@ -188,7 +190,9 @@ const ExternalInsight = () => {
           {feedback && (
             <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
               <p className="text-gray-600 mb-4 text-[1rem] ">
-                {feedback.insights}
+                <Markdown remarkPlugins={[remarkGfm]}>
+                  {feedback.insights}
+                </Markdown>
               </p>
 
               <p>

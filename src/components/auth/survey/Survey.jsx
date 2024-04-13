@@ -111,7 +111,7 @@ const Survey = () => {
                         value={formData.size}
                         onChange={handleChange}
                         className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="*********"
+                        placeholder="20-50"
                         required=""
                       />
                       {/* <IoIosArrowDown className="absolute top-3 right-3 text-gray-400" /> */}
@@ -165,14 +165,14 @@ const Survey = () => {
                     <Link to="/interest"> Next</Link>
                   </button>
 
-                  <p className="text-sm font-light text-gray-900 dark:text-gray-900 flex justify-end">
+                  {/* <p className="text-sm font-light text-gray-900 dark:text-gray-900 flex justify-end">
                     <Link
                       to="/dashboard"
                       className="font-medium text-orange-600 hover:underline dark:text-orange-500"
                     >
                       Skip for now
                     </Link>
-                  </p>
+                  </p> */}
                 </form>
               </div>
             </div>
