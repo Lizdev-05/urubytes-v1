@@ -109,8 +109,8 @@ const ReturningUser = () => {
             </div>
           </div>
         </div>
-        <div className="block sm:col-span-1 py-4 px-8 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100">
-          <div className="block w-[400px] h-[200px] overflow-hidden bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-100 transition-transform transform hover:scale-105">
+        <div className="block sm:col-span-1 py-4  px-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100">
+          <div className="block w-[280px] h-[200px] overflow-hidden bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-100 transition-transform transform hover:scale-105">
             <iframe
               src="https://www.youtube.com/embed/mUMi9VJmMSg"
               width="100%"
