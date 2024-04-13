@@ -3,6 +3,8 @@ import Navbar from "../../components/navbar/Navbar";
 import { FaArrowUpLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import "./ExternalInsight.css";
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 const ExternalInsight = () => {
   const [query, setQuery] = useState("");
@@ -15,8 +17,8 @@ const ExternalInsight = () => {
 
     const url =
       mode === "internal"
-        ? "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/internal/"
-        : "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/market/";
+        ? "http://127.0.0.1:8000/insights/internal/"
+        : "http://127.0.0.1:8000/insights/market/";
 
     try {
       const response = await fetch(url, {
@@ -189,7 +191,9 @@ const ExternalInsight = () => {
           {feedback && (
             <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
               <p className="text-gray-600 mb-4 text-[1rem] ">
-                {feedback.insights}
+                <Markdown remarkPlugins={[remarkGfm]}>
+                  {feedback.insights}
+                </Markdown>
               </p>
 
               <p>

@@ -20,7 +20,7 @@ const DataSources = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/?orgID=${orgId}`,
+          `http://127.0.0.1:8000/datasources/static/?orgID=${orgId}`,
           {
             headers: {
               Authorization: `Token ${token}`,

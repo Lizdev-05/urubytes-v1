@@ -36,7 +36,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/login/",
+        "http://127.0.0.1:8000/auth/login/",
         formData
       );
       dispatch(
