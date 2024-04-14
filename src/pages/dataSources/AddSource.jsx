@@ -37,11 +37,10 @@ const AddSources = () => {
       <Navbar />
       <div className=" p-6 px-12 m-4 h-full bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300">
         <div className=" ">
-          <h1 className="text-3xl font-semibold">Internal Insight</h1>
-          <p className="text-sm font-semi-bold my-4 ">
-            Get started extracting byte-sized insights from your business data.
-            Just tell us where to look <br /> first and you can ask any question
-            about your business.
+          <h1 className="text-3xl font-semibold">Connect a Data Source</h1>
+          <p className="text-sm font-semi-bold my-2 ">
+            Want to get insights from your business data? Start by pointing us
+            to where the data is.
           </p>
           <div className="cursor-pointer">
             <UploadForm />
