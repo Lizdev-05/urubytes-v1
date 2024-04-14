@@ -20,14 +20,13 @@ import EmailVerification from "./components/auth/emailVerification/EmailVerifica
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
-import ReturningUser from "./pages/dashboard/ReturningUser";
+// import ReturningUser from "./pages/dashboard/ReturningUser";
 
 function App() {
   const [isProfileModalOpen, setProfileModalOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const sources = useSelector((state) => state.sources);
-  const isNewUser = sources.length === 0;
+  // const sources = useSelector((state) => state.sources);
 
   const toggleProfileModal = () => {
     setProfileModalOpen(!isProfileModalOpen);
@@ -60,19 +59,11 @@ function App() {
         <Route path="/survey" element={<Survey />} />
         <Route path="/interest" element={<Interest />} />
         <Route path="/emailVerification" element={<EmailVerification />} />
-        {/* <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        /> */}
         <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
-              {isNewUser ? <Dashboard /> : <ReturningUser />}
+              <Dashboard />
             </ProtectedRoute>
           }
         />
@@ -117,14 +108,6 @@ function App() {
           }
         />
         <Route
-          path="/user"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
           path="/addSource"
           element={
             <ProtectedRoute>
@@ -145,22 +128,6 @@ function App() {
           element={
             <ProtectedRoute>
               <Billing />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/getHelp"
-          element={
-            <ProtectedRoute>
-              <GetHelp />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/returningUser"
-          element={
-            <ProtectedRoute>
-              <ReturningUser />
             </ProtectedRoute>
           }
         />
