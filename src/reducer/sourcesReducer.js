@@ -9,7 +9,16 @@
 
 // export default sourcesReducer;
 
-const tableDataReducer = (state = [], action) => {
+// const tableDataReducer = (state = [], action) => {
+//   switch (action.type) {
+//     case "UPDATE_TABLE_DATA":
+//       return action.payload;
+//     default:
+//       return state;
+//   }
+// };
+
+const tableDataReducer = (state = { data: [], isLoading: true }, action) => {
   switch (action.type) {
     case "UPDATE_TABLE_DATA":
       return action.payload;
