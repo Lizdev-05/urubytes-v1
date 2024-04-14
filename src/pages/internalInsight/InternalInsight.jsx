@@ -13,8 +13,12 @@ const InternalInsight = () => {
   const [mode, setMode] = useState("internal");
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState(null);
-  const [previousQueries, setPreviousQueries] = useState([]);
   const [selectedQuery, setSelectedQuery] = useState(null);
+  const [previousQueries, setPreviousQueries] = useState(() => {
+    const savedQueries = localStorage.getItem("previousQueries");
+    return savedQueries ? JSON.parse(savedQueries) : [];
+  });
+
   const token = useSelector((state) => state.login.token);
   const orgId = useSelector((state) => state.login.orgID);
 
@@ -37,9 +41,22 @@ const InternalInsight = () => {
         body: JSON.stringify({ query, orgId }),
       });
 
+      // if (response.ok) {
+      //   const data = await response.json();
+      //   const newQueries = [{ query, feedback: data }, ...previousQueries];
+      //   setPreviousQueries(newQueries);
+      //   localStorage.setItem("previousQueries", JSON.stringify(newQueries));
+      //   setPreviousQueries([{ query, feedback: data }, ...previousQueries]);
+      //   setFeedback(data);
+      //   console.log("Received feedback:", data);
+      //   setLoading(false);
+      //   setQuery("");
+      // }
       if (response.ok) {
         const data = await response.json();
-        setPreviousQueries([{ query, feedback: data }, ...previousQueries]);
+        const newQueries = [{ query, feedback: data }, ...previousQueries];
+        setPreviousQueries(newQueries);
+        localStorage.setItem("previousQueries", JSON.stringify(newQueries));
         setFeedback(data);
         console.log("Received feedback:", data);
         setLoading(false);
