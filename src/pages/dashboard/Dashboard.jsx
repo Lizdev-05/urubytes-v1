@@ -39,7 +39,8 @@ const Dashboard = () => {
       .then((response) => response.json())
       .then((data) => {
         setUserQueries(data.userQueries);
-        console.log("User queries:", data.userQueries);
+
+        console.log("User queries:", data);
       });
   }, [dispatch]);
 
