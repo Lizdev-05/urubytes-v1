@@ -31,13 +31,7 @@ const Interest = () => {
         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/register/",
         registrationData
       );
-      // dispatch(
-      //   updateLoginData({
-      //     userID: response.data.userID,
-      //     orgID: response.data.orgID,
-      //     token: response.data.token,
-      //   })
-      // );
+
       const data = {
         userID: response.data.userID,
         orgID: response.data.orgID,
@@ -48,6 +42,9 @@ const Interest = () => {
       console.log(response.data);
       console.log("Registration successful:", response.data.message);
       toast.success(response.data.message || "Registration successful");
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 2000);
       navigate("/dashboard");
     } catch (error) {
       console.error("Failed to send data to backend:", error);

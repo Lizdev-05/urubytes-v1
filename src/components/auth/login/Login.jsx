@@ -49,6 +49,9 @@ const Login = () => {
 
       console.log("Login successful:", response.data);
       toast.success(response.data.message || "Login successful");
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 2000);
       navigate("/dashboard");
     } catch (error) {
       console.error("Login failed:", error.response.data.error);
