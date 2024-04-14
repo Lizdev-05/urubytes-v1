@@ -6,17 +6,32 @@ import loginReducer from "./loginReducer";
 import registrationReducer from "./registrationReducer";
 import sourcesReducer from "./sourcesReducer";
 
-const persistConfig = {
+// const persistConfig = {
+//   key: "login",
+//   storage,
+// };
+
+// const rootReducer = {
+//   login: persistReducer(persistConfig, loginReducer),
+//   registration: registrationReducer,
+//   sources: persistReducer(persistConfig, sourcesReducer),
+// };
+
+const loginPersistConfig = {
   key: "login",
   storage,
 };
 
-const rootReducer = {
-  login: persistReducer(persistConfig, loginReducer),
-  registration: registrationReducer,
-  sources: persistReducer(persistConfig, sourcesReducer),
+const sourcesPersistConfig = {
+  key: "sources",
+  storage,
 };
 
+const rootReducer = {
+  login: persistReducer(loginPersistConfig, loginReducer),
+  registration: registrationReducer,
+  sources: persistReducer(sourcesPersistConfig, sourcesReducer),
+};
 const store = configureStore({
   reducer: rootReducer,
 });
