@@ -5,11 +5,12 @@ import internalInsights2 from "../../assets/ic_baseline-insights.png";
 import { FaPlus } from "react-icons/fa";
 import Navbar from "../../components/navbar/Navbar";
 import { Link } from "react-router-dom";
-import frame1 from "../../assets/marketInsight/frame1.png";
-import frame2 from "../../assets/marketInsight/frame2.png";
-import frame3 from "../../assets/marketInsight/frame3.png";
-import frame4 from "../../assets/marketInsight/frame4.png";
-import frame5 from "../../assets/marketInsight/frame5.png";
+import pdf from "../../assets/pdf.png";
+import { IoCopyOutline } from "react-icons/io5";
+import { FaRegThumbsUp } from "react-icons/fa";
+import { FaRegThumbsDown } from "react-icons/fa";
+import { IoDownloadOutline } from "react-icons/io5";
+import { IoShareSocialOutline } from "react-icons/io5";
 
 const ReturningUser = () => {
   return (
@@ -54,11 +55,21 @@ const ReturningUser = () => {
               </div>
               <div className="flex items-center justify-between mt-3">
                 <div className="flex gap-2 ">
-                  <img src={frame1} alt="" className="w-8 h-8" />
-                  <img src={frame2} alt="" className="w-8 h-8" />
-                  <img src={frame3} alt="" className="w-8 h-8" />
-                  <img src={frame4} alt="" className="w-8 h-8" />
-                  <img src={frame5} alt="" className="w-8 h-8" />
+                  <p className="boder border border-gray-200 rounded-sm px-2 py-1">
+                    {" "}
+                    <FaRegThumbsUp />
+                  </p>
+                  <p className="boder border border-gray-200 rounded-sm px-2 py-1">
+                    {" "}
+                    <FaRegThumbsDown />
+                  </p>
+                  <p className="boder border border-gray-200 rounded-sm px-2 py-1">
+                    <IoDownloadOutline />
+                  </p>
+                  <p className="boder border border-gray-200 rounded-sm px-2 py-1">
+                    {" "}
+                    <IoShareSocialOutline />
+                  </p>
                 </div>
 
                 <Link to="/addSource" className="flex  border-gray-400 ">
@@ -109,28 +120,20 @@ const ReturningUser = () => {
             </div>
           </div>
         </div>
-        <div className="block sm:col-span-1 py-4  px-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100">
-          <div className="block w-[280px] h-[200px] overflow-hidden bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-100 transition-transform transform hover:scale-105">
-            <iframe
-              src="https://www.youtube.com/embed/mUMi9VJmMSg"
-              width="100%"
-              height="100%"
-              loading="lazy"
-              title="Custom title"
-              allow="autoplay"
-              allowFullScreen
-            ></iframe>
-          </div>
-          <div className="my-6">
-            <div className="py-4 px-4 bg-white border border-gray-200 shadow dark:border-gray-10">
-              <h2 className="text-sm font-bold">Total Sources Connected</h2>
-            </div>
-            <div className="py-6 px-10 bg-white border border-gray-200 shadow dark:border-gray-10 flex justify-center items-center">
-              <span className="font-bold text-2xl">0</span>
+        <div className="block sm:col-span-1 py-4 px-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100">
+          <div className="block  overflow-hidden bg-white transition-transform transform hover:scale-105">
+            <div className="my-6 rounded-xl ">
+              <div className="py-4  px-4  border rounded-xl border-gradient ">
+                <h2 className="text-sm font-bold">Sources Connected</h2>
+
+                <div className="py-2">
+                  <img src={pdf} alt={pdf} />
+                </div>
+              </div>
             </div>
           </div>
 
-          <h1 className="mt-4 text-[16px] font-bold">Recent Search</h1>
+          <h1 className=" text-[16px] font-bold">Recent Search</h1>
           <p className="mt-4 ml-6 font-thin text-gray-500">
             Nothing here yet...
           </p>
