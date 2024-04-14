@@ -46,7 +46,7 @@ const Dashboard = () => {
   //   return <div>Loading...</div>;
   // }
 
-  return userQueries.length === 0 ? (
+  return !userQueries || userQueries.length === 0 ? (
     <NewUser />
   ) : (
     <ReturningUser userQueries={userQueries} />
