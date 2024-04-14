@@ -75,7 +75,7 @@ const ReturningUser = () => {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row justify-between py-2 my-8 gap-2">
-            <div className="flex-grow flex flex-col items-start justify-start py-4 px-12 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-100 transition-transform transform hover:scale-105">
+            <div className="flex flex-grow flex-col items-start justify-start py-4 pl-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-100 transition-transform transform hover:scale-105">
               <div className="flex items-center gap-2">
                 <img
                   src={internalInsights}
