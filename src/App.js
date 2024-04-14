@@ -21,11 +21,14 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import ReturningUser from "./pages/dashboard/ReturningUser";
+import { useSelector } from "react-redux";
 
 function App() {
   const [isProfileModalOpen, setProfileModalOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const sources = useSelector((state) => state.sources);
+  const isNewUser = sources.length === 0;
 
   const toggleProfileModal = () => {
     setProfileModalOpen(!isProfileModalOpen);
@@ -58,11 +61,19 @@ function App() {
         <Route path="/survey" element={<Survey />} />
         <Route path="/interest" element={<Interest />} />
         <Route path="/emailVerification" element={<EmailVerification />} />
-        <Route
+        {/* <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        /> */}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              {isNewUser ? <Dashboard /> : <ReturningUser />}
             </ProtectedRoute>
           }
         />
