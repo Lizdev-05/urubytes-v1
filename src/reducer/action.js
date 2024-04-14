@@ -25,7 +25,12 @@ export const updateLoginData = (data) => {
 
 export const UPDATE_TABLE_DATA = "UPDATE_TABLE_DATA";
 
-export const updateTableData = (data) => ({
+// export const updateTableData = (data) => ({
+//   type: UPDATE_TABLE_DATA,
+//   payload: data,
+// });
+
+export const updateTableData = ({ data, isLoading }) => ({
   type: UPDATE_TABLE_DATA,
-  payload: data,
+  payload: { data, isLoading },
 });

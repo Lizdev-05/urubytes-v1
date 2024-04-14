@@ -6,12 +6,12 @@ import { Typography } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { updateSources } from "../../reducer/action";
 import { updateTableData } from "../../reducer/action";
 
 const DataSources = () => {
   const [tableData, setTableData] = useState([]);
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
 
   const orgId = useSelector((state) => state.login.orgID);
   const token = useSelector((state) => state.login.token);
@@ -21,6 +21,7 @@ const DataSources = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const response = await axios.get(
           `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/?orgID=${orgId}`,
@@ -37,9 +38,11 @@ const DataSources = () => {
       } catch (error) {
         console.error("Error fetching data:", error);
       }
+      setIsLoading(false);
     };
     fetchData();
   }, [orgId]);
+  dispatch(updateTableData({ data: tableData, isLoading }));
 
   const TABLE_HEAD = ["Type", "Title", "Status", "Date Added", "Last Updated"];
 
@@ -54,7 +57,7 @@ const DataSources = () => {
             <h1 className="text-3xl font-semibold ">Data Sources</h1>
             <div className="flex justify-between gap-2">
               <Link
-                to="/addSource"
+                to="/internalInsight"
                 className="flex items-center border-gray-400"
               >
                 <button className=" text-dark font-semi-bold py-2 px-4 rounded-lg  border flex items-center gap-2 shadow">
@@ -68,7 +71,7 @@ const DataSources = () => {
               </Link>
 
               <Link
-                to="/internalInsight"
+                to="/addSource"
                 className=" border border-gray-200 rounded-lg  flex items-center  bg-yellow-color hover:bg-yellow-600  "
               >
                 <button className=" text-white font-semi-bold py-2 px-8   flex items-center gap-2 ">
