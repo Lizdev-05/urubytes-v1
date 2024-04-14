@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { updateSources } from "../../reducer/action";
+import { updateTableData } from "../../reducer/action";
 
 const DataSources = () => {
   const [tableData, setTableData] = useState([]);
@@ -30,7 +31,8 @@ const DataSources = () => {
           }
         );
         setTableData(response.data);
-        dispatch(updateSources(response.data));
+        dispatch(updateTableData(response.data));
+        // dispatch(updateSources(response.data));
         console.log(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
