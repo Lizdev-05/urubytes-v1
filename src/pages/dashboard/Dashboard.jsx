@@ -77,7 +77,7 @@ const Dashboard = () => {
               allowFullScreen
             ></iframe>
           </div>
-          <div className="my-6 border border-gradient rounded-xl ">
+          <div className="my-6 rounded-xl ">
             <div className="py-4 pb-8 px-4  border  border-gradient ">
               <h2 className="text-sm font-bold">Sources Connected</h2>
               <p className="mt-4 ml-6 font-thin text-gray-600">

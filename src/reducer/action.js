@@ -7,11 +7,6 @@ export const updateRegistrationData = (data) => ({
 
 export const UPDATE_LOGIN_DATA = "UPDATE_LOGIN_DATA";
 
-// export const updateLoginData = (data) => ({
-//   type: UPDATE_LOGIN_DATA,
-//   payload: data,
-// });
-
 export const updateLoginData = (data) => {
   return (dispatch) => {
     dispatch({
@@ -20,3 +15,10 @@ export const updateLoginData = (data) => {
     });
   };
 };
+
+export const UPDATE_SOURCES = "UPDATE_SOURCES";
+
+export const updateSources = (data) => ({
+  type: UPDATE_SOURCES,
+  payload: data,
+});
