@@ -58,7 +58,7 @@ const DataSources = () => {
           }
         );
         setTableData(response.data);
-        dispatch(updateTableData({ data: response.data, isLoading: false })); // Dispatch here
+        dispatch(updateTableData({ data: response.data, isLoading: false }));
         console.log(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);

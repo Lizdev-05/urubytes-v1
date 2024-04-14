@@ -25,10 +25,16 @@ import { useSelector, useDispatch } from "react-redux";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const [userQueries, setUserQueries] = useState([]);
+  const token = useSelector((state) => state.login.token);
 
   useEffect(() => {
     fetch(
-      "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auxi/dashboard/"
+      "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auxi/dashboard/",
+      {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      }
     )
       .then((response) => response.json())
       .then((data) => {
