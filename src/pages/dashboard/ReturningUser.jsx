@@ -13,7 +13,7 @@ import { IoDownloadOutline } from "react-icons/io5";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const ReturningUser = () => {
+const ReturningUser = ({ userQueries }) => {
   return (
     <div className="bg-grey-bg h-screen w-screen overflow-y-auto">
       <Navbar />
@@ -118,6 +118,11 @@ const ReturningUser = () => {
             <div className="flex-grow flex flex-col bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-100 transition-transform transform hover:scale-105">
               <div class="border-b-2 border-neutral-500 px-8 py-3 dark:border-black/10 ">
                 <h2 className="font-semibold"> Total Question Asked</h2>
+                <div class="p-6 flex items-center m-auto ">
+                  <span className="font-bold text-2xl text-center">
+                    {userQueries.length}
+                  </span>
+                </div>
               </div>
               <div class="p-6 flex items-center m-auto ">
                 <span className="font-bold text-2xl text-center">1</span>
