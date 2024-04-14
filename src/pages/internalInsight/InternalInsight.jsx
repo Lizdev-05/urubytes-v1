@@ -62,16 +62,13 @@ const InternalInsight = () => {
     setQuery(event.target.value);
   };
 
-  // const handleToggle = () => {
-  //   setMode(mode === "internal" ? "external" : "internal");
-  // };
   const handleToggle = () => {
     setMode((prevMode) => (prevMode === "internal" ? "external" : "internal"));
   };
   return (
-    <div className="bg-grey-bg h-screen w-screen overflow-hidden internal">
+    <div className="bg-grey-bg h-screen w-screen overflow-y-auto internal">
       <Navbar />
-      <div className="grid grid-cols-1 sm:grid-cols-4 p-2 my-1 gap-1 h-full overflow-hidden">
+      <div className="grid grid-cols-1 sm:grid-cols-4 p-2 overflow-hidden">
         <div className="block sm:col-span-1 py-4 px-8 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100">
           <form className="max-w-md mx-auto">
             <div className="relative">
