@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 import "./InternalInsight.css";
 import { useSelector } from "react-redux";
-import Markdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const InternalInsight = () => {
   const [query, setQuery] = useState("");
@@ -62,10 +62,12 @@ const InternalInsight = () => {
     setQuery(event.target.value);
   };
 
+  // const handleToggle = () => {
+  //   setMode(mode === "internal" ? "external" : "internal");
+  // };
   const handleToggle = () => {
-    setMode(mode === "internal" ? "external" : "internal");
+    setMode((prevMode) => (prevMode === "internal" ? "external" : "internal"));
   };
-
   return (
     <div className="bg-grey-bg h-screen w-screen overflow-hidden internal">
       <Navbar />
@@ -110,7 +112,7 @@ const InternalInsight = () => {
 
         <div className="sm:col-span-3 block py-4 px-8 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100 mainInternal">
           <div className="flex justify-between items-center mb-4">
-            <div className="flex space-x-4">
+            {/* <div className="flex space-x-4">
               <button
                 onClick={() => handleToggle()}
                 className={`px-4 py-2 text-sm rounded-md ${
@@ -127,6 +129,30 @@ const InternalInsight = () => {
               >
                 External Insight
               </button>
+            </div> */}
+            <div className="flex items-center justify-between">
+              <span
+                className={`mr-3 ${
+                  mode === "internal" ? "text-dark" : "text-gray-500"
+                }`}
+              >
+                Internal Insight
+              </span>
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  checked={mode === "external"}
+                  onChange={handleToggle}
+                />
+                <span className="slider round"></span>
+              </label>
+              <span
+                className={`ml-3 ${
+                  mode === "external" ? "text-dark" : "text-gray-500"
+                }`}
+              >
+                External Insight
+              </span>
             </div>
             <Link
               to="/addSource"

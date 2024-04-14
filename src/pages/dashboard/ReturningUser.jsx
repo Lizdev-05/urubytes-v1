@@ -11,8 +11,9 @@ import { FaRegThumbsUp } from "react-icons/fa";
 import { FaRegThumbsDown } from "react-icons/fa";
 import { IoDownloadOutline } from "react-icons/io5";
 import { IoShareSocialOutline } from "react-icons/io5";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
-const ReturningUser = () => {
+const ReturningUser = ({ userQueries }) => {
   return (
     <div className="bg-grey-bg h-screen w-screen overflow-y-auto">
       <Navbar />
@@ -55,6 +56,10 @@ const ReturningUser = () => {
               </div>
               <div className="flex items-center justify-between mt-3">
                 <div className="flex gap-2 ">
+                  <p className="boder border border-gray-200 rounded-sm px-2 py-1">
+                    {" "}
+                    <IoCopyOutline />
+                  </p>
                   <p className="boder border border-gray-200 rounded-sm px-2 py-1">
                     {" "}
                     <FaRegThumbsUp />
@@ -113,6 +118,11 @@ const ReturningUser = () => {
             <div className="flex-grow flex flex-col bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-100 transition-transform transform hover:scale-105">
               <div class="border-b-2 border-neutral-500 px-8 py-3 dark:border-black/10 ">
                 <h2 className="font-semibold"> Total Question Asked</h2>
+                <div class="p-6 flex items-center m-auto ">
+                  <span className="font-bold text-2xl text-center">
+                    {userQueries.length}
+                  </span>
+                </div>
               </div>
               <div class="p-6 flex items-center m-auto ">
                 <span className="font-bold text-2xl text-center">1</span>
@@ -134,9 +144,15 @@ const ReturningUser = () => {
           </div>
 
           <h1 className=" text-[16px] font-bold">Recent Search</h1>
-          <p className="mt-4 ml-6 font-thin text-gray-500">
-            Nothing here yet...
-          </p>
+          <ul>
+            <li className="bg-[#F0F2F9] p-2">
+              <span>Give me some insight abo...</span>
+              <span className="flex justify-between items-center">
+                <span className="text-sm text-gray-500">Thur Mar 22, 2024</span>
+                <RiDeleteBin6Line className="text-red-600 font-bold text-5xl  bg-white py-2" />
+              </span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

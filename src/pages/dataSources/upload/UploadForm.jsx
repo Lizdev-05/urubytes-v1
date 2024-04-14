@@ -75,24 +75,24 @@ const UploadSource = () => {
   return (
     <div className="border rounded-xl border-gray-300 w-4/5 px-12 py-4 m-auto">
       <div className="flex justify-start gap-8">
-        <UploadCard
+        {/* <UploadCard
           source="drive"
           title="Google Drive"
           handleClick={handleSourceClick}
           isSelected={selectedSource === "drive"}
-        />
+        /> */}
         <UploadCard
           source="document"
           title="Upload"
           handleClick={handleSourceClick}
           isSelected={selectedSource === "document"}
         />
-        <UploadCard
+        {/* <UploadCard
           source="link"
           title="Add Link"
           handleClick={handleSourceClick}
           isSelected={selectedSource === "link"}
-        />
+        /> */}
       </div>
       <div className="">
         <hr className=" border-t border-grey-bg w-full " />
