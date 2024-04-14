@@ -4,6 +4,7 @@ import internalInsights from "../../assets/ic_baseline-insights2.png";
 import { FaPlus } from "react-icons/fa";
 import Navbar from "../../components/navbar/Navbar";
 import { Link } from "react-router-dom";
+import uruVideo from "../../assets/urubytes.mp4";
 
 const NewUser = () => {
   return (
@@ -67,7 +68,7 @@ const NewUser = () => {
         </div>
         <div className="block sm:col-span-1 py-4  px-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100">
           <div className="block w-[280px] h-[200px] overflow-hidden bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-100 transition-transform transform hover:scale-105">
-            <iframe
+            {/* <iframe
               src="https://www.youtube.com/embed/mUMi9VJmMSg"
               width="100%"
               height="100%"
@@ -75,7 +76,15 @@ const NewUser = () => {
               title="Custom title"
               allow="autoplay"
               allowFullScreen
-            ></iframe>
+            ></iframe> */}
+            <video
+              src={uruVideo}
+              className="h-auto max-h-[600px]  w-full object-contain lg:h-full lg:object-fill  "
+              autoPlay
+              muted
+              loop
+              controls
+            />
           </div>
           <div className="my-6 rounded-xl ">
             <div className="py-4 pb-8 px-4  border  border-gradient ">
