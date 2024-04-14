@@ -5,10 +5,12 @@ import Navbar from "../../components/navbar/Navbar";
 import { Typography } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { updateSources } from "../../reducer/action";
 
 const DataSources = () => {
   const [tableData, setTableData] = useState([]);
+  const dispatch = useDispatch();
 
   const orgId = useSelector((state) => state.login.orgID);
   const token = useSelector((state) => state.login.token);
@@ -28,6 +30,7 @@ const DataSources = () => {
           }
         );
         setTableData(response.data);
+        dispatch(updateSources(response.data));
         console.log(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
