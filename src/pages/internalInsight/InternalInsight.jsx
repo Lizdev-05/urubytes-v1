@@ -195,25 +195,6 @@ const InternalInsight = () => {
               <div className="loadingSpinner"></div>
             </div>
           )}
-          {/* {feedback && (
-            <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
-              <p className="text-gray-600 mb-4 text-[1rem] ">
-                {feedback.insights}
-              </p>
-
-              <p>
-                {Object.entries(feedback.metadata).map(([key, value]) => (
-                  <div key={key}>
-                    Source:
-                    <span className="text-primary-blue">
-                      {" "}
-                      {value.file_name}
-                    </span>
-                  </div>
-                ))}
-              </p>
-            </div>
-          )} */}
 
           {feedback && (
             <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">

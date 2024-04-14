@@ -31,7 +31,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row justify-between py-2 my-8 gap-2">
-            <div className="flex flex-col items-start justify-start py-4 px-12 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-100 transition-transform transform hover:scale-105">
+            <div className="flex flex-grow flex-col items-start justify-start py-4 pl-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-100 transition-transform transform hover:scale-105">
               <div className="flex items-center gap-2">
                 <img
                   src={internalInsights}
@@ -46,7 +46,7 @@ const Dashboard = () => {
                 Start by pointing us to a data source.
               </p>
 
-              <div className="flex justify-between">
+              <div className="flex  justify-between">
                 <Link to="/addSource" className="">
                   <button className="text-dark font-semi-bold py-2 px-6 rounded-xl mt-6 border border-gray-600 flex items-center gap-2">
                     <FaPlus />
@@ -55,40 +55,39 @@ const Dashboard = () => {
                 </Link>
               </div>
             </div>
-            <div className="block w-[400px] h-[200px] overflow-hidden bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-100 transition-transform transform hover:scale-105">
-              <iframe
-                src="https://www.youtube.com/embed/mUMi9VJmMSg"
-                width="100%"
-                height="100%"
-                loading="lazy"
-                title="Custom title"
-                allow="autoplay"
-                allowFullScreen
-              ></iframe>
+            <div className="flex-grow flex flex-col bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-100 transition-transform transform hover:scale-105">
+              <div class="border-b-2 border-neutral-500 px-8 py-3 dark:border-black/10 ">
+                <h2 className="font-semibold"> Total Question Asked</h2>
+              </div>
+              <div class="p-6 flex items-center m-auto ">
+                <span className="font-bold text-2xl text-center">0</span>
+              </div>
             </div>
           </div>
         </div>
-        <div className="block sm:col-span-1 py-4 px-8 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100">
-          <div>
-            <h2 className=" text-xl font-semibold">Recent Activity</h2>
-            <div className="py-4 px-4 bg-white border border-gray-200 shadow dark:border-gray-10">
-              <h2 className="text-sm font-bold">Total Question Asked</h2>
-            </div>
-            <div className="py-6 px-10 bg-white border border-gray-200 shadow dark:border-gray-10 flex justify-center items-center">
-              <span className="font-bold text-2xl">0</span>
-            </div>
+        <div className="block sm:col-span-1 py-4  px-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100">
+          <div className="block w-[280px] h-[200px] overflow-hidden bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-100 transition-transform transform hover:scale-105">
+            <iframe
+              src="https://www.youtube.com/embed/mUMi9VJmMSg"
+              width="100%"
+              height="100%"
+              loading="lazy"
+              title="Custom title"
+              allow="autoplay"
+              allowFullScreen
+            ></iframe>
           </div>
-          <div className="my-6">
-            <div className="py-4 px-4 bg-white border border-gray-200 shadow dark:border-gray-10">
-              <h2 className="text-sm font-bold">Total Sources Connected</h2>
-            </div>
-            <div className="py-6 px-10 bg-white border border-gray-200 shadow dark:border-gray-10 flex justify-center items-center">
-              <span className="font-bold text-2xl">0</span>
+          <div className="my-6 border border-gradient rounded-xl ">
+            <div className="py-4 pb-8 px-4  border  border-gradient ">
+              <h2 className="text-sm font-bold">Sources Connected</h2>
+              <p className="mt-4 ml-6 font-thin text-gray-600">
+                Nothing here yet...
+              </p>
             </div>
           </div>
 
           <h1 className="mt-4 text-[16px] font-bold">Recent Search</h1>
-          <p className="mt-4 ml-6 font-thin text-gray-500">
+          <p className="mt-4 ml-6 font-thin text-gray-600">
             Nothing here yet...
           </p>
         </div>
