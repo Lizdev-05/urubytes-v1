@@ -11,6 +11,7 @@ import { FaRegThumbsUp } from "react-icons/fa";
 import { FaRegThumbsDown } from "react-icons/fa";
 import { IoDownloadOutline } from "react-icons/io5";
 import { IoShareSocialOutline } from "react-icons/io5";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const ReturningUser = () => {
   return (
@@ -55,6 +56,10 @@ const ReturningUser = () => {
               </div>
               <div className="flex items-center justify-between mt-3">
                 <div className="flex gap-2 ">
+                  <p className="boder border border-gray-200 rounded-sm px-2 py-1">
+                    {" "}
+                    <IoCopyOutline />
+                  </p>
                   <p className="boder border border-gray-200 rounded-sm px-2 py-1">
                     {" "}
                     <FaRegThumbsUp />
@@ -134,9 +139,15 @@ const ReturningUser = () => {
           </div>
 
           <h1 className=" text-[16px] font-bold">Recent Search</h1>
-          <p className="mt-4 ml-6 font-thin text-gray-500">
-            Nothing here yet...
-          </p>
+          <ul>
+            <li className="bg-[#F0F2F9] p-2">
+              <span>Give me some insight abo...</span>
+              <span className="flex justify-between items-center">
+                <span className="text-sm text-gray-500">Thur Mar 22, 2024</span>
+                <RiDeleteBin6Line className="text-red-600 font-bold text-5xl  bg-white py-2" />
+              </span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
