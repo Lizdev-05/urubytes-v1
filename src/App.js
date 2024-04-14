@@ -21,7 +21,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import ReturningUser from "./pages/dashboard/ReturningUser";
-import { useSelector } from "react-redux";
 
 function App() {
   const [isProfileModalOpen, setProfileModalOpen] = useState(false);

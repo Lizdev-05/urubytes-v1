@@ -46,8 +46,8 @@ const Interest = () => {
       dispatch(updateLoginData(data));
       dispatch(updateRegistrationData(data));
       console.log(response.data);
-      console.log("Registration successful:", message);
-      toast.success(message || "Registration successful");
+      console.log("Registration successful:", response.data.message);
+      toast.success(response.data.message || "Registration successful");
       navigate("/dashboard");
     } catch (error) {
       console.error("Failed to send data to backend:", error);

@@ -48,11 +48,11 @@ const Login = () => {
       );
 
       console.log("Login successful:", response.data);
-      toast.success(message || "Login successful");
+      toast.success(response.data.message || "Login successful");
       navigate("/dashboard");
     } catch (error) {
-      console.error("Login failed:", error);
-      toast.error(response.data.error || "Login failed");
+      console.error("Login failed:", error.response.data.error);
+      toast.error(error.response.data.error || "Login failed");
     }
   };
 
