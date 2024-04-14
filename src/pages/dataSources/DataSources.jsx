@@ -19,6 +19,32 @@ const DataSources = () => {
   console.log("Org ID:", orgId);
   console.log("Token:", token);
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       const response = await axios.get(
+  //         `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/?orgID=${orgId}`,
+  //         {
+  //           headers: {
+  //             Authorization: `Token ${token}`,
+  //           },
+  //         }
+  //       );
+  //       setTableData(response.data);
+  //       dispatch(updateTableData(response.data));
+  //       // dispatch(updateSources(response.data));
+  //       console.log(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //     setIsLoading(false);
+  //   };
+  //   fetchData();
+  // }, [orgId]);
+  // dispatch(updateTableData({ data: tableData, isLoading }));
+
+  // DataSources.jsx
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -32,17 +58,15 @@ const DataSources = () => {
           }
         );
         setTableData(response.data);
-        dispatch(updateTableData(response.data));
-        // dispatch(updateSources(response.data));
+        dispatch(updateTableData({ data: response.data, isLoading: false })); // Dispatch here
         console.log(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setIsLoading(false);
       }
-      setIsLoading(false);
     };
     fetchData();
   }, [orgId]);
-  dispatch(updateTableData({ data: tableData, isLoading }));
 
   const TABLE_HEAD = ["Type", "Title", "Status", "Date Added", "Last Updated"];
 
