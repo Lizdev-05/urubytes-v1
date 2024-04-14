@@ -5,6 +5,7 @@ import storage from "redux-persist/lib/storage";
 import loginReducer from "./loginReducer";
 import registrationReducer from "./registrationReducer";
 import sourcesReducer from "./sourcesReducer";
+import tableDataReducer from "./sourcesReducer";
 
 // const persistConfig = {
 //   key: "login",
@@ -31,6 +32,7 @@ const rootReducer = {
   login: persistReducer(loginPersistConfig, loginReducer),
   registration: registrationReducer,
   sources: persistReducer(sourcesPersistConfig, sourcesReducer),
+  tableData: tableDataReducer,
 };
 const store = configureStore({
   reducer: rootReducer,
