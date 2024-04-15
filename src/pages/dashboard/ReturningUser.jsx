@@ -17,8 +17,11 @@ import { useNavigate } from "react-router-dom";
 const ReturningUser = ({ userQueries, data }) => {
   const navigate = useNavigate();
 
+  // const handleUserQueriesClick = () => {
+  //   navigate("/internal-insight");
+  // };
   const handleUserQueriesClick = () => {
-    navigate("/internal-insight");
+    navigate("/internal-insight", { state: { selectedQuery: userQueries } });
   };
 
   return (
@@ -127,10 +130,7 @@ const ReturningUser = ({ userQueries, data }) => {
                 <h2 className="font-semibold"> Total Question Asked</h2>
               </div>
               <div class="p-6 flex items-center m-auto ">
-                <span
-                  className="font-bold text-2xl text-center"
-                  onClick={handleUserQueriesClick}
-                >
+                <span className="font-bold text-2xl text-center">
                   {userQueries}
                 </span>
               </div>
@@ -153,7 +153,10 @@ const ReturningUser = ({ userQueries, data }) => {
           <h1 className=" text-[16px] font-bold">Recent Search</h1>
           {data.recentSearches.user.map((search, index) => (
             <ul key={index}>
-              <li className="bg-[#F0F2F9] p-2">
+              <li
+                className="bg-[#F0F2F9] p-2 my-2"
+                onClick={handleUserQueriesClick}
+              >
                 <span>{search.query}</span>
                 <span className="flex justify-between items-center">
                   <span className="text-sm text-gray-500">
