@@ -101,6 +101,8 @@ const InternalInsight = () => {
         const data = await response.json();
         setFeedback(data);
         setLoading(false);
+        console.log("Feedback:", data);
+        console.log(response);
       } else {
         console.error("Failed to fetch query:", response);
         setLoading(false);
