@@ -16,13 +16,6 @@ export const updateLoginData = (data) => {
   };
 };
 
-// export const UPDATE_SOURCES = "UPDATE_SOURCES";
-
-// export const updateSources = (data) => ({
-//   type: UPDATE_SOURCES,
-//   payload: data,
-// });
-
 export const UPDATE_TABLE_DATA = "UPDATE_TABLE_DATA";
 
 // export const updateTableData = (data) => ({
