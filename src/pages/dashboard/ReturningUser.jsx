@@ -120,12 +120,9 @@ const ReturningUser = ({ userQueries, data }) => {
                 <h2 className="font-semibold"> Total Question Asked</h2>
                 <div class="p-6 flex items-center m-auto ">
                   <span className="font-bold text-2xl text-center">
-                    {userQueries.length}
+                    {userQueries}
                   </span>
                 </div>
-              </div>
-              <div class="p-6 flex items-center m-auto ">
-                <span className="font-bold text-2xl text-center">1</span>
               </div>
             </div>
           </div>
