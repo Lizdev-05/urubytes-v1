@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const UploadSource = () => {
-  const [selectedSource, setSelectedSource] = useState("drive");
+  const [selectedSource, setSelectedSource] = useState("document");
   const [selectedFiles, setSelectedFiles] = useState([]);
   const navigate = useNavigate();
 

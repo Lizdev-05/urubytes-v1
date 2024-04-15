@@ -110,29 +110,44 @@ const SideBar = () => {
 
         <ul className="mt-auto">
           <hr className="border-t border-white my-2" />
+
           {bottomMenus.map((Menu, i) => (
             <React.Fragment key={i}>
-              <Link
-                to={Menu.link}
-                className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm-center gap-x-4`}
-                onClick={
-                  Menu.title === "Bright ahedor"
-                    ? () => setShowModalCard(!showModalCard)
-                    : null
-                }
-              >
-                <img src={Menu.src} alt={Menu.title} />
-                <span
-                  style={{
-                    transitionDelay: `${i + 3}00ms`,
-                  }}
-                  className={` ${
-                    !open && "opacity-0 translate-x-28 overflow-hidden"
-                  } origin-left duration-200`}
+              {Menu.title === "Bright ahedor" ? (
+                <div
+                  className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm-center gap-x-4`}
+                  onClick={() => setShowModalCard(!showModalCard)}
                 >
-                  {Menu.title}
-                </span>
-              </Link>
+                  <img src={Menu.src} alt={Menu.title} />
+                  <span
+                    style={{
+                      transitionDelay: `${i + 3}00ms`,
+                    }}
+                    className={` ${
+                      !open && "opacity-0 translate-x-28 overflow-hidden"
+                    } origin-left duration-200`}
+                  >
+                    {Menu.title}
+                  </span>
+                </div>
+              ) : (
+                <Link
+                  to={Menu.link}
+                  className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm-center gap-x-4`}
+                >
+                  <img src={Menu.src} alt={Menu.title} />
+                  <span
+                    style={{
+                      transitionDelay: `${i + 3}00ms`,
+                    }}
+                    className={` ${
+                      !open && "opacity-0 translate-x-28 overflow-hidden"
+                    } origin-left duration-200`}
+                  >
+                    {Menu.title}
+                  </span>
+                </Link>
+              )}
               <hr className="border-t border-white my-2" />
             </React.Fragment>
           ))}
