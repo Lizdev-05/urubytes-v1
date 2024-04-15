@@ -67,19 +67,10 @@ const NewUser = () => {
           </div>
         </div>
         <div className="block sm:col-span-1 py-4  px-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100">
-          <div className="block w-[280px] h-[200px] overflow-hidden bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-100 transition-transform transform hover:scale-105">
-            {/* <iframe
-              src="https://www.youtube.com/embed/mUMi9VJmMSg"
-              width="100%"
-              height="100%"
-              loading="lazy"
-              title="Custom title"
-              allow="autoplay"
-              allowFullScreen
-            ></iframe> */}
+          <div className="block overflow-hidden bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-100 transition-transform transform hover:scale-105">
             <video
               src={uruVideo}
-              className="h-auto max-h-[600px]  w-full object-contain lg:h-full lg:object-fill  "
+              className="h-auto max-h-[600px]  w-full object-contain lg:h-full  lg:w-full  "
               autoPlay
               muted
               loop
