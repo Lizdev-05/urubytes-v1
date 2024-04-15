@@ -17,12 +17,8 @@ import { useNavigate } from "react-router-dom";
 const ReturningUser = ({ userQueries, data }) => {
   const navigate = useNavigate();
 
-  // const handleUserQueriesClick = () => {
-  //   navigate("/internal-insight");
-  // };
-
   const handleUserQueriesClick = () => {
-    navigate("/internal-insight", { state: { selectedQuery: userQueries } });
+    navigate("/internal-insight");
   };
 
   return (

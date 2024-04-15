@@ -7,20 +7,17 @@ import "./InternalInsight.css";
 import { useSelector } from "react-redux";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { useLocation } from "react-router-dom";
 
 const InternalInsight = () => {
   const [query, setQuery] = useState("");
   const [mode, setMode] = useState("internal");
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState(null);
-  // const [selectedQuery, setSelectedQuery] = useState(null);
+  const [selectedQuery, setSelectedQuery] = useState(null);
   const [previousQueries, setPreviousQueries] = useState(() => {
     const savedQueries = localStorage.getItem("previousQueries");
     return savedQueries ? JSON.parse(savedQueries) : [];
   });
-  const location = useLocation();
-  const selectedQuery = location.state?.selectedQuery;
 
   const token = useSelector((state) => state.login.token);
   const orgId = useSelector((state) => state.login.orgID);
