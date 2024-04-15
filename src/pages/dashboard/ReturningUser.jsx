@@ -12,8 +12,19 @@ import { FaRegThumbsDown } from "react-icons/fa";
 import { IoDownloadOutline } from "react-icons/io5";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 const ReturningUser = ({ userQueries, data }) => {
+  const navigate = useNavigate();
+
+  // const handleUserQueriesClick = () => {
+  //   navigate("/internal-insight");
+  // };
+
+  const handleUserQueriesClick = () => {
+    navigate("/internal-insight", { state: { selectedQuery: userQueries } });
+  };
+
   return (
     <div className="bg-grey-bg h-screen w-screen overflow-y-auto">
       <Navbar />
@@ -118,11 +129,14 @@ const ReturningUser = ({ userQueries, data }) => {
             <div className="flex-grow flex flex-col bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-100 transition-transform transform hover:scale-105">
               <div class="border-b-2 border-neutral-500 px-8 py-3 dark:border-black/10 ">
                 <h2 className="font-semibold"> Total Question Asked</h2>
-                <div class="p-6 flex items-center m-auto ">
-                  <span className="font-bold text-2xl text-center">
-                    {userQueries}
-                  </span>
-                </div>
+              </div>
+              <div class="p-6 flex items-center m-auto ">
+                <span
+                  className="font-bold text-2xl text-center"
+                  onClick={handleUserQueriesClick}
+                >
+                  {userQueries}
+                </span>
               </div>
             </div>
           </div>
@@ -141,18 +155,9 @@ const ReturningUser = ({ userQueries, data }) => {
           </div>
 
           <h1 className=" text-[16px] font-bold">Recent Search</h1>
-          {/* <ul>
-            <li className="bg-[#F0F2F9] p-2">
-              <span>Give me some insight abo...</span>
-              <span className="flex justify-between items-center">
-                <span className="text-sm text-gray-500">Thur Mar 22, 2024</span>
-                <RiDeleteBin6Line className="text-red-600 font-bold text-5xl  bg-white py-2" />
-              </span>
-            </li>
-          </ul> */}
-          <ul>
-            {data.recentSearches.user.map((search, index) => (
-              <li key={index} className="bg-[#F0F2F9] p-2">
+          {data.recentSearches.user.map((search, index) => (
+            <ul key={index}>
+              <li className="bg-[#F0F2F9] p-2">
                 <span>{search.query}</span>
                 <span className="flex justify-between items-center">
                   <span className="text-sm text-gray-500">
@@ -161,8 +166,8 @@ const ReturningUser = ({ userQueries, data }) => {
                   <RiDeleteBin6Line className="text-red-600 font-bold text-5xl  bg-white py-2" />
                 </span>
               </li>
-            ))}
-          </ul>
+            </ul>
+          ))}
         </div>
       </div>
     </div>
