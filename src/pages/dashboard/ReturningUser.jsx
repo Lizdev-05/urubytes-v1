@@ -21,7 +21,7 @@ const ReturningUser = ({ userQueries, data }) => {
   //   navigate("/internal-insight");
   // };
   const handleUserQueriesClick = () => {
-    navigate("/internal-insight", { state: { selectedQuery: userQueries } });
+    navigate("/internalInsight", { state: { selectedQuery: userQueries } });
   };
 
   return (

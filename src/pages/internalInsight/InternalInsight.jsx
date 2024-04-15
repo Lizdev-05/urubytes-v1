@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { FaArrowUpLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
@@ -10,20 +10,103 @@ import remarkGfm from "remark-gfm";
 import { useLocation } from "react-router-dom";
 
 const InternalInsight = () => {
+  // const [query, setQuery] = useState("");
+  // const [mode, setMode] = useState("internal");
+  // const [loading, setLoading] = useState(false);
+  // const [feedback, setFeedback] = useState(null);
+  // // const [selectedQuery, setSelectedQuery] = useState(null);
+  // const [previousQueries, setPreviousQueries] = useState(() => {
+  //   const savedQueries = localStorage.getItem("previousQueries");
+  //   return savedQueries ? JSON.parse(savedQueries) : [];
+  // });
+  // const location = useLocation();
+  // const selectedQuery = location.state?.selectedQuery;
   const [query, setQuery] = useState("");
   const [mode, setMode] = useState("internal");
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState(null);
-  // const [selectedQuery, setSelectedQuery] = useState(null);
-  const [previousQueries, setPreviousQueries] = useState(() => {
-    const savedQueries = localStorage.getItem("previousQueries");
-    return savedQueries ? JSON.parse(savedQueries) : [];
-  });
+  const [libraryItems, setLibraryItems] = useState([]);
   const location = useLocation();
   const selectedQuery = location.state?.selectedQuery;
 
   const token = useSelector((state) => state.login.token);
   const orgId = useSelector((state) => state.login.orgID);
+
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   setLoading(true);
+
+  //   const url =
+  //     mode === "internal"
+  //       ? "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/internal/"
+  //       : "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/market/";
+
+  //   try {
+  //     const response = await fetch(url, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Token ${token}`,
+  //       },
+  //       body: JSON.stringify({ query, orgId }),
+  //     });
+
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       const newQueries = [{ query, feedback: data }, ...previousQueries];
+  //       setPreviousQueries(newQueries);
+  //       localStorage.setItem("previousQueries", JSON.stringify(newQueries));
+  //       setFeedback(data);
+  //       console.log("Received feedback:", data);
+  //       setLoading(false);
+  //       setQuery("");
+  //     } else {
+  //       console.error("Failed to receive feedback:", response);
+  //       setLoading(false);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error sending request:", error);
+  //     setLoading(false);
+  //   }
+  // };
+
+  // const handleQueryClick = (item) => {
+  //   setFeedback(item.feedback);
+  // };
+
+  // const handleChange = (event) => {
+  //   setQuery(event.target.value);
+  // };
+
+  // const handleToggle = () => {
+  //   setMode((prevMode) => (prevMode === "internal" ? "external" : "internal"));
+  // };
+
+  useEffect(() => {
+    async function fetchLibraryItems() {
+      try {
+        const response = await fetch(
+          "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/",
+          {
+            headers: {
+              Authorization: `Token ${token}`,
+            },
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          setLibraryItems(data);
+        } else {
+          console.error("Failed to fetch library items:", response);
+        }
+      } catch (error) {
+        console.error("Error fetching library items:", error);
+      }
+    }
+
+    fetchLibraryItems();
+  }, [token]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -46,11 +129,7 @@ const InternalInsight = () => {
 
       if (response.ok) {
         const data = await response.json();
-        const newQueries = [{ query, feedback: data }, ...previousQueries];
-        setPreviousQueries(newQueries);
-        localStorage.setItem("previousQueries", JSON.stringify(newQueries));
         setFeedback(data);
-        console.log("Received feedback:", data);
         setLoading(false);
         setQuery("");
       } else {
@@ -74,6 +153,7 @@ const InternalInsight = () => {
   const handleToggle = () => {
     setMode((prevMode) => (prevMode === "internal" ? "external" : "internal"));
   };
+
   return (
     <div className="bg-grey-bg h-screen w-screen overflow-y-auto internal">
       <Navbar />
@@ -109,7 +189,12 @@ const InternalInsight = () => {
           </form>
           <h1 className="mt-4 text-3xl font-bold">Library</h1>
 
-          {previousQueries.map((item, index) => (
+          {/* {previousQueries.map((item, index) => (
+            <div key={index} onClick={() => handleQueryClick(item)}>
+              <p className="text-xs leading mb-2">{item.query}</p>
+            </div>
+          ))} */}
+          {libraryItems.map((item, index) => (
             <div key={index} onClick={() => handleQueryClick(item)}>
               <p className="text-xs leading mb-2">{item.query}</p>
             </div>
