@@ -13,7 +13,7 @@ import { IoDownloadOutline } from "react-icons/io5";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const ReturningUser = ({ userQueries }) => {
+const ReturningUser = ({ userQueries, data }) => {
   return (
     <div className="bg-grey-bg h-screen w-screen overflow-y-auto">
       <Navbar />
@@ -144,7 +144,7 @@ const ReturningUser = ({ userQueries }) => {
           </div>
 
           <h1 className=" text-[16px] font-bold">Recent Search</h1>
-          <ul>
+          {/* <ul>
             <li className="bg-[#F0F2F9] p-2">
               <span>Give me some insight abo...</span>
               <span className="flex justify-between items-center">
@@ -152,6 +152,19 @@ const ReturningUser = ({ userQueries }) => {
                 <RiDeleteBin6Line className="text-red-600 font-bold text-5xl  bg-white py-2" />
               </span>
             </li>
+          </ul> */}
+          <ul>
+            {data.recentSearches.user.map((search, index) => (
+              <li key={index} className="bg-[#F0F2F9] p-2">
+                <span>{search.query}</span>
+                <span className="flex justify-between items-center">
+                  <span className="text-sm text-gray-500">
+                    {new Date(search.updated_at).toLocaleDateString()}
+                  </span>
+                  <RiDeleteBin6Line className="text-red-600 font-bold text-5xl  bg-white py-2" />
+                </span>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
