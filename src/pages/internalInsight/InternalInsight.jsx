@@ -10,17 +10,6 @@ import remarkGfm from "remark-gfm";
 import { useLocation } from "react-router-dom";
 
 const InternalInsight = () => {
-  // const [query, setQuery] = useState("");
-  // const [mode, setMode] = useState("internal");
-  // const [loading, setLoading] = useState(false);
-  // const [feedback, setFeedback] = useState(null);
-  // // const [selectedQuery, setSelectedQuery] = useState(null);
-  // const [previousQueries, setPreviousQueries] = useState(() => {
-  //   const savedQueries = localStorage.getItem("previousQueries");
-  //   return savedQueries ? JSON.parse(savedQueries) : [];
-  // });
-  // const location = useLocation();
-  // const selectedQuery = location.state?.selectedQuery;
   const [query, setQuery] = useState("");
   const [mode, setMode] = useState("internal");
   const [loading, setLoading] = useState(false);
@@ -31,56 +20,6 @@ const InternalInsight = () => {
 
   const token = useSelector((state) => state.login.token);
   const orgId = useSelector((state) => state.login.orgID);
-
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   setLoading(true);
-
-  //   const url =
-  //     mode === "internal"
-  //       ? "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/internal/"
-  //       : "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/market/";
-
-  //   try {
-  //     const response = await fetch(url, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Token ${token}`,
-  //       },
-  //       body: JSON.stringify({ query, orgId }),
-  //     });
-
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       const newQueries = [{ query, feedback: data }, ...previousQueries];
-  //       setPreviousQueries(newQueries);
-  //       localStorage.setItem("previousQueries", JSON.stringify(newQueries));
-  //       setFeedback(data);
-  //       console.log("Received feedback:", data);
-  //       setLoading(false);
-  //       setQuery("");
-  //     } else {
-  //       console.error("Failed to receive feedback:", response);
-  //       setLoading(false);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error sending request:", error);
-  //     setLoading(false);
-  //   }
-  // };
-
-  // const handleQueryClick = (item) => {
-  //   setFeedback(item.feedback);
-  // };
-
-  // const handleChange = (event) => {
-  //   setQuery(event.target.value);
-  // };
-
-  // const handleToggle = () => {
-  //   setMode((prevMode) => (prevMode === "internal" ? "external" : "internal"));
-  // };
 
   useEffect(() => {
     async function fetchLibraryItems() {
@@ -142,8 +81,34 @@ const InternalInsight = () => {
     }
   };
 
-  const handleQueryClick = (item) => {
-    setFeedback(item.feedback);
+  // const handleQueryClick = (item) => {
+  //   setFeedback(item.feedback);
+  // };
+  const handleQueryClick = async (item) => {
+    setLoading(true);
+
+    try {
+      const response = await fetch(
+        `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${item.searchID}/`,
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        setFeedback(data);
+        setLoading(false);
+      } else {
+        console.error("Failed to fetch query:", response);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error("Error fetching query:", error);
+      setLoading(false);
+    }
   };
 
   const handleChange = (event) => {
