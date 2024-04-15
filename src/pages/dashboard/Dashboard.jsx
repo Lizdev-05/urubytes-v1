@@ -1,18 +1,53 @@
-// import React from "react";
+// // import React from "react";
+// // import NewUser from "./NewUser";
+// // import ReturningUser from "./ReturningUser";
+// // import { useSelector } from "react-redux";
+
+// // const Dashboard = () => {
+// //   const { data: tableData, isLoading } = useSelector(
+// //     (state) => state.tableData
+// //   );
+
+// //   if (isLoading) {
+// //     return <div>Loading...</div>;
+// //   }
+
+// //   return tableData.length === 0 ? <NewUser /> : <ReturningUser />;
+// // };
+
+// // export default Dashboard;
+
+// import React, { useEffect, useState } from "react";
 // import NewUser from "./NewUser";
 // import ReturningUser from "./ReturningUser";
-// import { useSelector } from "react-redux";
+// import { useSelector, useDispatch } from "react-redux";
 
 // const Dashboard = () => {
-//   const { data: tableData, isLoading } = useSelector(
-//     (state) => state.tableData
+//   const dispatch = useDispatch();
+//   const [userQueries, setUserQueries] = useState([]);
+//   const token = useSelector((state) => state.login.token);
+
+//   useEffect(() => {
+//     fetch(
+//       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auxi/dashboard/",
+//       {
+//         headers: {
+//           Authorization: `Token ${token}`,
+//         },
+//       }
+//     )
+//       .then((response) => response.json())
+//       .then((data) => {
+//         setUserQueries(data.aggregates.userQueries);
+//         console.log("User queries:", data.aggregates.userQueries);
+//       });
+//   }, [dispatch]);
+
+//   return !userQueries || userQueries.length === 0 ? (
+//     <NewUser />
+//   ) : (
+//     <ReturningUser userQueries={userQueries} data={data} />
 //   );
-
-//   if (isLoading) {
-//     return <div>Loading...</div>;
-//   }
-
-//   return tableData.length === 0 ? <NewUser /> : <ReturningUser />;
 // };
 
 // export default Dashboard;
@@ -25,6 +60,7 @@ import { useSelector, useDispatch } from "react-redux";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const [userQueries, setUserQueries] = useState([]);
+  const [data, setData] = useState(null);
   const token = useSelector((state) => state.login.token);
 
   useEffect(() => {
@@ -38,20 +74,16 @@ const Dashboard = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setUserQueries(data.userQueries);
-
-        console.log("User queries:", data);
+        setUserQueries(data.aggregates.userQueries);
+        setData(data);
+        console.log("User queries:", data.aggregates.userQueries);
       });
   }, [dispatch]);
-
-  // if (isLoading) {
-  //   return <div>Loading...</div>;
-  // }
 
   return !userQueries || userQueries.length === 0 ? (
     <NewUser />
   ) : (
-    <ReturningUser userQueries={userQueries} />
+    <ReturningUser userQueries={userQueries} data={data} />
   );
 };
 
