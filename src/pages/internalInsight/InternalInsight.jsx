@@ -99,7 +99,10 @@ const InternalInsight = () => {
 
       if (response.ok) {
         const data = await response.json();
+        console.log(response);
+        console.log("Feedback:", data);
         setFeedback(data);
+        console.log(response);
         setLoading(false);
         console.log("Feedback:", data);
         console.log(response);
