@@ -163,7 +163,7 @@ const InternalInsight = () => {
           ))} */}
           {libraryItems.map((item, index) => (
             <div key={index} onClick={() => handleQueryClick(item)}>
-              <p className="text-xs leading mb-2">{item.query}</p>
+              <p className="text-xs leading mb-2">{item.response}</p>
             </div>
           ))}
         </div>
