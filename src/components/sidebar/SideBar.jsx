@@ -15,11 +15,13 @@ import logoutImg from "../../assets/marketInsight/logout.png";
 import "./SideBar.css";
 import GetHelp from "../../pages/profile/GetHelp";
 import Logout from "../auth/logout/Logout";
+import { useSelector } from "react-redux";
 
 const SideBar = () => {
   const [open, setOpen] = useState(true);
   const [showModalCard, setShowModalCard] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const user = useSelector((state) => state.login.user);
 
   const Menus = [
     { title: "Dashboard", link: "/dashboard", src: dashbordIcon },
@@ -34,7 +36,8 @@ const SideBar = () => {
 
   const bottomMenus = [
     { title: "Get Help", link: "/getHelp", src: getHelpIcon },
-    { title: "Bright ahedor", link: "/user", src: brightIcon },
+    // { title: "Bright ahedor", link: "/user", src: brightIcon },
+    { title: user.name, link: "/user", src: brightIcon },
   ];
 
   const handleHelpClick = (title) => {
