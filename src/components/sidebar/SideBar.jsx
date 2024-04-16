@@ -22,6 +22,7 @@ const SideBar = () => {
   const [showModalCard, setShowModalCard] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
   const user = useSelector((state) => state.login.user);
+  const userName = user ? user.name : "User";
 
   const Menus = [
     { title: "Dashboard", link: "/dashboard", src: dashbordIcon },
@@ -34,10 +35,15 @@ const SideBar = () => {
     { title: "Billing", link: "/billing", src: billingImg },
   ];
 
+  // const bottomMenus = [
+  //   { title: "Get Help", link: "/getHelp", src: getHelpIcon },
+  //   // { title: "Bright ahedor", link: "/user", src: brightIcon },
+  //   { title: user.name, link: "/user", src: brightIcon },
+  // ];
+
   const bottomMenus = [
     { title: "Get Help", link: "/getHelp", src: getHelpIcon },
-    // { title: "Bright ahedor", link: "/user", src: brightIcon },
-    { title: user.name, link: "/user", src: brightIcon },
+    { title: userName, link: "/user", src: brightIcon },
   ];
 
   const handleHelpClick = (title) => {
