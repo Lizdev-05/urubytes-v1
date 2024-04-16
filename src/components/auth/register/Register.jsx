@@ -12,6 +12,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { updateRegistrationData } from "../../../reducer/action";
 import { useGoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -53,22 +54,38 @@ const Register = () => {
   };
 
   const handleGoogleSignUp = useGoogleLogin({
-    onSuccess: (response) => {
-      console.log("Google response:", response);
+    onSuccess: async (response) => {
+      console.log("Successful Google login:", response);
 
-      // save Google profile data to Redux store
-      dispatch(
-        updateRegistrationData({
-          name: formData.name,
-          email: formData.email,
-          password: formData.password,
-          agreeTerms: formData.agreeTerms,
+      // make a request to Google to get user profile info
+      await axios.get(
+        `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${response.access_token}`,
+        {
+          headers: {
+            Authorization: `Bearer ${response.access_token}`,
+          },
+        }
+      )
+        .then((response) => {
+          console.log("Google Profile Response:", response.data);
+          const profileData = response.data;
+
+          // save Google profile data to Redux store
+          dispatch(
+            updateRegistrationData({
+              name: profileData.name,
+              email: profileData.email,
+              password: `${profileData.given_name} ${profileData.sub}`,
+              agreeTerms: true,
+            })
+          );
+
+          // go to the next stage in the registration process
+          navigate("/survey");
         })
-      );
-      console.log("Google user data:", formData);
-
-      // go to the next stage in the registration process
-      navigate("/survey");
+        .catch((error) => {
+          console.log("Error fetching Google profile:", error);
+        });
     },
     onError: (error) => {
       console.log("Google error:", error);
@@ -230,7 +247,7 @@ const Register = () => {
                   </div>
 
                   <button className="--btn --btn-block" onClick={() => handleGoogleSignUp()}>
-                    <FcGoogle style={{ marginRight: 15 }} /> Register with Google
+                    <FcGoogle style={{ marginRight: 15 }} /> Continue with Google
                   </button>
 
                   <p className="text-sm font-light text-gray-900 dark:text-gray-900">
