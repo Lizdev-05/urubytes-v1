@@ -11,6 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { updateRegistrationData } from "../../../reducer/action";
+import { useGoogleLogin } from '@react-oauth/google';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -51,6 +52,29 @@ const Register = () => {
     navigate("/survey");
   };
 
+  const handleGoogleSignUp = useGoogleLogin({
+    onSuccess: (response) => {
+      console.log("Google response:", response);
+
+      // save Google profile data to Redux store
+      dispatch(
+        updateRegistrationData({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          agreeTerms: formData.agreeTerms,
+        })
+      );
+      console.log("Google user data:", formData);
+
+      // go to the next stage in the registration process
+      navigate("/survey");
+    },
+    onError: (error) => {
+      console.log("Google error:", error);
+    },
+  });
+
   return (
     <>
       <ToastContainer />
@@ -78,12 +102,12 @@ const Register = () => {
             <div
               className={`w-full rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-white dark:bg-white-700  ${style.formBackground}`}
             >
-              <div className="p-6 space-y-4 md:space-y-8 sm:p-8">
-                <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-gray-800">
+              <div className="p-6 sm:p-8">
+                <h1 className="mb-5 text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-gray-800">
                   Create account
                 </h1>
                 <form
-                  className="space-y-4 md:space-y-2"
+                  className="space-y-8 md:space-y-4"
                   action="#"
                   onSubmit={handleSubmit}
                 >
@@ -192,6 +216,9 @@ const Register = () => {
                   >
                     Create an account
                   </button>
+                </form>
+
+                <div className="space-y-2">
                   <div>
                     <div className="flex items-center justify-between mt-4">
                       <div className="w-2/5 border-b border-gray-300 md:w-2/5"></div>
@@ -201,9 +228,11 @@ const Register = () => {
                       <div className="w-2/5 border-b border-gray-300 md:w-2/5"></div>
                     </div>
                   </div>
-                  <button type="submit" className="--btn --btn-block">
-                    <FcGoogle style={{ marginRight: 15 }} /> Signup with google
+
+                  <button className="--btn --btn-block" onClick={() => handleGoogleSignUp()}>
+                    <FcGoogle style={{ marginRight: 15 }} /> Register with Google
                   </button>
+
                   <p className="text-sm font-light text-gray-900 dark:text-gray-900">
                     Have an account?{" "}
                     <a
@@ -213,7 +242,7 @@ const Register = () => {
                       Login here
                     </a>
                   </p>
-                </form>
+                </div>
               </div>
             </div>
           </div>
