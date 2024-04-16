@@ -10,6 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { updateLoginData } from "../../../reducer/action";
+import { useGoogleLogin } from '@react-oauth/google';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -58,6 +59,53 @@ const Login = () => {
       toast.error(error.response.data.error || "Login failed");
     }
   };
+
+  const signInWithGoogle = useGoogleLogin({
+    onSuccess: async (response) => {
+      console.log("Successful Google login:", response);
+
+      try {
+        // make a request to Google to get user profile info
+        const profileResponse = await axios.get(
+          `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${response.access_token}`,
+          {
+            headers: {
+              Authorization: `Bearer ${response.access_token}`,
+            },
+          }
+        );
+        console.log("Google Profile Response:", profileResponse.data);
+        const profileData = profileResponse.data;
+
+        // now, for the meantime, use the user's Google details to log in
+        const loginResponse = await axios.post(
+          "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/login/",
+          {
+            email: profileData.email,
+            password: `${profileData.given_name} ${profileData.sub}`,
+          }
+        );
+
+        dispatch(
+          updateLoginData({
+            userID: loginResponse.data.user.userID,
+            orgID: loginResponse.data.user.orgID,
+            token: loginResponse.data.token,
+          })
+        );
+
+        console.log("Full Google login successful:", loginResponse.data);
+        toast.success(loginResponse.data.message || "Login successful");
+        navigate("/dashboard");
+      } catch (error) {
+        console.error("Full Google login failed:", error.response.data.error);
+        toast.error(error.response.data.error || "Login failed");
+      }
+    },
+    onError: (error) => {
+      console.log("Google error:", error);
+    },
+  });
 
   return (
     <>
@@ -157,7 +205,7 @@ const Login = () => {
                       <div className="w-2/5 border-b border-gray-300 md:w-2/5"></div>
                     </div>
                   </div>
-                  <button type="button" className="--btn --btn-block">
+                  <button type="button" className="--btn --btn-block" onClick={() => signInWithGoogle()}>
                     <FcGoogle style={{ marginRight: 15 }} /> Login with google
                   </button>
                   <p className="text-sm font-light text-gray-900 dark:text-gray-900">
