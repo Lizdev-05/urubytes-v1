@@ -5,6 +5,7 @@ import { updateLoginData } from "../../../reducer/action";
 import { useNavigate } from "react-router-dom";
 import { persistor } from "../../../reducer/store";
 import { ToastContainer, toast } from "react-toastify";
+import { googleLogout } from '@react-oauth/google';
 
 const Logout = () => {
   const token = useSelector((state) => state.login.token);
@@ -28,6 +29,11 @@ const Logout = () => {
         }
       );
       console.log("Logout response:", response);
+
+      console.log("Dispatching googleLogout");
+      googleLogout();
+      console.log("googleLogout dispatched");
+
       console.log("Dispatching updateLoginData");
       dispatch(
         updateLoginData({
@@ -37,8 +43,10 @@ const Logout = () => {
         })
       );
       console.log("updateLoginData dispatched");
+
       console.log("Logout successful:", response.data);
       toast.success("Logout successful");
+
       await persistor.purge();
       window.location.href = "/";
     } catch (error) {
