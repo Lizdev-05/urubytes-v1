@@ -11,6 +11,8 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { updateRegistrationData } from "../../../reducer/action";
+import { useGoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -51,6 +53,45 @@ const Register = () => {
     navigate("/survey");
   };
 
+  const handleGoogleSignUp = useGoogleLogin({
+    onSuccess: async (response) => {
+      console.log("Successful Google login:", response);
+
+      // make a request to Google to get user profile info
+      await axios.get(
+        `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${response.access_token}`,
+        {
+          headers: {
+            Authorization: `Bearer ${response.access_token}`,
+          },
+        }
+      )
+        .then((response) => {
+          console.log("Google Profile Response:", response.data);
+          const profileData = response.data;
+
+          // save Google profile data to Redux store
+          dispatch(
+            updateRegistrationData({
+              name: profileData.name,
+              email: profileData.email,
+              password: `${profileData.given_name} ${profileData.sub}`,
+              agreeTerms: true,
+            })
+          );
+
+          // go to the next stage in the registration process
+          navigate("/survey");
+        })
+        .catch((error) => {
+          console.log("Error fetching Google profile:", error);
+        });
+    },
+    onError: (error) => {
+      console.log("Google error:", error);
+    },
+  });
+
   return (
     <>
       <ToastContainer />
@@ -78,12 +119,12 @@ const Register = () => {
             <div
               className={`w-full rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-white dark:bg-white-700  ${style.formBackground}`}
             >
-              <div className="p-6 space-y-4 md:space-y-8 sm:p-8">
-                <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-gray-800">
+              <div className="p-6 sm:p-8">
+                <h1 className="mb-5 text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-gray-800">
                   Create account
                 </h1>
                 <form
-                  className="space-y-4 md:space-y-2"
+                  className="space-y-8 md:space-y-4"
                   action="#"
                   onSubmit={handleSubmit}
                 >
@@ -192,6 +233,9 @@ const Register = () => {
                   >
                     Create an account
                   </button>
+                </form>
+
+                <div className="space-y-2">
                   <div>
                     <div className="flex items-center justify-between mt-4">
                       <div className="w-2/5 border-b border-gray-300 md:w-2/5"></div>
@@ -201,9 +245,11 @@ const Register = () => {
                       <div className="w-2/5 border-b border-gray-300 md:w-2/5"></div>
                     </div>
                   </div>
-                  <button type="submit" className="--btn --btn-block">
-                    <FcGoogle style={{ marginRight: 15 }} /> Signup with google
+
+                  <button className="--btn --btn-block" onClick={() => handleGoogleSignUp()}>
+                    <FcGoogle style={{ marginRight: 15 }} /> Continue with Google
                   </button>
+
                   <p className="text-sm font-light text-gray-900 dark:text-gray-900">
                     Have an account?{" "}
                     <a
@@ -213,7 +259,7 @@ const Register = () => {
                       Login here
                     </a>
                   </p>
-                </form>
+                </div>
               </div>
             </div>
           </div>
