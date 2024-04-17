@@ -16,6 +16,7 @@ import "./SideBar.css";
 import GetHelp from "../../pages/profile/GetHelp";
 import Logout from "../auth/logout/Logout";
 import { useSelector } from "react-redux";
+import { FaRegUserCircle } from "react-icons/fa";
 
 const SideBar = () => {
   const [open, setOpen] = useState(true);
@@ -35,15 +36,9 @@ const SideBar = () => {
     { title: "Billing", link: "/billing", src: billingImg },
   ];
 
-  // const bottomMenus = [
-  //   { title: "Get Help", link: "/getHelp", src: getHelpIcon },
-  //   // { title: "Bright ahedor", link: "/user", src: brightIcon },
-  //   { title: user.name, link: "/user", src: brightIcon },
-  // ];
-
   const bottomMenus = [
     { title: "Get Help", link: "/getHelp", src: getHelpIcon },
-    { title: userName, link: "/user", src: brightIcon },
+    { title: userName, link: "/user", src: <FaRegUserCircle /> },
   ];
 
   const handleHelpClick = (title) => {

@@ -10,7 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { updateLoginData } from "../../../reducer/action";
-import { useGoogleLogin } from '@react-oauth/google';
+import { useGoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -45,14 +45,13 @@ const Login = () => {
           userID: response.data.user.userID,
           orgID: response.data.user.orgID,
           token: response.data.token,
+          name: response.data.user.name,
         })
       );
 
       console.log("Login successful:", response.data);
       toast.success(response.data.message || "Login successful");
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 2000);
+
       navigate("/dashboard");
     } catch (error) {
       console.error("Login failed:", error.response.data.error);
@@ -205,7 +204,11 @@ const Login = () => {
                       <div className="w-2/5 border-b border-gray-300 md:w-2/5"></div>
                     </div>
                   </div>
-                  <button type="button" className="--btn --btn-block" onClick={() => signInWithGoogle()}>
+                  <button
+                    type="button"
+                    className="--btn --btn-block"
+                    onClick={() => signInWithGoogle()}
+                  >
                     <FcGoogle style={{ marginRight: 15 }} /> Login with google
                   </button>
                   <p className="text-sm font-light text-gray-900 dark:text-gray-900">
