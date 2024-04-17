@@ -4,6 +4,7 @@ const initialLoginState = {
   userID: "",
   orgID: "",
   token: "",
+  name: "",
 };
 
 // const loginReducer = (state = initialLoginState, action) => {
@@ -30,6 +31,7 @@ const loginReducer = (state = initialLoginState, action) => {
         userID: action.payload.userID,
         orgID: action.payload.orgID,
         token: action.payload.token,
+        name: action.payload.name,
       };
     default:
       return state;

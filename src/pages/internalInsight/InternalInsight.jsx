@@ -102,8 +102,8 @@ const InternalInsight = () => {
         const data = await response.json();
         console.log(response);
         console.log("Feedback:", data);
-        // setFeedback(data);
-        setFeedback(data.data);
+        console.log("Insight:", data.insight);
+        setFeedback(data);
         console.log(response);
         setLoading(false);
         console.log("Feedback:", data);
