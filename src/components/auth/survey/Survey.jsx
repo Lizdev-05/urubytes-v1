@@ -2,35 +2,34 @@ import React, { useState } from "react";
 import style from "./Survey.module.css";
 import logo from "../../../assets/logo.png";
 import { FaLinkedin } from "react-icons/fa";
-import { IoIosArrowDown } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import Select from "react-select";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { updateRegistrationData } from "../../../reducer/action";
 
 const Survey = () => {
   const industryOptions = [
-    "Technology",
-    "Healthcare",
-    "Finance",
-    "E-commerce",
-    "Food and Beverage",
-    "Education",
-    "Entertainment",
-    "Renewable Energy",
-    "Transportation",
-    "Fashion and Apparel",
-    "Real Estate",
-    "Travel and Hospitality",
-    "Automotive",
-    "Agriculture",
-    "Marketing and Advertising",
-    "Manufacturing",
-    "Construction",
-    "Telecommunications",
-    "Environmental Services",
-    "Fitness and Wellness",
+    { value: "Technology", label: "Technology" },
+    { value: "Healthcare", label: "Healthcare" },
+    { value: "Finance", label: "Finance" },
+    { value: "E-commerce", label: "E-commerce" },
+    { value: "Food and Beverage", label: "Food and Beverage" },
+    { value: "Education", label: "Education" },
+    { value: "Entertainment", label: "Entertainment" },
+    { value: "Renewable Energy", label: "Renewable Energy" },
+    { value: "Transportation", label: "Transportation" },
+    { value: "Fashion and Apparel", label: "Fashion and Apparel" },
+    { value: "Real Estate", label: "Real Estate" },
+    { value: "Travel and Hospitality", label: "Travel and Hospitality" },
+    { value: "Automotive", label: "Automotive" },
+    { value: "Agriculture", label: "Agriculture" },
+    { value: "Marketing and Advertising", label: "Marketing and Advertising" },
+    { value: "Manufacturing", label: "Manufacturing" },
+    { value: "Construction", label: "Construction" },
+    { value: "Telecommunications", label: "Telecommunications" },
+    { value: "Environmental Services", label: "Environmental Services" },
+    { value: "Fitness and Wellness", label: "Fitness and Wellness" },
   ];
 
   const [formData, setFormData] = useState({
@@ -86,7 +85,7 @@ const Survey = () => {
                     >
                       Industry
                     </label>
-                    <div className="relative">
+                    {/* <div className="relative">
                       <input
                         list="industryOptions"
                         type="text"
@@ -102,7 +101,23 @@ const Survey = () => {
                           <option key={index} value={option} />
                         ))}
                       </datalist>
-                    </div>
+                    </div> */}
+                    <Select
+                      options={industryOptions}
+                      isSearchable
+                      name="industry"
+                      value={industryOptions.find(
+                        (option) => option.value === formData.industry
+                      )}
+                      onChange={(selectedOption) =>
+                        handleChange({
+                          target: {
+                            name: "industry",
+                            value: selectedOption.value,
+                          },
+                        })
+                      }
+                    />
                   </div>
                   <div>
                     <label
