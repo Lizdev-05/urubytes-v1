@@ -9,6 +9,8 @@ import { ToastContainer, toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { updateRegistrationData } from "../../../reducer/action";
 import { industryOptions, sizeOptions } from "./data";
+import Select from "react-select";
+import countries from "i18n-iso-countries";
 
 const Survey = () => {
   const [formData, setFormData] = useState({
@@ -39,12 +41,17 @@ const Survey = () => {
     navigate("/interest");
   };
 
+  countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
+  const countryOptions = Object.entries(countries.getNames("en")).map(
+    ([value, label]) => ({ value, label })
+  );
+
   return (
     <>
       <ToastContainer />
       <section className={style.survey}>
         <div className={style.surveyWrapper}>
-          <div className="flex flex-col items-center justify-center px-6 py-8  md:h-screen lg:py-0">
+          <div className="flex flex-col items-center justify-center px-6 py-8  md:h-screen lg:py-0 h-full overflow-auto">
             <div
               className={`w-full rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-white dark:bg-white-700  ${style.formBackground}`}
             >
@@ -64,39 +71,7 @@ const Survey = () => {
                     >
                       Industry
                     </label>
-                    {/* <div className="relative">
-                      <input
-                        list="industryOptions"
-                        type="text"
-                        name="industry"
-                        id="industry"
-                        value={formData.industry}
-                        onChange={handleChange}
-                        className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required
-                      />
-                      <datalist id="industryOptions">
-                        {industryOptions.map((option, index) => (
-                          <option key={index} value={option} />
-                        ))}
-                      </datalist>
-                    </div> */}
-                    {/* <Select
-                      options={industryOptions}
-                      isSearchable
-                      name="industry"
-                      value={industryOptions.find(
-                        (option) => option.value === formData.industry
-                      )}
-                      onChange={(selectedOption) =>
-                        handleChange({
-                          target: {
-                            name: "industry",
-                            value: selectedOption.value,
-                          },
-                        })
-                      }
-                    /> */}
+
                     <Creatable
                       options={industryOptions}
                       isSearchable
@@ -182,18 +157,22 @@ const Survey = () => {
                     >
                       Country
                     </label>
-                    <div className="relative">
-                      <input
-                        type="text"
-                        name="country"
-                        id="country"
-                        value={formData.country}
-                        onChange={handleChange}
-                        className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required
-                      />
-                      {/* <IoIosArrowDown className="absolute top-3 right-3 text-gray-400" /> */}
-                    </div>
+                    <Select
+                      options={countryOptions}
+                      isSearchable
+                      name="country"
+                      value={countryOptions.find(
+                        (option) => option.value === formData.country
+                      )}
+                      onChange={(selectedOption) =>
+                        handleChange({
+                          target: {
+                            name: "country",
+                            value: selectedOption.value,
+                          },
+                        })
+                      }
+                    />
                   </div>
 
                   <button
