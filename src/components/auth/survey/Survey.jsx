@@ -3,7 +3,8 @@ import style from "./Survey.module.css";
 import logo from "../../../assets/logo.png";
 import { FaLinkedin } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import Select from "react-select";
+// import Select from "react-select";
+import Creatable from "react-select/creatable";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { updateRegistrationData } from "../../../reducer/action";
@@ -102,7 +103,23 @@ const Survey = () => {
                         ))}
                       </datalist>
                     </div> */}
-                    <Select
+                    {/* <Select
+                      options={industryOptions}
+                      isSearchable
+                      name="industry"
+                      value={industryOptions.find(
+                        (option) => option.value === formData.industry
+                      )}
+                      onChange={(selectedOption) =>
+                        handleChange({
+                          target: {
+                            name: "industry",
+                            value: selectedOption.value,
+                          },
+                        })
+                      }
+                    /> */}
+                    <Creatable
                       options={industryOptions}
                       isSearchable
                       name="industry"
