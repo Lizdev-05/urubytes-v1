@@ -103,7 +103,11 @@ const InternalInsight = () => {
         console.log(response);
         console.log("Feedback:", data);
         console.log("Insight:", data.insight);
-        setFeedback(data);
+        setFeedback({
+          insights: data.insight,
+          metadata: data.metadata,
+          sources: data.sources,
+        });
         console.log(response);
         setLoading(false);
       } else {

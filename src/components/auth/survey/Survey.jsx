@@ -10,6 +10,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateRegistrationData } from "../../../reducer/action";
 
 const Survey = () => {
+  const industryOptions = [
+    "Technology",
+    "Healthcare",
+    "Finance",
+    "E-commerce",
+    "Food and Beverage",
+    "Education",
+    "Entertainment",
+    "Renewable Energy",
+    "Transportation",
+    "Fashion and Apparel",
+    "Real Estate",
+    "Travel and Hospitality",
+    "Automotive",
+    "Agriculture",
+    "Marketing and Advertising",
+    "Manufacturing",
+    "Construction",
+    "Telecommunications",
+    "Environmental Services",
+    "Fitness and Wellness",
+  ];
+
   const [formData, setFormData] = useState({
     industry: "",
     organization: "",
@@ -65,6 +88,7 @@ const Survey = () => {
                     </label>
                     <div className="relative">
                       <input
+                        list="industryOptions"
                         type="text"
                         name="industry"
                         id="industry"
@@ -73,7 +97,11 @@ const Survey = () => {
                         className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         required
                       />
-                      {/* <IoIosArrowDown className="absolute top-3 right-3 text-gray-400" /> */}
+                      <datalist id="industryOptions">
+                        {industryOptions.map((option, index) => (
+                          <option key={index} value={option} />
+                        ))}
+                      </datalist>
                     </div>
                   </div>
                   <div>
