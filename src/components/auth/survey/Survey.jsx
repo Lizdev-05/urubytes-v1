@@ -71,7 +71,7 @@ const Survey = () => {
                         value={formData.industry}
                         onChange={handleChange}
                         className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required=""
+                        required
                       />
                       {/* <IoIosArrowDown className="absolute top-3 right-3 text-gray-400" /> */}
                     </div>
@@ -91,7 +91,7 @@ const Survey = () => {
                         value={formData.organization}
                         onChange={handleChange}
                         className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required=""
+                        required
                       />
                       {/* <IoIosArrowDown className="absolute top-3 right-3 text-gray-400" /> */}
                     </div>
@@ -112,7 +112,7 @@ const Survey = () => {
                         onChange={handleChange}
                         className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="20-50"
-                        required=""
+                        required
                       />
                       {/* <IoIosArrowDown className="absolute top-3 right-3 text-gray-400" /> */}
                     </div>
@@ -132,7 +132,7 @@ const Survey = () => {
                         value={formData.role}
                         onChange={handleChange}
                         className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required=""
+                        required
                       />
                       {/* <IoIosArrowDown className="absolute top-3 right-3 text-gray-400" /> */}
                     </div>
@@ -152,7 +152,7 @@ const Survey = () => {
                         value={formData.country}
                         onChange={handleChange}
                         className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required=""
+                        required
                       />
                       {/* <IoIosArrowDown className="absolute top-3 right-3 text-gray-400" /> */}
                     </div>

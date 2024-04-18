@@ -86,6 +86,7 @@ const Interest = () => {
                       className="mr-2"
                       value="Explore"
                       onChange={handleChange}
+                      required
                     />
                     I’m here to explore
                   </label>
@@ -96,6 +97,7 @@ const Interest = () => {
                       className="mr-2"
                       value="Competitors"
                       onChange={handleChange}
+                      required
                     />
                     I want to know what my competitors are doing
                   </label>
@@ -106,6 +108,7 @@ const Interest = () => {
                       className="mr-2"
                       value="Insights"
                       onChange={handleChange}
+                      required
                     />
                     I’m looking to make sense of my data and get actionable
                     insight
@@ -128,6 +131,7 @@ const Interest = () => {
                       className="mr-1"
                       value="FriendColleague"
                       onChange={handleChange}
+                      required
                     />
                     Through a friend / colleague
                   </label>
@@ -138,6 +142,7 @@ const Interest = () => {
                       className="mr-1"
                       value="PublicationConference"
                       onChange={handleChange}
+                      required
                     />
                     Industry publication/conference
                   </label>
@@ -148,6 +153,7 @@ const Interest = () => {
                       className="mr-1"
                       value="SocialMedia"
                       onChange={handleChange}
+                      required
                     />
                     Social media
                   </label>
@@ -158,6 +164,7 @@ const Interest = () => {
                       className="mr-1"
                       value="OnlineSearch"
                       onChange={handleChange}
+                      required
                     />
                     Online search
                   </label>
@@ -168,6 +175,7 @@ const Interest = () => {
                       className="mr-1"
                       value="WebinarNetworking"
                       onChange={handleChange}
+                      required
                     />
                     Webinar/Networking event
                   </label>
