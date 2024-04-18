@@ -11,7 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { updateRegistrationData } from "../../../reducer/action";
-import { useGoogleLogin } from '@react-oauth/google';
+import { useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 
 const Register = () => {
@@ -58,14 +58,15 @@ const Register = () => {
       console.log("Successful Google login:", response);
 
       // make a request to Google to get user profile info
-      await axios.get(
-        `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${response.access_token}`,
-        {
-          headers: {
-            Authorization: `Bearer ${response.access_token}`,
-          },
-        }
-      )
+      await axios
+        .get(
+          `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${response.access_token}`,
+          {
+            headers: {
+              Authorization: `Bearer ${response.access_token}`,
+            },
+          }
+        )
         .then((response) => {
           console.log("Google Profile Response:", response.data);
           const profileData = response.data;
@@ -144,7 +145,7 @@ const Register = () => {
                         onChange={handleChange}
                         className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="John Doe"
-                        required=""
+                        required
                       />
                       <FaUser className="absolute top-3 right-3 text-gray-400" />
                     </div>
@@ -165,7 +166,7 @@ const Register = () => {
                         onChange={handleChange}
                         className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="johndoe@gmail.com"
-                        required=""
+                        required
                       />
                       <FaEnvelope className="absolute top-3 right-3 text-gray-400" />
                     </div>
@@ -187,7 +188,7 @@ const Register = () => {
                         onChange={handleChange}
                         className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="*********"
-                        required=""
+                        required
                       />
                       <button
                         type="button"
@@ -209,7 +210,7 @@ const Register = () => {
                         checked={formData.agreeTerms}
                         onChange={handleChange}
                         className="w-4 h-4 border border-gray-500 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-white-700 dark:bg-white-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                        required=""
+                        required
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -246,8 +247,12 @@ const Register = () => {
                     </div>
                   </div>
 
-                  <button className="--btn --btn-block" onClick={() => handleGoogleSignUp()}>
-                    <FcGoogle style={{ marginRight: 15 }} /> Continue with Google
+                  <button
+                    className="--btn --btn-block"
+                    onClick={() => handleGoogleSignUp()}
+                  >
+                    <FcGoogle style={{ marginRight: 15 }} /> Continue with
+                    Google
                   </button>
 
                   <p className="text-sm font-light text-gray-900 dark:text-gray-900">

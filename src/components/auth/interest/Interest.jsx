@@ -17,6 +17,9 @@ const Interest = () => {
     referrer: "",
   });
 
+  const [selectedInterest, setSelectedInterest] = useState("");
+  const [selectedReferrer, setSelectedReferrer] = useState("");
+
   const navigate = useNavigate();
 
   const registrationData = useSelector(
@@ -53,6 +56,15 @@ const Interest = () => {
     }
   };
 
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
+  //   dispatch(updateRegistrationData({ [name]: value }));
+  // };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -60,6 +72,11 @@ const Interest = () => {
       [name]: value,
     }));
     dispatch(updateRegistrationData({ [name]: value }));
+    if (name === "interests") {
+      setSelectedInterest(value);
+    } else if (name === "referrer") {
+      setSelectedReferrer(value);
+    }
   };
 
   return (
@@ -75,103 +92,136 @@ const Interest = () => {
                 <h1 className="text-xl font-medium leading-tight tracking-tight text-blue-700 md:text-3xl dark:text-blue-500 py-8">
                   What is your interest?
                 </h1>
-                <form
-                  className="space-y-4 md:space-y-2"
-                  onSubmit={handleSubmit}
-                >
-                  <label className="text-sm  text-gray-700 border border-gray-400  rounded-2xl p-4 inline-block mb-2">
-                    <input
-                      type="radio"
-                      name="interests"
-                      className="mr-2"
-                      value="Explore"
-                      onChange={handleChange}
-                    />
+
+                <div>
+                  <button
+                    className={`text-sm text-gray-700 border border-gray-400 rounded-2xl p-4 inline-block mb-2 ${
+                      selectedInterest === "Explore"
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleChange({
+                        target: { name: "interests", value: "Explore" },
+                      })
+                    }
+                  >
                     I’m here to explore
-                  </label>
-                  <label className="text-sm text-gray-700 border border-gray-400  rounded-2xl p-4 inline-block mb-2">
-                    <input
-                      type="radio"
-                      name="interests"
-                      className="mr-2"
-                      value="Competitors"
-                      onChange={handleChange}
-                    />
+                  </button>
+                  <button
+                    className={`text-sm text-gray-700 border border-gray-400 rounded-2xl p-4 inline-block mb-2 ${
+                      selectedInterest === "Competitors"
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleChange({
+                        target: { name: "interests", value: "Competitors" },
+                      })
+                    }
+                  >
                     I want to know what my competitors are doing
-                  </label>
-                  <label className="text-sm text-gray-700 border border-gray-400  rounded-2xl p-4 inline-block mb-2">
-                    <input
-                      type="radio"
-                      name="interests"
-                      className="mr-2"
-                      value="Insights"
-                      onChange={handleChange}
-                    />
+                  </button>
+                  <button
+                    className={`text-sm text-gray-700 border border-gray-400 rounded-2xl p-4 inline-block mb-2 ${
+                      selectedInterest === "Insights"
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleChange({
+                        target: { name: "interests", value: "Insights" },
+                      })
+                    }
+                  >
                     I’m looking to make sense of my data and get actionable
                     insight
-                  </label>
-                </form>
+                  </button>
+                </div>
               </div>
 
               <div className="p-6 space-y-4 md:space-y-2 sm:p-8">
                 <h1 className="text-xl font-medium leading-tight tracking-tight text-blue-700 md:text-3xl dark:text-blue-500 pb-4">
                   How did you hear about us?
                 </h1>
-                <form
-                  className="space-y-4 md:space-y-2"
-                  onSubmit={handleSubmit}
-                >
-                  <label className="text-[13px]  text-gray-700 border border-gray-400  text-center rounded-2xl px-1 py-2 md:inline-block mb-2 mr-2">
-                    <input
-                      type="radio"
-                      name="referrer"
-                      className="mr-1"
-                      value="FriendColleague"
-                      onChange={handleChange}
-                    />
+                <div>
+                  <button
+                    className={`text-[13px] text-gray-700 border border-gray-400 text-center rounded-2xl px-1 py-2 md:inline-block mb-2 mr-2 ${
+                      selectedReferrer === "FriendColleague"
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleChange({
+                        target: { name: "referrer", value: "FriendColleague" },
+                      })
+                    }
+                  >
                     Through a friend / colleague
-                  </label>
-                  <label className="text-[13px] text-gray-700 border border-gray-400  text-center rounded-2xl px-3 py-2 md:inline-block mb-2">
-                    <input
-                      type="radio"
-                      name="referrer"
-                      className="mr-1"
-                      value="PublicationConference"
-                      onChange={handleChange}
-                    />
+                  </button>
+                  <button
+                    className={`text-[13px] text-gray-700 border border-gray-400 text-center rounded-2xl px-3 py-2 md:inline-block mb-2 ${
+                      selectedReferrer === "PublicationConference"
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleChange({
+                        target: {
+                          name: "referrer",
+                          value: "PublicationConference",
+                        },
+                      })
+                    }
+                  >
                     Industry publication/conference
-                  </label>
-                  <label className="text-[13px]  text-gray-700 border border-gray-400  text-center  rounded-2xl px-2 py-2 md:inline-block mb-2 mr-2 ">
-                    <input
-                      type="radio"
-                      name="referrer"
-                      className="mr-1"
-                      value="SocialMedia"
-                      onChange={handleChange}
-                    />
+                  </button>
+                  <button
+                    className={`text-[13px] text-gray-700 border border-gray-400 text-center rounded-2xl px-2 py-2 md:inline-block mb-2 mr-2 ${
+                      selectedReferrer === "SocialMedia"
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleChange({
+                        target: { name: "referrer", value: "SocialMedia" },
+                      })
+                    }
+                  >
                     Social media
-                  </label>
-                  <label className="text-[13px] text-gray-700 border border-gray-400 text-center rounded-2xl px-2 py-2 md:inline-block mb-2 mr-1 ">
-                    <input
-                      type="radio"
-                      name="referrer"
-                      className="mr-1"
-                      value="OnlineSearch"
-                      onChange={handleChange}
-                    />
+                  </button>
+                  <button
+                    className={`text-[13px] text-gray-700 border border-gray-400 text-center rounded-2xl px-2 py-2 md:inline-block mb-2 mr-1 ${
+                      selectedReferrer === "OnlineSearch"
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleChange({
+                        target: { name: "referrer", value: "OnlineSearch" },
+                      })
+                    }
+                  >
                     Online search
-                  </label>
-                  <label className="text-[13px] text-gray-700 border border-gray-400 text-center rounded-2xl px-2 py-2 md:inline-block mb-2">
-                    <input
-                      type="radio"
-                      name="referrer"
-                      className="mr-1"
-                      value="WebinarNetworking"
-                      onChange={handleChange}
-                    />
+                  </button>
+                  <button
+                    className={`text-[13px] text-gray-700 border border-gray-400 text-center rounded-2xl px-2 py-2 md:inline-block mb-2 ${
+                      selectedReferrer === "WebinarNetworking"
+                        ? "bg-blue-600 text-white"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      handleChange({
+                        target: {
+                          name: "referrer",
+                          value: "WebinarNetworking",
+                        },
+                      })
+                    }
+                  >
                     Webinar/Networking event
-                  </label>
-                </form>
+                  </button>
+                </div>
               </div>
               <div className="px-8">
                 <button
