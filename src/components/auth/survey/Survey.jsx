@@ -8,31 +8,9 @@ import Creatable from "react-select/creatable";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { updateRegistrationData } from "../../../reducer/action";
+import { industryOptions, sizeOptions } from "./data";
 
 const Survey = () => {
-  const industryOptions = [
-    { value: "Technology", label: "Technology" },
-    { value: "Healthcare", label: "Healthcare" },
-    { value: "Finance", label: "Finance" },
-    { value: "E-commerce", label: "E-commerce" },
-    { value: "Food and Beverage", label: "Food and Beverage" },
-    { value: "Education", label: "Education" },
-    { value: "Entertainment", label: "Entertainment" },
-    { value: "Renewable Energy", label: "Renewable Energy" },
-    { value: "Transportation", label: "Transportation" },
-    { value: "Fashion and Apparel", label: "Fashion and Apparel" },
-    { value: "Real Estate", label: "Real Estate" },
-    { value: "Travel and Hospitality", label: "Travel and Hospitality" },
-    { value: "Automotive", label: "Automotive" },
-    { value: "Agriculture", label: "Agriculture" },
-    { value: "Marketing and Advertising", label: "Marketing and Advertising" },
-    { value: "Manufacturing", label: "Manufacturing" },
-    { value: "Construction", label: "Construction" },
-    { value: "Telecommunications", label: "Telecommunications" },
-    { value: "Environmental Services", label: "Environmental Services" },
-    { value: "Fitness and Wellness", label: "Fitness and Wellness" },
-  ];
-
   const [formData, setFormData] = useState({
     industry: "",
     organization: "",
@@ -163,19 +141,19 @@ const Survey = () => {
                     >
                       Organization Size
                     </label>
-                    <div className="relative">
-                      <input
-                        type="text"
-                        name="size"
-                        id="size"
-                        value={formData.size}
-                        onChange={handleChange}
-                        className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="20-50"
-                        required
-                      />
-                      {/* <IoIosArrowDown className="absolute top-3 right-3 text-gray-400" /> */}
-                    </div>
+                    <Creatable
+                      options={sizeOptions}
+                      isSearchable
+                      name="size"
+                      value={sizeOptions.find(
+                        (option) => option.value === formData.size
+                      )}
+                      onChange={(selectedOption) =>
+                        handleChange({
+                          target: { name: "size", value: selectedOption.value },
+                        })
+                      }
+                    />
                   </div>
                   <div>
                     <label
