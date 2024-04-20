@@ -187,7 +187,17 @@ const Login = () => {
                         {isPasswordVisible ? <IoMdEye /> : <IoIosEyeOff />}
                       </button>
                     </div>
+                    <div className="text-right">
+                    <Link
+                      to="/forgotPassword" // Update this with the appropriate route
+                      className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-500"
+                    >
+                      Forgot password?
+                    </Link>
                   </div>
+                  </div>
+
+                  
 
                   <button
                     type="submit"
@@ -195,6 +205,7 @@ const Login = () => {
                   >
                     Login
                   </button>
+
                   <div>
                     <div className="flex items-center justify-between mt-4">
                       <div className="w-2/5 border-b border-gray-300 md:w-2/5"></div>

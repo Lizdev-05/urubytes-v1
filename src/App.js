@@ -14,6 +14,7 @@ import Profile from "./pages/profile/Billing";
 import Billing from "./pages/profile/Billing";
 import Register from "./components/auth/register/Register";
 import Login from "./components/auth/login/Login";
+import ForgotPassword from "./components/auth/forgotPassword/ForgotPassword";
 import Survey from "./components/auth/survey/Survey";
 import Interest from "./components/auth/interest/Interest";
 import EmailVerification from "./components/auth/emailVerification/EmailVerification";
@@ -47,6 +48,7 @@ function App() {
 
       {location.pathname !== "/" &&
         location.pathname !== "/register" &&
+        location.pathname !== "/forgotPassword" &&
         location.pathname !== "/interest" &&
         location.pathname !== "/survey" &&
         location.pathname !== "/emailVerification" && (
@@ -56,6 +58,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/survey" element={<Survey />} />
         <Route path="/interest" element={<Interest />} />
         <Route path="/emailVerification" element={<EmailVerification />} />
