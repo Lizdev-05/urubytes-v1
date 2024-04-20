@@ -146,7 +146,7 @@ const Interest = () => {
                 </h1>
                 <div>
                   <button
-                    className={`text-[13px] text-gray-700 border border-gray-400 text-center rounded-2xl px-1 py-2 md:inline-block mb-2 mr-2 ${
+                    className={`text-sm text-gray-700 border border-gray-400 rounded-2xl p-4 inline-block mb-2 ${
                       selectedReferrer === "FriendColleague"
                         ? "bg-blue-600 text-white"
                         : ""
@@ -160,7 +160,7 @@ const Interest = () => {
                     Through a friend / colleague
                   </button>
                   <button
-                    className={`text-[13px] text-gray-700 border border-gray-400 text-center rounded-2xl px-3 py-2 md:inline-block mb-2 ${
+                    className={`mr-2 text-sm text-gray-700 border border-gray-400 rounded-2xl p-4 inline-block mb-2 ${
                       selectedReferrer === "PublicationConference"
                         ? "bg-blue-600 text-white"
                         : ""
@@ -177,7 +177,7 @@ const Interest = () => {
                     Industry publication/conference
                   </button>
                   <button
-                    className={`text-[13px] text-gray-700 border border-gray-400 text-center rounded-2xl px-2 py-2 md:inline-block mb-2 mr-2 ${
+                    className={`mr-2 text-sm text-gray-700 border border-gray-400 rounded-2xl p-4 inline-block mb-2 ${
                       selectedReferrer === "SocialMedia"
                         ? "bg-blue-600 text-white"
                         : ""
@@ -191,7 +191,7 @@ const Interest = () => {
                     Social media
                   </button>
                   <button
-                    className={`text-[13px] text-gray-700 border border-gray-400 text-center rounded-2xl px-2 py-2 md:inline-block mb-2 mr-1 ${
+                    className={`mr-2 text-sm text-gray-700 border border-gray-400 rounded-2xl p-4 inline-block mb-2 ${
                       selectedReferrer === "OnlineSearch"
                         ? "bg-blue-600 text-white"
                         : ""
@@ -205,7 +205,7 @@ const Interest = () => {
                     Online search
                   </button>
                   <button
-                    className={`text-[13px] text-gray-700 border border-gray-400 text-center rounded-2xl px-2 py-2 md:inline-block mb-2 ${
+                    className={`mr-2 text-sm text-gray-700 border border-gray-400 rounded-2xl p-4 inline-block mb-2 ${
                       selectedReferrer === "WebinarNetworking"
                         ? "bg-blue-600 text-white"
                         : ""
