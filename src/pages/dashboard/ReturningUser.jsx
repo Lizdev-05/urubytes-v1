@@ -153,11 +153,8 @@ const ReturningUser = ({ userQueries, data }) => {
           <h1 className=" text-[16px] font-bold">Recent Search</h1>
           {data.recentSearches.user.map((search, index) => (
             <ul key={index}>
-              <li
-                className="bg-[#F0F2F9] p-2 my-2"
-                onClick={handleUserQueriesClick}
-              >
-                <span>{search.query}</span>
+              <li className="bg-[#F0F2F9] p-2 my-2">
+                <span onClick={handleUserQueriesClick}>{search.query}</span>
                 <span className="flex justify-between items-center">
                   <span className="text-sm text-gray-500">
                     {new Date(search.updated_at).toLocaleDateString()}
