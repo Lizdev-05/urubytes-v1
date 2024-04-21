@@ -30,7 +30,7 @@
 //   }, [dispatch]);
 
 //   if (isLoading) {
-//     <Spinner />;
+//     return <Spinner />;
 //   }
 
 //   return !userQueries || userQueries.length === 0 ? (
@@ -42,7 +42,7 @@
 
 // export default Dashboard;
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import NewUser from "./NewUser";
 import ReturningUser from "./ReturningUser";
 import { useSelector, useDispatch } from "react-redux";
@@ -73,6 +73,11 @@ const Dashboard = () => {
       });
   }, [dispatch]);
 
+  const ReturningUserMemo = useMemo(
+    () => <ReturningUser userQueries={userQueries} data={data} />,
+    [userQueries, data]
+  );
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -80,7 +85,7 @@ const Dashboard = () => {
   return !userQueries || userQueries.length === 0 ? (
     <NewUser />
   ) : (
-    <ReturningUser userQueries={userQueries} data={data} />
+    ReturningUserMemo
   );
 };
 
