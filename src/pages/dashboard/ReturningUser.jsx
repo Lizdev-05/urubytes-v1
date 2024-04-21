@@ -15,10 +15,18 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
-const ReturningUser = ({ userQueries, data }) => {
+// const ReturningUser = ({ userQueries, data }) => {
+//   const navigate = useNavigate();
+//   const userQueries = useSelector((state) => state.userQueries);
+//   const data = useSelector((state) => state.data);
+
+//   const handleUserQueriesClick = () => {
+//     navigate("/internalInsight", { state: { selectedQuery: userQueries } });
+//   };
+const ReturningUser = () => {
   const navigate = useNavigate();
-  const userQueries = useSelector((state) => state.userQueries);
-  const data = useSelector((state) => state.data);
+  const userQueries = useSelector((state) => state.dashboard.userQueries);
+  const data = useSelector((state) => state.dashboard.data);
 
   const handleUserQueriesClick = () => {
     navigate("/internalInsight", { state: { selectedQuery: userQueries } });
