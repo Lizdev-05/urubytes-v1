@@ -63,14 +63,6 @@ const Dashboard = () => {
         },
       }
     )
-      //     .then((response) => response.json())
-      //     .then((data) => {
-      //       setUserQueries(data.aggregates.userQueries);
-      //       setData(data);
-      //       setIsLoading(false);
-      //       console.log("User queries:", data.aggregates.userQueries);
-      //     });
-      // }, [dispatch]);
       .then((response) => response.json())
       .then((data) => {
         dispatch({
