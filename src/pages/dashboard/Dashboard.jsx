@@ -64,12 +64,22 @@ const Dashboard = () => {
         },
       }
     )
+      //     .then((response) => response.json())
+      //     .then((data) => {
+      //       setUserQueries(data.aggregates.userQueries);
+      //       setData(data);
+      //       setIsLoading(false);
+      //       console.log("User queries:", data.aggregates.userQueries);
+      //     });
+      // }, [dispatch]);
       .then((response) => response.json())
       .then((data) => {
-        setUserQueries(data.aggregates.userQueries);
-        setData(data);
+        dispatch({
+          type: "SET_USER_QUERIES",
+          payload: data.aggregates.userQueries,
+        });
+        dispatch({ type: "SET_DATA", payload: data });
         setIsLoading(false);
-        console.log("User queries:", data.aggregates.userQueries);
       });
   }, [dispatch]);
 
