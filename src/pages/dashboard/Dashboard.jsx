@@ -33,12 +33,7 @@ const Dashboard = () => {
     <Spinner />;
   }
 
-  // return !userQueries || userQueries.length === 0 ? (
-  //   <NewUser />
-  // ) : (
-  //   <ReturningUser userQueries={userQueries} data={data} />
-  // );
-  return !connectedSources || connectedSources.length === 0 ? (
+  return !userQueries || userQueries.length === 0 ? (
     <NewUser />
   ) : (
     <ReturningUser userQueries={userQueries} data={data} />
