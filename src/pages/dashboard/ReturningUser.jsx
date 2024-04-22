@@ -16,11 +16,6 @@ import { useNavigate } from "react-router-dom";
 
 const ReturningUser = ({ userQueries, data }) => {
   const navigate = useNavigate();
-<<<<<<< HEAD
-=======
-  const userQueries = useSelector((state) => state.userQueries);
-  const data = useSelector((state) => state.data);
->>>>>>> parent of f656186 (Use the redux to manage state)
 
   // const handleUserQueriesClick = () => {
   //   navigate("/internal-insight");
