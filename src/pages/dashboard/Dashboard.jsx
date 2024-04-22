@@ -42,7 +42,7 @@
 
 // export default Dashboard;
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import NewUser from "./NewUser";
 import ReturningUser from "./ReturningUser";
 import { useSelector, useDispatch } from "react-redux";
@@ -72,6 +72,11 @@ const Dashboard = () => {
         console.log("User queries:", data.aggregates.userQueries);
       });
   }, [dispatch]);
+
+  const ReturningUserMemo = useMemo(
+    () => <ReturningUser userQueries={userQueries} data={data} />,
+    [userQueries, data]
+  );
 
   if (isLoading) {
     return <Spinner />;
