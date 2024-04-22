@@ -6,12 +6,10 @@ import { FaPlus } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Spinner from "../../../components/Spinner";
 
 const UploadSource = () => {
   const [selectedSource, setSelectedSource] = useState("document");
   const [selectedFiles, setSelectedFiles] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const token = useSelector((state) => state.login.token);
@@ -40,7 +38,6 @@ const UploadSource = () => {
       console.error("No files selected");
       return;
     }
-    setIsLoading(true);
 
     const formData = new FormData();
     selectedFiles.forEach((file) => {
@@ -67,8 +64,6 @@ const UploadSource = () => {
       navigate("/dataSource");
     } catch (error) {
       console.error("Error uploading files:", error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -79,12 +74,6 @@ const UploadSource = () => {
 
   return (
     <div className="border rounded-xl border-gray-300 w-4/5 px-12 py-4 m-auto">
-      {isLoading && (
-        <div className="loading-overlay">
-          <Spinner />
-        </div>
-      )}
-
       <div className="flex justify-start gap-8">
         {/* <UploadCard
           source="drive"
