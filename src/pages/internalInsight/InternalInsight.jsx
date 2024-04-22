@@ -161,13 +161,14 @@ const InternalInsight = () => {
               <input
                 type="search"
                 id="default-search"
-                className="block w-full p-3 ps-10 text-sm text-gray-100 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-100 dark:placeholder-gray-400 dark:text-white"
+                className="block w-full p-3 ps-10 my-10 text-sm text-gray-100 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-100 dark:placeholder-gray-400 dark:text-white"
                 placeholder="New Search"
                 required
               />
             </div>
           </form>
           <h1 className="mt-4 text-3xl font-bold">Library</h1>
+          <p className="text-gray-300 my-2">Nothing here yet</p>
 
           {libraryItems.map((item, index) => (
             <div key={index} onClick={() => handleQueryClick(item)}>
@@ -214,7 +215,7 @@ const InternalInsight = () => {
           </div>
           <div className="flex flex-col items-center text-center p-8 internalText">
             <h1 className="m-4 text-3xl font-bold">Ask Urubytes A Question</h1>
-            <p className="px-32 text-gray-600">
+            <p className="px-24 text-gray-600">
               Get started extracting bytes-sized insights from your business
               data. Just tell us where to look first and you can ask any
               question about your business.
