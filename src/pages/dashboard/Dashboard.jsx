@@ -54,26 +54,65 @@ const Dashboard = () => {
   const token = useSelector((state) => state.login.token);
   const userQueries = useSelector((state) => state.dashboard.userQueries);
 
+  // useEffect(() => {
+  //   fetch(
+  //     "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auxi/dashboard/",
+  //     {
+  //       headers: {
+  //         Authorization: `Token ${token}`,
+  //       },
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       dispatch({
+  //         type: "SET_USER_QUERIES",
+  //         payload: data.aggregates.userQueries,
+  //       });
+  //       dispatch({ type: "SET_DATA", payload: data });
+  //       setIsLoading(false);
+  //     });
+  // }, [dispatch]);
+
   useEffect(() => {
-    fetch(
-      "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auxi/dashboard/",
-      {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auxi/dashboard/",
+          {
+            headers: {
+              Authorization: `Token ${token}`,
+            },
+            signal,
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
         dispatch({
           type: "SET_USER_QUERIES",
           payload: data.aggregates.userQueries,
         });
         dispatch({ type: "SET_DATA", payload: data });
         setIsLoading(false);
-      });
-  }, [dispatch]);
+      } catch (error) {
+        console.error("A problem occurred fetching data:", error);
+      }
+    };
 
+    fetchData();
+
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 seconds timeout
+
+    return () => clearTimeout(timeoutId);
+  }, [dispatch]);
   if (isLoading) {
     return <Spinner />;
   }
