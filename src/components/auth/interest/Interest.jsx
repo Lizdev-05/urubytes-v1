@@ -48,7 +48,7 @@ const Interest = () => {
       setTimeout(() => {
         navigate("/dashboard");
       }, 2000);
-      navigate("/dashboard");
+     // navigate("/dashboard");
     } catch (error) {
       console.error("Failed to send data to backend:", error);
 
