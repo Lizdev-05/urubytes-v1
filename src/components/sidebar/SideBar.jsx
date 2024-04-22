@@ -58,7 +58,7 @@ const SideBar = () => {
   return (
     <div
       className={` ${
-        open ? "w-72" : "w-20 "
+        open ? "409px" : "80px"
       } bg-primary-blue p-5  pt-12 relative duration-300 overflow-y-auto h-screen flex flex-col `}
     >
       <img
@@ -192,7 +192,7 @@ const SideBar = () => {
                   </span>
                 </Link>
               )}
-              <hr className="border-t border-white my-2" />
+              {/*<hr className="border-t border-white my-2" />*/}
             </React.Fragment>
           ))}
         </ul>
