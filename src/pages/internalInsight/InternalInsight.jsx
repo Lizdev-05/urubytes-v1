@@ -15,6 +15,7 @@ const InternalInsight = () => {
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState(null);
   const [libraryItems, setLibraryItems] = useState([]);
+  const [isTyping, setIsTyping] = useState(false);
   const location = useLocation();
   const selectedQuery = location.state?.selectedQuery;
 
@@ -122,7 +123,12 @@ const InternalInsight = () => {
 
   const handleChange = (event) => {
     setQuery(event.target.value);
-  };
+    if (event.target.value !== '') {
+      setIsTyping(true);
+    } else {
+      setIsTyping(false);
+    }
+};
 
   const handleToggle = () => {
     setMode((prevMode) => (prevMode === "internal" ? "external" : "internal"));
@@ -155,7 +161,7 @@ const InternalInsight = () => {
               <input
                 type="search"
                 id="default-search"
-                className="block w-full p-4 ps-10 text-sm text-gray-100 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-100 dark:placeholder-gray-400 dark:text-white"
+                className="block w-full p-3 ps-10 text-sm text-gray-100 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-100 dark:placeholder-gray-400 dark:text-white"
                 placeholder="New Search"
                 required
               />
@@ -251,10 +257,10 @@ const InternalInsight = () => {
                 onChange={handleChange}
               />
               <button
-                type="submit"
-                className="text-white absolute end-2.5 bottom-2.5 bg-grey-color hover:bg-gray-500 font-medium rounded-lg text-sm px-2 py-2"
+                  type="submit"
+                  className={`text-white absolute end-2.5 bottom-2.5 font-medium rounded-lg text-sm px-2 py-2 ${isTyping ? 'bg-blue-500' : 'bg-gray-200'}`}
               >
-                <FaArrowUpLong size={20} />
+                  <FaArrowUpLong size={20} />
               </button>
             </div>
           </form>
