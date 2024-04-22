@@ -79,7 +79,11 @@ const UploadSource = () => {
 
   return (
     <div className="border rounded-xl border-gray-300 w-4/5 px-12 py-4 m-auto">
-      {isLoading && <Spinner />}
+      {isLoading && (
+        <div className="loading-overlay">
+          <Spinner />
+        </div>
+      )}
 
       <div className="flex justify-start gap-8">
         {/* <UploadCard
