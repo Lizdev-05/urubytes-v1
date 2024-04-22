@@ -8,9 +8,9 @@ import uruVideo from "../../assets/urubytes.mp4";
 
 const NewUser = () => {
   return (
-    <div className="bg-grey-bg h-screen w-screen  overflow-hidden">
+    <div className="bg-grey-bg min-h-screen w-screen  overflow-hidden">
       <Navbar />
-      <div className="grid grid-cols-1 sm:grid-cols-4 p-2 my-2 overflow-hidden">
+      <div className="grid grid-cols-1 sm:grid-cols-4 p-2 overflow-hidden">
         <div className="sm:col-span-3 py-6 sm:px-16 bg-white border border-gray-200 rounded-lg shadow dark:bg-white dark:border-gray-300">
           <div className="mt-6 ">
             <h1 className="text-3xl font-semibold">Welcome To Urubytes</h1>
@@ -77,7 +77,7 @@ const NewUser = () => {
               controls
             />
           </div>
-          <div className="my-6 rounded-xl ">
+          <div className="mt-6 rounded-xl ">
             <div className="py-4 pb-8 px-4  border  border-gradient ">
               <h2 className="text-sm font-bold">Sources Connected</h2>
               <p className="mt-4 ml-6 font-thin text-gray-600">
