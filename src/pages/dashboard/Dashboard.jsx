@@ -34,6 +34,7 @@ import NewUser from "./NewUser";
 import ReturningUser from "./ReturningUser";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../../components/Spinner";
+
 const Dashboard = () => {
   const dispatch = useDispatch();
   const [userQueries, setUserQueries] = useState([]);
@@ -164,4 +165,4 @@ const Dashboard = () => {
 //   );
 // };
 
-// export default Dashboard;
+export default Dashboard;
