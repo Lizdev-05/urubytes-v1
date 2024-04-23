@@ -156,8 +156,8 @@ const ReturningUser = ({ userQueries, data }) => {
               <li className="bg-[#F0F2F9] p-2 my-2">
                 {/* <span onClick={handleUserQueriesClick}>{search.query}</span> */}
                 <span onClick={handleUserQueriesClick}>
-                  {search.query.length > 50
-                    ? `${search.query.substring(0, 50)}...`
+                  {search.query.length > 20
+                    ? `${search.query.substring(0, 20)}...`
                     : search.query}
                 </span>
                 <span className="flex justify-between items-center">

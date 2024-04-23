@@ -164,9 +164,11 @@ const InternalInsight = () => {
           <h1 className="mt-4 text-3xl font-bold">Library</h1>
 
           {libraryItems.map((item, index) => (
-            <div key={index} onClick={() => handleQueryClick(item)}>
-              <p className="text-xs leading mb-2">{item.query}</p>
-            </div>
+            <ul key={index} onClick={() => handleQueryClick(item)}>
+              <li className="text-xs leading mb-2 bg-[#F0F2F9] p-2 my-2">
+                {item.query}
+              </li>
+            </ul>
           ))}
         </div>
 
