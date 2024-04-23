@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import dashboardLens from "../../assets/dashboard-lens.png";
 import internalInsights from "../../assets/ic_baseline-insights2.png";
 import internalInsights2 from "../../assets/ic_baseline-insights.png";
@@ -20,7 +21,7 @@ const ReturningUser = ({ userQueries, data }) => {
   const [recentSearches, setRecentSearches] = useState(
     data.recentSearches.user
   );
-
+  const token = useSelector((state) => state.login.token);
   // const handleUserQueriesClick = () => {
   //   navigate("/internal-insight");
   // };
