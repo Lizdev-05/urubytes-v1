@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useLocation } from "react-router-dom";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const InternalInsight = () => {
   const [query, setQuery] = useState("");
@@ -166,9 +167,18 @@ const InternalInsight = () => {
           {libraryItems.map((item, index) => (
             <ul key={index} onClick={() => handleQueryClick(item)}>
               <li className="text-xs leading mb-2 bg-[#F0F2F9] p-2 my-2">
-                {item.query.length > 30
-                  ? `${item.query.substring(0, 30)}...`
-                  : item.query}
+                <span>
+                  {item.query.length > 30
+                    ? `${item.query.substring(0, 30)}...`
+                    : item.query}
+                </span>
+
+                <span className="flex justify-between items-center">
+                  <span className="text-sm text-gray-500">
+                    {new Date(item.query.updated_at).toLocaleDateString()}
+                  </span>
+                  <RiDeleteBin6Line className="text-red-600 font-bold text-5xl  bg-white py-2" />
+                </span>
               </li>
             </ul>
           ))}
