@@ -129,6 +129,32 @@ const InternalInsight = () => {
     setMode((prevMode) => (prevMode === "internal" ? "external" : "internal"));
   };
 
+  const handleDelete = async (searchID) => {
+    try {
+      const response = await fetch(
+        `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${searchID}/`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        setLibraryItems(
+          libraryItems.filter((item) => item.searchID !== searchID)
+        );
+        console.log("Deleted query:", searchID);
+        console.log(response);
+      } else {
+        console.error("Failed to delete query:", response);
+      }
+    } catch (error) {
+      console.error("Error deleting query:", error);
+    }
+  };
+
   return (
     <div className="bg-grey-bg h-screen w-screen overflow-y-auto internal">
       <Navbar />
@@ -165,9 +191,9 @@ const InternalInsight = () => {
           <h1 className="mt-4 text-3xl font-bold">Library</h1>
 
           {libraryItems.map((item, index) => (
-            <ul key={index} onClick={() => handleQueryClick(item)}>
+            <ul key={index}>
               <li className="text-xs leading mb-2 bg-[#F0F2F9] p-2 my-2">
-                <span>
+                <span onClick={() => handleQueryClick(item)}>
                   {item.query.length > 30
                     ? `${item.query.substring(0, 30)}...`
                     : item.query}
@@ -175,9 +201,12 @@ const InternalInsight = () => {
 
                 <span className="flex justify-between items-center">
                   <span className="text-sm text-gray-500">
-                    {new Date(item.query.updated_at).toLocaleDateString()}
+                    {new Date(item.updated_at).toLocaleDateString()}
                   </span>
-                  <RiDeleteBin6Line className="text-red-600 font-bold text-5xl  bg-white py-2" />
+                  <RiDeleteBin6Line
+                    className="text-red-600 font-bold text-5xl  bg-white py-2"
+                    onClick={() => handleDelete(item.searchID)}
+                  />{" "}
                 </span>
               </li>
             </ul>
