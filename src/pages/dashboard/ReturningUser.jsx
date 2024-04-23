@@ -195,8 +195,7 @@ const ReturningUser = ({ userQueries, data }) => {
             {data.recentSearches.user.map((search, index) => (
               <ul key={index}>
                 <li className="bg-[#F0F2F9] p-2 my-2">
-                  {/* <span onClick={handleUserQueriesClick}>{search.query}</span> */}
-                  <span onClick={handleUserQueriesClick}>
+                  <span onClick={() => handleUserQueriesClick(search.id)}>
                     {search.query.length > 30
                       ? `${search.query.substring(0, 30)}...`
                       : search.query}
@@ -205,7 +204,6 @@ const ReturningUser = ({ userQueries, data }) => {
                     <span className="text-sm text-gray-500">
                       {new Date(search.updated_at).toLocaleDateString()}
                     </span>
-                    {/* <RiDeleteBin6Line className="text-red-600 font-bold text-5xl  bg-white py-2" /> */}
                     <RiDeleteBin6Line
                       className="text-red-600 font-bold text-5xl  bg-white py-2"
                       onClick={() => handleDelete(search.id)}
