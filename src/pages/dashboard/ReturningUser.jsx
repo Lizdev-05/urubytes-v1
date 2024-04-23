@@ -41,6 +41,8 @@ const ReturningUser = ({ userQueries, data }) => {
     )
       .then((response) => {
         if (!response.ok) {
+          console.log("Status:", response.status);
+          console.log("Status Text:", response.statusText);
           throw new Error("Network response was not ok");
         }
         toast.success("Search deleted successfully");
@@ -192,8 +194,8 @@ const ReturningUser = ({ userQueries, data }) => {
                 <li className="bg-[#F0F2F9] p-2 my-2">
                   {/* <span onClick={handleUserQueriesClick}>{search.query}</span> */}
                   <span onClick={handleUserQueriesClick}>
-                    {search.query.length > 20
-                      ? `${search.query.substring(0, 20)}...`
+                    {search.query.length > 30
+                      ? `${search.query.substring(0, 30)}...`
                       : search.query}
                   </span>
                   <span className="flex justify-between items-center">
