@@ -201,10 +201,9 @@ const InternalInsight = () => {
       );
 
       if (response.ok) {
-        const newLibraryItems = [...libraryItems].filter(
-          (item) => item.searchID !== searchID
+        setLibraryItems((prevLibraryItems) =>
+          prevLibraryItems.filter((item) => item.searchID !== searchID)
         );
-        setLibraryItems(newLibraryItems);
         toast.success("Query deleted successfully");
         console.log("Deleted query:", searchID);
         console.log(response);
