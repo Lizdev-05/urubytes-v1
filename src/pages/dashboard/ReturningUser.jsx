@@ -22,44 +22,8 @@ const ReturningUser = ({ userQueries, data }) => {
     data.recentSearches.user
   );
   const token = useSelector((state) => state.login.token);
-  // const handleUserQueriesClick = () => {
-  //   navigate("/internal-insight");
-  // };
   const handleUserQueriesClick = () => {
     navigate("/internalInsight", { state: { selectedQuery: userQueries } });
-  };
-
-  const handleDelete = (searchId) => {
-    fetch(
-      `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${searchId}/`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      }
-    )
-      .then((response) => {
-        if (!response.ok) {
-          console.log("Response:", response);
-          console.log("Status:", response.status);
-          console.log("Status Text:", response.statusText);
-
-          throw new Error("Network response was not ok");
-        }
-        toast.success("Search deleted successfully");
-        setRecentSearches(
-          recentSearches.filter((search) => search.id !== searchId)
-        );
-        console.log(searchId);
-      })
-      .catch((error) => {
-        toast.error("Error deleting search");
-        console.error(
-          "There has been a problem with your fetch operation:",
-          error
-        );
-      });
   };
 
   return (
@@ -204,10 +168,10 @@ const ReturningUser = ({ userQueries, data }) => {
                     <span className="text-sm text-gray-500">
                       {new Date(search.updated_at).toLocaleDateString()}
                     </span>
-                    <RiDeleteBin6Line
+                    {/* <RiDeleteBin6Line
                       className="text-red-600 font-bold text-5xl  bg-white py-2"
                       onClick={() => handleDelete(search.id)}
-                    />
+                    /> */}
                   </span>
                 </li>
               </ul>
