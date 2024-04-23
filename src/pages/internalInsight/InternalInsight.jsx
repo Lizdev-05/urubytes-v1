@@ -166,7 +166,9 @@ const InternalInsight = () => {
           {libraryItems.map((item, index) => (
             <ul key={index} onClick={() => handleQueryClick(item)}>
               <li className="text-xs leading mb-2 bg-[#F0F2F9] p-2 my-2">
-                {item.query}
+                {item.query.length > 30
+                  ? `${item.query.substring(0, 30)}...`
+                  : item.query}
               </li>
             </ul>
           ))}
