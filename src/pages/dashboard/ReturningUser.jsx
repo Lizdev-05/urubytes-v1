@@ -44,12 +44,14 @@ const ReturningUser = ({ userQueries, data }) => {
           console.log("Response:", response);
           console.log("Status:", response.status);
           console.log("Status Text:", response.statusText);
+
           throw new Error("Network response was not ok");
         }
         toast.success("Search deleted successfully");
         setRecentSearches(
           recentSearches.filter((search) => search.id !== searchId)
         );
+        console.log(searchId);
       })
       .catch((error) => {
         toast.error("Error deleting search");
