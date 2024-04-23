@@ -41,6 +41,7 @@ const ReturningUser = ({ userQueries, data }) => {
     )
       .then((response) => {
         if (!response.ok) {
+          console.log("Response:", response);
           console.log("Status:", response.status);
           console.log("Status Text:", response.statusText);
           throw new Error("Network response was not ok");
