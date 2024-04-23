@@ -30,7 +30,7 @@ const Dashboard = () => {
   }, [dispatch]);
 
   if (isLoading) {
-    <Spinner />;
+    return <Spinner />;
   }
 
   return !userQueries || userQueries.length === 0 ? (
