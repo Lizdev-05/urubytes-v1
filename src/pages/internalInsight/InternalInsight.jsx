@@ -19,12 +19,40 @@ const InternalInsight = () => {
   const [libraryItems, setLibraryItems] = useState([]);
   const location = useLocation();
   const selectedQuery = location.state?.selectedQuery;
+  const [isLibraryLoading, setIsLibraryLoading] = useState(false);
 
   const token = useSelector((state) => state.login.token);
   const orgId = useSelector((state) => state.login.orgID);
 
+  // useEffect(() => {
+  //   async function fetchLibraryItems() {
+  //     try {
+  //       const response = await fetch(
+  //         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/",
+  //         {
+  //           headers: {
+  //             Authorization: `Token ${token}`,
+  //           },
+  //         }
+  //       );
+
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         setLibraryItems(data);
+  //       } else {
+  //         console.error("Failed to fetch library items:", response);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching library items:", error);
+  //     }
+  //   }
+
+  //   fetchLibraryItems();
+  // }, [token]);
+
   useEffect(() => {
-    async function fetchLibraryItems() {
+    const fetchLibraryItems = async () => {
+      setIsLibraryLoading(true);
       try {
         const response = await fetch(
           "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/",
@@ -43,8 +71,10 @@ const InternalInsight = () => {
         }
       } catch (error) {
         console.error("Error fetching library items:", error);
+      } finally {
+        setIsLibraryLoading(false);
       }
-    }
+    };
 
     fetchLibraryItems();
   }, [token]);
@@ -128,6 +158,36 @@ const InternalInsight = () => {
     setMode((prevMode) => (prevMode === "internal" ? "external" : "internal"));
   };
 
+  // const handleDelete = async (searchID) => {
+  //   try {
+  //     const response = await fetch(
+  //       `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${searchID}/`,
+  //       {
+  //         method: "DELETE",
+  //         headers: {
+  //           Authorization: `Token ${token}`,
+  //         },
+  //       }
+  //     );
+
+  //     if (response.ok) {
+  //       const newLibraryItems = [...libraryItems];
+  //       const index = newLibraryItems.findIndex(
+  //         (item) => item.searchID === searchID
+  //       );
+  //       newLibraryItems.splice(index, 1);
+  //       setLibraryItems(newLibraryItems);
+  //       toast.success("Query deleted successfully");
+  //       console.log("Deleted query:", searchID);
+  //       console.log(response);
+  //     } else {
+  //       console.error("Failed to delete query:", response);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error deleting query:", error);
+  //   }
+  // };
+
   const handleDelete = async (searchID) => {
     try {
       const response = await fetch(
@@ -141,11 +201,9 @@ const InternalInsight = () => {
       );
 
       if (response.ok) {
-        const newLibraryItems = [...libraryItems];
-        const index = newLibraryItems.findIndex(
-          (item) => item.searchID === searchID
+        const newLibraryItems = [...libraryItems].filter(
+          (item) => item.searchID !== searchID
         );
-        newLibraryItems.splice(index, 1);
         setLibraryItems(newLibraryItems);
         toast.success("Query deleted successfully");
         console.log("Deleted query:", searchID);
