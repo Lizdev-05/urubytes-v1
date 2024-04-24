@@ -134,7 +134,7 @@ const Interest = () => {
                       })
                     }
                   >
-                    I'm want to understand my data and get actionable insights
+                    I want to understand my data and get actionable insights
                   </button>
                 </div>
               </div>
