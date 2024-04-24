@@ -22,10 +22,11 @@ const SideBar = () => {
   const [open, setOpen] = useState(true);
   const [showModalCard, setShowModalCard] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
-  // const user = useSelector((state) => state.login.user);
-  // const userName = user ? user.name : "User";
 
+  // const userName = useSelector((state) => state.login.name);
   const userName = useSelector((state) => state.login.name);
+  const capitalizedUserName =
+    userName.charAt(0).toUpperCase() + userName.slice(1);
   const Menus = [
     { title: "Dashboard", link: "/dashboard", src: dashbordIcon },
     {
@@ -183,7 +184,8 @@ const SideBar = () => {
                         !open && "opacity-0 translate-x-28 overflow-hidden"
                       } origin-left duration-200`}
                     >
-                      {userName}
+                      {/* {userName} */}
+                      {capitalizedUserName}
                     </span>
                   </div>
                 </div>
