@@ -325,7 +325,7 @@ const InternalInsight = () => {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-2 mx-auto">
+            {/* <form onSubmit={handleSubmit} className="p-2 mx-auto">
               <label
                 htmlFor="default-search"
                 className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -367,6 +367,54 @@ const InternalInsight = () => {
                   <FaArrowUpLong size={20} />
                 </button>
               </div>
+            </form> */}
+            <form onSubmit={handleSubmit} className="p-2 mx-auto relative">
+              <label
+                htmlFor="default-search"
+                className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+              >
+                Search
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg
+                    className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                    />
+                  </svg>
+                </div>
+
+                <input
+                  type="search"
+                  id="default-search"
+                  className="block w-full p-4 ps-10 text-sm text-blue-500 border rounded-lg dark:placeholder-gray-400 dark:text-gray-500"
+                  placeholder="Type Here..."
+                  required
+                  value={query}
+                  onChange={handleChange}
+                />
+                <button
+                  type="submit"
+                  className="text-white absolute end-2.5 bottom-2.5 bg-grey-color hover:bg-gray-500 font-medium rounded-lg text-sm px-2 py-2"
+                >
+                  <FaArrowUpLong size={20} />
+                </button>
+              </div>
+              {loading && (
+                <div className="absolute bottom-0 left-0 right-0">
+                  <Spinner />
+                </div>
+              )}
             </form>
             {loading && (
               <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md">
