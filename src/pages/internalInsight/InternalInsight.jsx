@@ -10,6 +10,7 @@ import remarkGfm from "remark-gfm";
 import { useLocation } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { ToastContainer, toast } from "react-toastify";
+import { BeatLoader } from "react-spinners";
 
 const InternalInsight = () => {
   const [query, setQuery] = useState("");
@@ -367,7 +368,12 @@ const InternalInsight = () => {
                   <FaArrowUpLong size={20} />
                 </button>
               </div>
-            </form> */}
+            </form>
+            {loading && (
+              <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md">
+                <div className="loadingSpinner"></div>
+              </div>
+            )} */}
             <form onSubmit={handleSubmit} className="p-2 mx-auto relative">
               <label
                 htmlFor="default-search"
@@ -412,15 +418,10 @@ const InternalInsight = () => {
               </div>
               {loading && (
                 <div className="absolute bottom-0 left-0 right-0">
-                  <Spinner />
+                  <BeatLoader color={"#123abc"} loading={loading} size={15} />
                 </div>
               )}
             </form>
-            {loading && (
-              <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md">
-                <div className="loadingSpinner"></div>
-              </div>
-            )}
 
             {feedback && (
               <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
@@ -435,7 +436,6 @@ const InternalInsight = () => {
                     <div key={key}>
                       Source:
                       <span className="text-primary-blue">
-                        {" "}
                         {value.file_name}
                       </span>
                     </div>
