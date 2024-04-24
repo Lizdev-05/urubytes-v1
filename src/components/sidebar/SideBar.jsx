@@ -22,9 +22,10 @@ const SideBar = () => {
   const [open, setOpen] = useState(true);
   const [showModalCard, setShowModalCard] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
-  const user = useSelector((state) => state.login.user);
-  const userName = user ? user.name : "User";
+  // const user = useSelector((state) => state.login.user);
+  // const userName = user ? user.name : "User";
 
+  const userName = useSelector((state) => state.login.name);
   const Menus = [
     { title: "Dashboard", link: "/dashboard", src: dashbordIcon },
     {
@@ -162,8 +163,7 @@ const SideBar = () => {
                   className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm-center gap-x-4`}
                   onClick={() => setShowModalCard(!showModalCard)}
                 >
-                  <FaRegUserCircle />
-                  <span
+                  {/* <span
                     style={{
                       transitionDelay: `${i + 3}00ms`,
                     }}
@@ -172,12 +172,27 @@ const SideBar = () => {
                     } origin-left duration-200`}
                   >
                     {Menu.title}
-                  </span>
+                  </span> */}
+                  <div className="flex items-center gap-6">
+                    <FaRegUserCircle />
+                    <span
+                      style={{
+                        transitionDelay: `${i + 3}00ms`,
+                      }}
+                      className={` ${
+                        !open && "opacity-0 translate-x-28 overflow-hidden"
+                      } origin-left duration-200`}
+                    >
+                      {userName}
+                    </span>
+                  </div>
                 </div>
               ) : (
                 <Link
                   to={Menu.link}
-                  className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm-center gap-x-4`}
+                  // className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm-center gap-x-4`}
+                  className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm items-center gap-x-4 
+                  ${Menu.gap ? "mt-9" : "mt-2"} `}
                 >
                   <img src={Menu.src} alt={Menu.title} />
                   <span
