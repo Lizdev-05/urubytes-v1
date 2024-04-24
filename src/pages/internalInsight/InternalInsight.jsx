@@ -370,11 +370,9 @@ const InternalInsight = () => {
                 </button>
               </div>
               {loading && (
-                <div className="absolute bottom-0 left-0 right-0 top-5">
-                  <p>
-                    Urubytes is thinking{" "}
-                    <BeatLoader color={"#123abc"} loading={loading} size={15} />
-                  </p>
+                <div className="absolute bottom-0 left-0 right-0 top-1 flex items-center space-x-2 ">
+                  <span>Urubytes is thinking </span>
+                  <BeatLoader color={"#123abc"} loading={loading} size={15} />
                 </div>
               )}
             </form>
