@@ -66,6 +66,48 @@ const Survey = () => {
                 >
                   <div>
                     <label
+                      for="organization"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800"
+                    >
+                      Organization Name
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        name="organization"
+                        id="organization"
+                        value={formData.organization}
+                        onChange={handleChange}
+                        className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required
+                      />
+                      {/* <IoIosArrowDown className="absolute top-3 right-3 text-gray-400" /> */}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      for="role"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800"
+                    >
+                      Your Role
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        name="role"
+                        id="role"
+                        value={formData.role}
+                        onChange={handleChange}
+                        className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required
+                      />
+                      {/* <IoIosArrowDown className="absolute top-3 right-3 text-gray-400" /> */}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
                       for="industry"
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800"
                     >
@@ -89,26 +131,7 @@ const Survey = () => {
                       }
                     />
                   </div>
-                  <div>
-                    <label
-                      for="organization"
-                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800"
-                    >
-                      Organization Name
-                    </label>
-                    <div className="relative">
-                      <input
-                        type="text"
-                        name="organization"
-                        id="organization"
-                        value={formData.organization}
-                        onChange={handleChange}
-                        className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required
-                      />
-                      {/* <IoIosArrowDown className="absolute top-3 right-3 text-gray-400" /> */}
-                    </div>
-                  </div>
+
                   <div>
                     <label
                       for="size"
@@ -130,26 +153,7 @@ const Survey = () => {
                       }
                     />
                   </div>
-                  <div>
-                    <label
-                      for="role"
-                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800"
-                    >
-                      Your Role
-                    </label>
-                    <div className="relative">
-                      <input
-                        type="text"
-                        name="role"
-                        id="role"
-                        value={formData.role}
-                        onChange={handleChange}
-                        className="bg-gray-50 border border-gray-500 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white-700 dark:bg-white-600 dark:placeholder-gray-400 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required
-                      />
-                      {/* <IoIosArrowDown className="absolute top-3 right-3 text-gray-400" /> */}
-                    </div>
-                  </div>
+
                   <div>
                     <label
                       for="country"

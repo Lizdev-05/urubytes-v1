@@ -102,21 +102,21 @@ const Interest = () => {
                     }`}
                     onClick={() =>
                       handleChange({
-                        target: { name: "interests", value: "Explore" },
+                        target: { name: "interests", value: "explore" },
                       })
                     }
                   >
-                    I’m here to explore
+                    I'm here to explore
                   </button>
                   <button
                     className={`text-sm text-gray-700 border border-gray-400 rounded-2xl p-4 inline-block mb-2 ${
-                      selectedInterest === "Competitors"
+                      selectedInterest === "competitors"
                         ? "bg-blue-600 text-white"
                         : ""
                     }`}
                     onClick={() =>
                       handleChange({
-                        target: { name: "interests", value: "Competitors" },
+                        target: { name: "interests", value: "competitors" },
                       })
                     }
                   >
@@ -124,18 +124,17 @@ const Interest = () => {
                   </button>
                   <button
                     className={`text-sm text-gray-700 border border-gray-400 rounded-2xl p-4 inline-block mb-2 ${
-                      selectedInterest === "Insights"
+                      selectedInterest === "insights"
                         ? "bg-blue-600 text-white"
                         : ""
                     }`}
                     onClick={() =>
                       handleChange({
-                        target: { name: "interests", value: "Insights" },
+                        target: { name: "interests", value: "insights" },
                       })
                     }
                   >
-                    I’m looking to make sense of my data and get actionable
-                    insight
+                    I'm want to understand my data and get actionable insights
                   </button>
                 </div>
               </div>
@@ -147,21 +146,21 @@ const Interest = () => {
                 <div>
                   <button
                     className={`mr-2 text-sm text-gray-700 border border-gray-400 rounded-xl py-3 px-3 inline-block mb-2 ${
-                      selectedReferrer === "FriendColleague"
+                      selectedReferrer === "friend/colleague"
                         ? "bg-blue-600 text-white"
                         : ""
                     }`}
                     onClick={() =>
                       handleChange({
-                        target: { name: "referrer", value: "FriendColleague" },
+                        target: { name: "referrer", value: "friend/colleague" },
                       })
                     }
                   >
-                    Through a friend / colleague
+                    Through a friend/colleague
                   </button>
                   <button
                     className={` text-sm text-gray-700 border border-gray-400 rounded-xl py-3 px-3 inline-block mb-2 ${
-                      selectedReferrer === "PublicationConference"
+                      selectedReferrer === "publication/conference"
                         ? "bg-blue-600 text-white"
                         : ""
                     }`}
@@ -169,7 +168,7 @@ const Interest = () => {
                       handleChange({
                         target: {
                           name: "referrer",
-                          value: "PublicationConference",
+                          value: "publication/conference",
                         },
                       })
                     }
@@ -178,13 +177,13 @@ const Interest = () => {
                   </button>
                   <button
                     className={`mr-2 text-sm text-gray-700 border border-gray-400 rounded-xl py-3 px-3 inline-block mb-2 ${
-                      selectedReferrer === "SocialMedia"
+                      selectedReferrer === "socialmedia"
                         ? "bg-blue-600 text-white"
                         : ""
                     }`}
                     onClick={() =>
                       handleChange({
-                        target: { name: "referrer", value: "SocialMedia" },
+                        target: { name: "referrer", value: "socialmedia" },
                       })
                     }
                   >
@@ -192,13 +191,13 @@ const Interest = () => {
                   </button>
                   <button
                     className={`mr-2 text-sm text-gray-700 border border-gray-400 rounded-xl py-3 px-3 inline-block mb-2 ${
-                      selectedReferrer === "OnlineSearch"
+                      selectedReferrer === "onlinesearch"
                         ? "bg-blue-600 text-white"
                         : ""
                     }`}
                     onClick={() =>
                       handleChange({
-                        target: { name: "referrer", value: "OnlineSearch" },
+                        target: { name: "referrer", value: "onlinesearch" },
                       })
                     }
                   >
@@ -206,7 +205,7 @@ const Interest = () => {
                   </button>
                   <button
                     className={`text-sm text-gray-700 border border-gray-400 rounded-xl py-3 px-3 inline-block mb-2 ${
-                      selectedReferrer === "WebinarNetworking"
+                      selectedReferrer === "webinar/networking"
                         ? "bg-blue-600 text-white"
                         : ""
                     }`}
@@ -214,7 +213,7 @@ const Interest = () => {
                       handleChange({
                         target: {
                           name: "referrer",
-                          value: "WebinarNetworking",
+                          value: "webinar/networking",
                         },
                       })
                     }
