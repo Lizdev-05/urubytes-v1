@@ -370,7 +370,7 @@ const InternalInsight = () => {
                 </button>
               </div>
               {loading && (
-                <div className="absolute bottom-0 left-0 right-0 top-2 flex items-center space-x-2 ">
+                <div className="absolute bottom-0 left-0 right-0 top-1 flex items-center space-x-2 ">
                   <span>Urubytes is thinking </span>
                   <BeatLoader color={"#123abc"} loading={loading} size={15} />
                 </div>
