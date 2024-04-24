@@ -35,38 +35,6 @@ const UploadSource = () => {
     setSelectedFiles(Array.from(event.target.files));
   };
 
-  // const handleFileUpload = async () => {
-  //   if (selectedFiles.length === 0) {
-  //     return;
-  //   }
-
-  //   const formData = new FormData();
-  //   selectedFiles.forEach((file) => {
-  //     formData.append("source", file);
-  //   });
-
-  //   formData.append("userID", userId);
-  //   formData.append("orgID", orgId);
-  //   formData.append("type", "FILE");
-
-  //   try {
-  //     const response = await axios.post(
-  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/",
-
-  //       formData,
-  //       {
-  //         headers: {
-  //           Authorization: `Token ${token}`,
-  //         },
-  //       }
-  //     );
-  //     console.log("Response:", response);
-  //     navigate("/dataSource");
-  //   } catch (error) {
-  //     console.error("Error uploading files:", error);
-  //   }
-  // };
-
   const handleFileUpload = async () => {
     if (selectedFiles.length === 0) {
       return;
@@ -108,8 +76,14 @@ const UploadSource = () => {
 
   return (
     <div className="border rounded-xl border-gray-300 w-4/5 px-12 py-4 m-auto relative">
-      {loading && (
+      {/* {loading && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
+          <Spinner />
+        </div>
+      )} */}
+
+      {loading && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
           <Spinner />
         </div>
       )}
