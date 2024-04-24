@@ -82,6 +82,7 @@ const InternalInsight = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
+    // setFeedback(null);
 
     const url =
       mode === "internal"
