@@ -23,6 +23,7 @@ const InternalInsight = () => {
 
   const token = useSelector((state) => state.login.token);
   const orgId = useSelector((state) => state.login.orgID);
+  const [forceUpdate, setForceUpdate] = useState(false);
 
   // useEffect(() => {
   //   async function fetchLibraryItems() {
@@ -77,11 +78,12 @@ const InternalInsight = () => {
     };
 
     fetchLibraryItems();
-  }, [token]);
+  }, [token, forceUpdate]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
+    setForceUpdate(!forceUpdate);
     // setFeedback(null);
 
     const url =
@@ -206,12 +208,12 @@ const InternalInsight = () => {
           prevLibraryItems.filter((item) => item.searchID !== searchID)
         );
         toast.success("Query deleted successfully");
-        console.log("Deleted query:", searchID);
-        console.log(response);
+        setForceUpdate(!forceUpdate);
       } else {
-        console.error("Failed to delete query:", response);
+        toast.error("Failed to delete query");
       }
     } catch (error) {
+      toast.error("Error deleting query");
       console.error("Error deleting query:", error);
     }
   };
