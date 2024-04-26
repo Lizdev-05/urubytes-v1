@@ -76,12 +76,6 @@ const UploadSource = () => {
 
   return (
     <div className="border rounded-xl border-gray-300 w-4/5 px-12 py-4 m-auto relative">
-      {/* {loading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
-          <Spinner />
-        </div>
-      )} */}
-
       {loading && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
           <Spinner />
