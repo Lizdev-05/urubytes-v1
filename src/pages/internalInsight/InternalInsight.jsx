@@ -176,11 +176,6 @@ const InternalInsight = () => {
     }
   };
 
-  // const handleQueryClick = (item) => {
-
-  // setFeedback(item.feedback);
-
-  // };
 
   const handleQueryClick = async (item) => {
     setLoading(true);
