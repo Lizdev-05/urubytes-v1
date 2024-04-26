@@ -122,6 +122,8 @@ const InternalInsight = () => {
     } catch (error) {
       if (error.name === "AbortError") {
         console.log("Fetch aborted");
+        toast.error("Request aborted");
+        setLoading(false);
       } else {
         console.error("Error sending request:", error);
       }
