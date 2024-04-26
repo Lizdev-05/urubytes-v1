@@ -277,7 +277,10 @@ const InternalInsight = () => {
             {libraryItems.map((item, index) => (
               <ul key={index}>
                 <li className="text-xs leading mb-2 bg-[#F0F2F9] p-2 my-2">
-                  <span onClick={() => handleQueryClick(item)}>
+                  <span
+                    onClick={() => handleQueryClick(item)}
+                    className="cursor-pointer"
+                  >
                     {item.query.length > 30
                       ? `${item.query.substring(0, 30)}...`
                       : item.query}
@@ -288,7 +291,7 @@ const InternalInsight = () => {
                       {new Date(item.updated_at).toLocaleDateString()}
                     </span>
                     <RiDeleteBin6Line
-                      className="text-red-600 font-bold text-5xl  bg-white py-2"
+                      className="text-red-600 font-bold text-5xl  bg-white py-2 cursor-pointer"
                       onClick={() => handleDelete(item.searchID)}
                     />{" "}
                   </span>
