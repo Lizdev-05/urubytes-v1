@@ -169,7 +169,7 @@ const DataSources = () => {
                                 color="blue-gray"
                                 className="font-normal"
                               >
-                                {created_at}
+                                {new Date(created_at).toLocaleDateString()}
                               </Typography>
                             </td>
                             <td className="p-4">
@@ -178,7 +178,7 @@ const DataSources = () => {
                                 color="blue-gray"
                                 className="font-normal"
                               >
-                                {updated_at}
+                                {new Date(updated_at).toLocaleDateString()}
                               </Typography>
                             </td>
                           </tr>

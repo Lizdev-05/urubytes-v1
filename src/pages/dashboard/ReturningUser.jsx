@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import dashboardLens from "../../assets/dashboard-lens.png";
 import internalInsights from "../../assets/ic_baseline-insights2.png";
 import internalInsights2 from "../../assets/ic_baseline-insights.png";
@@ -16,10 +17,10 @@ import { useNavigate } from "react-router-dom";
 
 const ReturningUser = ({ userQueries, data }) => {
   const navigate = useNavigate();
-
-  // const handleUserQueriesClick = () => {
-  //   navigate("/internal-insight");
-  // };
+  const [recentSearches, setRecentSearches] = useState(
+    data.recentSearches.user
+  );
+  const token = useSelector((state) => state.login.token);
   const handleUserQueriesClick = () => {
     navigate("/internalInsight", { state: { selectedQuery: userQueries } });
   };
@@ -153,16 +154,20 @@ const ReturningUser = ({ userQueries, data }) => {
           <h1 className=" text-[16px] font-bold">Recent Search</h1>
           {data.recentSearches.user.map((search, index) => (
             <ul key={index}>
-              <li
-                className="bg-[#F0F2F9] p-2 my-2"
-                onClick={handleUserQueriesClick}
-              >
-                <span>{search.query}</span>
+              <li className="bg-[#F0F2F9] p-2 my-2">
+                <span onClick={() => handleUserQueriesClick(search.id)}>
+                  {search.query.length > 30
+                    ? `${search.query.substring(0, 30)}...`
+                    : search.query}
+                </span>
                 <span className="flex justify-between items-center">
                   <span className="text-sm text-gray-500">
                     {new Date(search.updated_at).toLocaleDateString()}
                   </span>
-                  <RiDeleteBin6Line className="text-red-600 font-bold text-5xl  bg-white py-2" />
+                  {/* <RiDeleteBin6Line
+                      className="text-red-600 font-bold text-5xl  bg-white py-2"
+                      onClick={() => handleDelete(search.id)}
+                    /> */}
                 </span>
               </li>
             </ul>

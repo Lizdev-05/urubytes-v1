@@ -6,10 +6,12 @@ import { FaPlus } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Spinner from "../../../components/Spinner";
 
 const UploadSource = () => {
   const [selectedSource, setSelectedSource] = useState("document");
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const token = useSelector((state) => state.login.token);
@@ -35,9 +37,10 @@ const UploadSource = () => {
 
   const handleFileUpload = async () => {
     if (selectedFiles.length === 0) {
-      console.error("No files selected");
       return;
     }
+
+    setLoading(true);
 
     const formData = new FormData();
     selectedFiles.forEach((file) => {
@@ -51,7 +54,6 @@ const UploadSource = () => {
     try {
       const response = await axios.post(
         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/",
-
         formData,
         {
           headers: {
@@ -59,21 +61,32 @@ const UploadSource = () => {
           },
         }
       );
-      console.log("Files uploaded and saved to user storage:", response.data);
       console.log("Response:", response);
       navigate("/dataSource");
     } catch (error) {
       console.error("Error uploading files:", error);
+    } finally {
+      setLoading(false);
     }
   };
-
   console.log("Token:", token);
   console.log("User ID:", userId);
   console.log("Org ID:", orgId);
   console.log("Files to upload:", selectedFiles);
 
   return (
-    <div className="border rounded-xl border-gray-300 w-4/5 px-12 py-4 m-auto">
+    <div className="border rounded-xl border-gray-300 w-4/5 px-12 py-4 m-auto relative">
+      {/* {loading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
+          <Spinner />
+        </div>
+      )} */}
+
+      {loading && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
+          <Spinner />
+        </div>
+      )}
       <div className="flex justify-start gap-8">
         {/* <UploadCard
           source="drive"

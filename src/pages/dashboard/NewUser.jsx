@@ -9,6 +9,7 @@ import uruVideo from "../../assets/urubytes.mp4";
 const NewUser = () => {
   return (
     <div className="bg-grey-bg min-h-screen w-screen  overflow-hidden">
+
       <Navbar />
       <div className="grid grid-cols-1 sm:grid-cols-4 p-2 overflow-hidden">
         <div className="sm:col-span-3 py-6 sm:px-16 bg-white border border-gray-200 rounded-lg shadow dark:bg-white dark:border-gray-300">
