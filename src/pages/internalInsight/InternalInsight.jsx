@@ -147,11 +147,39 @@ const InternalInsight = () => {
     }
 };
 
+const handleDelete = async (searchID) => {
+  try {
+    const response = await fetch(
+      `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${searchID}/`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      }
+    );
+
+    if (response.ok) {
+      setLibraryItems((prevLibraryItems) =>
+        prevLibraryItems.filter((item) => item.searchID !== searchID)
+      );
+      toast.success("Query deleted successfully");
+      setForceUpdate(!forceUpdate);
+    } else {
+      toast.error("Failed to delete query");
+    }
+  } catch (error) {
+    toast.error("Error deleting query");
+    console.error("Error deleting query:", error);
+  }
+};
+
   const handleToggle = () => {
     setMode((prevMode) => (prevMode === "internal" ? "external" : "internal"));
   };
   return (
     <div className="bg-grey-bg h-screen w-screen overflow-y-auto internal">
+
       <Navbar />
       <div className="grid grid-cols-1 sm:grid-cols-4 p-2 h-full overflow-auto">
         <div className="block sm:col-span-1 py-4 px-8 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100">
@@ -185,64 +213,9 @@ const InternalInsight = () => {
           </form>
           <h1 className="mt-4 text-3xl font-bold">Library</h1>
           <p className="text-gray-300 my-2">Nothing here yet</p>
-  // const handleDelete = async (searchID) => {
-  //   try {
-  //     const response = await fetch(
-  //       `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${searchID}/`,
-  //       {
-  //         method: "DELETE",
-  //         headers: {
-  //           Authorization: `Token ${token}`,
-  //         },
-  //       }
-  //     );
-
-  //     if (response.ok) {
-  //       const newLibraryItems = [...libraryItems];
-  //       const index = newLibraryItems.findIndex(
-  //         (item) => item.searchID === searchID
-  //       );
-  //       newLibraryItems.splice(index, 1);
-  //       setLibraryItems(newLibraryItems);
-  //       toast.success("Query deleted successfully");
-  //       console.log("Deleted query:", searchID);
-  //       console.log(response);
-  //     } else {
-  //       console.error("Failed to delete query:", response);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error deleting query:", error);
-  //   }
-  // };
-  const handleDelete = async (searchID) => {
-    try {
-      const response = await fetch(
-        `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${searchID}/`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        }
-      );
-
-      if (response.ok) {
-        setLibraryItems((prevLibraryItems) =>
-          prevLibraryItems.filter((item) => item.searchID !== searchID)
-        );
-        toast.success("Query deleted successfully");
-        setForceUpdate(!forceUpdate);
-      } else {
-        toast.error("Failed to delete query");
-      }
-    } catch (error) {
-      toast.error("Error deleting query");
-      console.error("Error deleting query:", error);
-    }
-  };
 
   return (
-    <>
+    <div>
       <ToastContainer />
       <div className="bg-grey-bg h-screen w-screen overflow-y-auto internal">
         <Navbar />
@@ -275,7 +248,8 @@ const InternalInsight = () => {
                   required
                 />
                 <span className="slider round"></span>
-              </label>
+              </div>
+          
               <span
                 className={`ml-3 ${
                   mode === "external" ? "text-dark" : "text-gray-500"
@@ -283,7 +257,7 @@ const InternalInsight = () => {
               >
                 External Insight
               </span>
-            </div>
+            </form>
             <Link
               to="/addSource"
               className="border border-transparent rounded-lg flex items-center bg-yellow-color hover:bg-yellow-600"
@@ -302,7 +276,7 @@ const InternalInsight = () => {
               question about your business.
             </p>
               </div>
-            </form>
+            </div>
             <h1 className="mt-4 text-3xl font-bold">Library</h1>
 
             {libraryItems.map((item) => (
@@ -477,7 +451,8 @@ const InternalInsight = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
+  </div>
   );
 };
 
