@@ -114,24 +114,14 @@ const UploadSource = () => {
                   Click or drag files to this area to upload PDF, <br /> DOCX,
                   XLSX, and PPTX files
                 </p>
-                <div className="flex flex-col items-center">
-                  <label className="custom-file-upload">
-                    <input
-                      type="file"
-                      multiple
-                      onChange={handleFileChange}
-                      accept=".pdf,.docx,.xlsx,.pptx"
-                      name="source"
-                      style={{ display: 'none' }}
-                    />
-                   <button className="border-2 border-gray-300 text-gray-500 font-bold py-2 px-4 rounded">
-                      Choose Files
-                    </button>
-                  </label>
-                  <p>
-                    {selectedFiles.length > 0 ? `${selectedFiles.length} files selected` : 'No files chosen'}
-                  </p>
-
+                <div className="flex justify-between items-center">
+                  <input
+                    type="file"
+                    multiple
+                    onChange={handleFileChange}
+                    accept=".pdf,.docx,.xlsx,.pptx"
+                    name="source"
+                  />
                   <button
                     onClick={handleFileUpload}
                     className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4"
