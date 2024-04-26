@@ -84,7 +84,7 @@ const DataSources = () => {
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
               {tableData.length === 0 ? (
-                <p className="py-4">No upload yet</p>
+                <p className="py-4">No uploads yet</p>
               ) : (
                 <div className="overflow-hidden">
                   <p className="leading-6 pb-4 text-[18]">
@@ -192,13 +192,13 @@ const DataSources = () => {
           </div>
         </div>
         <div>
-          <h1 className="text-4xl font-bold">My Integrations</h1>
+          <h1 className="text-4xl font-bold my-2 mb-4">My Integrations</h1>
           {/* <p className="text-xl font-medium leading-10 ">
             Do you currently use these apps? Integrate now to get a unified view
             of your data
           </p> */}
           {/* <IntegrationCards /> */}
-          <p>There is nothing here</p>
+          <p>No Integrations yet</p>
         </div>
       </div>
     </div>

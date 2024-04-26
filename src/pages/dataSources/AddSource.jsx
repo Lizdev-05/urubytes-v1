@@ -38,9 +38,9 @@ const AddSources = () => {
       <div className=" p-6 px-12 m-4 h-full bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300">
         <div className=" ">
           <h1 className="text-3xl font-semibold">Connect a Data Source</h1>
-          <p className="text-sm font-semi-bold my-2 ">
+          <p className="text-sm font-semi-bold mb-8 my-2 ">
             Want to get insights from your business data? Start by pointing us
-            to where the data is.
+            to where the data is
           </p>
           <div className="cursor-pointer">
             <UploadForm />
