@@ -11,6 +11,7 @@ import { useLocation } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { ToastContainer, toast } from "react-toastify";
 import { BeatLoader } from "react-spinners";
+import { CiStop1 } from "react-icons/ci";
 
 const InternalInsight = () => {
   const [query, setQuery] = useState("");
@@ -21,6 +22,7 @@ const InternalInsight = () => {
   const location = useLocation();
   const selectedQuery = location.state?.selectedQuery;
   const [isLibraryLoading, setIsLibraryLoading] = useState(false);
+  const [abortController, setAbortController] = useState(null);
 
   const token = useSelector((state) => state.login.token);
   const orgId = useSelector((state) => state.login.orgID);
@@ -92,6 +94,9 @@ const InternalInsight = () => {
         ? "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/internal/"
         : "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/market/";
 
+    const controller = new AbortController();
+    setAbortController(controller);
+
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -100,6 +105,7 @@ const InternalInsight = () => {
           Authorization: `Token ${token}`,
         },
         body: JSON.stringify({ query, orgId }),
+        signal: controller.signal,
       });
 
       if (response.ok) {
@@ -114,8 +120,18 @@ const InternalInsight = () => {
         setLoading(false);
       }
     } catch (error) {
-      console.error("Error sending request:", error);
+      if (error.name === "AbortError") {
+        console.log("Fetch aborted");
+      } else {
+        console.error("Error sending request:", error);
+      }
       setLoading(false);
+    }
+  };
+
+  const handleStop = () => {
+    if (abortController) {
+      abortController.abort();
     }
   };
 
@@ -206,6 +222,7 @@ const InternalInsight = () => {
       );
 
       if (response.ok) {
+        console.log(response);
         setLibraryItems((prevLibraryItems) =>
           prevLibraryItems.filter((item) => item.searchID !== searchID)
         );
@@ -362,11 +379,22 @@ const InternalInsight = () => {
                   value={query}
                   onChange={handleChange}
                 />
-                <button
+                {/* <button
                   type="submit"
                   className="text-white absolute end-2.5 bottom-2.5 bg-grey-color hover:bg-gray-500 font-medium rounded-lg text-sm px-2 py-2"
                 >
                   <FaArrowUpLong size={20} />
+                </button> */}
+                <button
+                  type="submit"
+                  className="text-white absolute end-2.5 bottom-2.5 bg-grey-color hover:bg-gray-500 font-medium rounded-lg text-sm px-2 py-2"
+                  onClick={loading ? handleStop : handleSubmit}
+                >
+                  {loading ? (
+                    <CiStop1 size={20} />
+                  ) : (
+                    <FaArrowUpLong size={20} />
+                  )}
                 </button>
               </div>
               {loading && (
