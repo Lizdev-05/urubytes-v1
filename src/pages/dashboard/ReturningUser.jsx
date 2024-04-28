@@ -14,6 +14,7 @@ import { IoDownloadOutline } from "react-icons/io5";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import Chart from "./Banner";
 
 const ReturningUser = ({ userQueries, data }) => {
   const navigate = useNavigate();
@@ -30,9 +31,8 @@ const ReturningUser = ({ userQueries, data }) => {
       <Navbar />
       <div className="grid grid-cols-1 sm:grid-cols-4 p-2 overflow-hidden">
         <div className="sm:col-span-3 py-4 sm:px-16 bg-white border border-gray-200 rounded-lg shadow dark:bg-white dark:border-gray-300">
-          <div className="mt-6 ">
-            <h1 className="text-3xl font-semibold">Welcome To Urubytes</h1>
-            <div className="px-2 my-4 border border-gray-200 rounded-lg shadow bg-primary-blue dark:border-gray-300 dark:hover:bg-blue-500">
+          <div className="my-6 ">
+            {/* <div className="px-2 my-4 border border-gray-200 rounded-lg shadow bg-primary-blue dark:border-gray-300 dark:hover:bg-blue-500">
               <div className="flex flex-col-reverse sm:flex-row justify-between px-8">
                 <div className="my-8 leading-10 text-white">
                   <h2 className="text-3xl font-semibold mb-4">
@@ -47,7 +47,8 @@ const ReturningUser = ({ userQueries, data }) => {
                   <img src={dashboardLens} alt="dashboard-lens" />
                 </div>
               </div>
-            </div>
+            </div> */}
+            <Chart />
           </div>
           <div>
             <h2 className="text-2xl font-semibold">Insight Today</h2>

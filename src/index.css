@@ -2,11 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .bg-gradient {
-  @apply bg-clip-text text-transparent;
-  background-image: linear-gradient(to right, #3788e5 0%, #e58a13 100%);
-  box-decoration-break: clone;
-} */
+.canvasjs-chart-credit {
+  display: none !important;
+}
 
 .loading-overlay {
   position: fixed;
