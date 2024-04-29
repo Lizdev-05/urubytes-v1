@@ -55,7 +55,7 @@ const InternalInsight = () => {
     };
 
     fetchLibraryItems();
-  }, [token, forceUpdate]);
+  }, [token]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -85,6 +85,7 @@ const InternalInsight = () => {
       if (response.ok) {
         const data = await response.json();
         setFeedback(data);
+        setQuery("");
       } else {
         console.error("Failed to receive feedback:", response);
       }
@@ -145,34 +146,6 @@ const InternalInsight = () => {
     setMode((prevMode) => (prevMode === "internal" ? "external" : "internal"));
   };
 
-  // const handleDelete = async (searchID, event) => {
-  //   event.preventDefault();
-  //   try {
-  //     const response = await fetch(
-  //       `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${searchID}/`,
-  //       {
-  //         method: "DELETE",
-  //         headers: {
-  //           Authorization: `Token ${token}`,
-  //         },
-  //       }
-  //     );
-
-  //     if (response.ok) {
-  //       setLibraryItems((prevLibraryItems) =>
-  //         prevLibraryItems.filter((item) => item.searchID !== searchID)
-  //       );
-  //       toast.success("Query deleted successfully");
-  //       setForceUpdate(!forceUpdate);
-  //     } else {
-  //       toast.error("Failed to delete query");
-  //     }
-  //   } catch (error) {
-  //     toast.error("Error deleting query");
-  //     console.error("Error deleting query:", error);
-  //   }
-  // };
-
   const handleDelete = async (searchID, event) => {
     event.preventDefault();
     try {
@@ -199,9 +172,6 @@ const InternalInsight = () => {
       console.error("Error deleting query:", error);
     }
   };
-  <div key={feedback} className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
-    {/* ... */}
-  </div>;
 
   return (
     <>
@@ -256,12 +226,9 @@ const InternalInsight = () => {
                     <span className="text-sm text-gray-500">
                       {new Date(item.updated_at).toLocaleDateString()}
                     </span>
-                    {/* <RiDeleteBin6Line
-                      className="text-red-600 font-bold text-5xl  bg-white py-2 cursor-pointer"
-                      onClick={() => handleDelete(item.searchID)}
-                    /> */}
+
                     <RiDeleteBin6Line
-                      className="text-red-600 font-bold text-3xl  bg-white py-2 cursor-pointer"
+                      className="text-red-600 font-bold text-3xl py-2 cursor-pointer"
                       onClick={(event) => handleDelete(item.searchID, event)}
                     />
                   </span>
@@ -352,12 +319,7 @@ const InternalInsight = () => {
                   value={query}
                   onChange={handleChange}
                 />
-                {/* <button
-                  type="submit"
-                  className="text-white absolute end-2.5 bottom-2.5 bg-grey-color hover:bg-gray-500 font-medium rounded-lg text-sm px-2 py-2"
-                >
-                  <FaArrowUpLong size={20} />
-                </button> */}
+
                 <button
                   type="submit"
                   className="text-white absolute end-2.5 bottom-2.5 bg-grey-color hover:bg-gray-500 font-medium rounded-lg text-sm px-2 py-2"
