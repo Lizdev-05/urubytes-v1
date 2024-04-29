@@ -174,6 +174,7 @@ const InternalInsight = () => {
 
   const handleDelete = async (searchID, event) => {
     event.preventDefault();
+    event.stopPropagation();
     try {
       const response = await fetch(
         `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${searchID}/`,
@@ -307,7 +308,7 @@ const InternalInsight = () => {
               <h1 className="m-4 text-3xl font-bold">
                 Ask Urubytes A Question
               </h1>
-              <p className="px-24 text-gray-600">
+              <p className="px-22 text-gray-600">
                 Get started extracting bytes-sized insights from your business
                 data. Just tell us where to look first and you can ask any
                 question about your business.
