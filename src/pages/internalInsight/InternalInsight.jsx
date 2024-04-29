@@ -145,7 +145,35 @@ const InternalInsight = () => {
     setMode((prevMode) => (prevMode === "internal" ? "external" : "internal"));
   };
 
-  const handleDelete = async (searchID) => {
+  // const handleDelete = async (searchID) => {
+  //   try {
+  //     const response = await fetch(
+  //       `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${searchID}/`,
+  //       {
+  //         method: "DELETE",
+  //         headers: {
+  //           Authorization: `Token ${token}`,
+  //         },
+  //       }
+  //     );
+
+  //     if (response.ok) {
+  //       setLibraryItems((prevLibraryItems) =>
+  //         prevLibraryItems.filter((item) => item.searchID !== searchID)
+  //       );
+  //       toast.success("Query deleted successfully");
+  //       setForceUpdate(!forceUpdate);
+  //     } else {
+  //       toast.error("Failed to delete query");
+  //     }
+  //   } catch (error) {
+  //     toast.error("Error deleting query");
+  //     console.error("Error deleting query:", error);
+  //   }
+  // };
+
+  const handleDelete = async (searchID, event) => {
+    event.preventDefault();
     try {
       const response = await fetch(
         `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${searchID}/`,
@@ -214,7 +242,7 @@ const InternalInsight = () => {
                 <li className="text-xs leading mb-2 bg-[#F0F2F9] p-2 my-2">
                   <span
                     onClick={() => handleQueryClick(item)}
-                    className="cursor-pointer"
+                    className="cursor-pointer font-semibold"
                   >
                     {item.query.length > 30
                       ? `${item.query.substring(0, 30)}...`
@@ -225,9 +253,13 @@ const InternalInsight = () => {
                     <span className="text-sm text-gray-500">
                       {new Date(item.updated_at).toLocaleDateString()}
                     </span>
-                    <RiDeleteBin6Line
+                    {/* <RiDeleteBin6Line
                       className="text-red-600 font-bold text-5xl  bg-white py-2 cursor-pointer"
                       onClick={() => handleDelete(item.searchID)}
+                    /> */}
+                    <RiDeleteBin6Line
+                      className="text-red-600 font-bold text-3xl  bg-white py-2 cursor-pointer"
+                      onClick={(event) => handleDelete(item.searchID, event)}
                     />
                   </span>
                 </li>
@@ -275,7 +307,7 @@ const InternalInsight = () => {
               <h1 className="m-4 text-3xl font-bold">
                 Ask Urubytes A Question
               </h1>
-              <p className="px-32 text-gray-600">
+              <p className="px-24 text-gray-600">
                 Get started extracting bytes-sized insights from your business
                 data. Just tell us where to look first and you can ask any
                 question about your business.
