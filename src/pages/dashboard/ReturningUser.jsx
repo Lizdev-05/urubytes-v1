@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import dashboardLens from "../../assets/dashboard-lens.png";
 import internalInsights from "../../assets/ic_baseline-insights2.png";
 import internalInsights2 from "../../assets/ic_baseline-insights.png";
 import { FaPlus } from "react-icons/fa";
@@ -12,7 +11,6 @@ import { FaRegThumbsUp } from "react-icons/fa";
 import { FaRegThumbsDown } from "react-icons/fa";
 import { IoDownloadOutline } from "react-icons/io5";
 import { IoShareSocialOutline } from "react-icons/io5";
-import { RiDeleteBin6Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
 const ReturningUser = ({ userQueries, data }) => {
@@ -28,26 +26,10 @@ const ReturningUser = ({ userQueries, data }) => {
   return (
     <div className="bg-grey-bg h-screen w-screen overflow-y-auto">
       <Navbar />
-      <div className="grid grid-cols-1 sm:grid-cols-4 p-2 overflow-hidden">
+      <div className="grid grid-cols-1 sm:grid-cols-4 p-2 h-screen overflow-y-auto">
         <div className="sm:col-span-3 py-4 sm:px-16 bg-white border border-gray-200 rounded-lg shadow dark:bg-white dark:border-gray-300">
-          <div className="mt-6 ">
+          <div className="my-6 ">
             <h1 className="text-3xl font-semibold">Welcome To Urubytes</h1>
-            <div className="px-2 my-4 border border-gray-200 rounded-lg shadow bg-primary-blue dark:border-gray-300 dark:hover:bg-blue-500">
-              <div className="flex flex-col-reverse sm:flex-row justify-between px-8">
-                <div className="my-8 leading-10 text-white">
-                  <h2 className="text-3xl font-semibold mb-4">
-                    Unlock the Power of your Data!
-                  </h2>
-                  <p className="leading-6">
-                    Know what your business is doing and what you can do better
-                    by asking the right questions
-                  </p>
-                </div>
-                <div>
-                  <img src={dashboardLens} alt="dashboard-lens" />
-                </div>
-              </div>
-            </div>
           </div>
           <div>
             <h2 className="text-2xl font-semibold">Insight Today</h2>
@@ -65,7 +47,7 @@ const ReturningUser = ({ userQueries, data }) => {
                   Fuel consumption for picking up...
                 </span>
               </div>
-              <div className="flex items-center justify-between mt-3">
+              <div className="flex items-center justify-between mt-6">
                 <div className="flex gap-2 ">
                   <p className="boder border border-gray-200 rounded-sm px-2 py-1">
                     {" "}
@@ -155,7 +137,10 @@ const ReturningUser = ({ userQueries, data }) => {
           {data.recentSearches.user.map((search, index) => (
             <ul key={index}>
               <li className="bg-[#F0F2F9] p-2 my-2">
-                <span onClick={() => handleUserQueriesClick(search.id)}>
+                <span
+                  onClick={() => handleUserQueriesClick(search.id)}
+                  className="cursor-pointer"
+                >
                   {search.query.length > 30
                     ? `${search.query.substring(0, 30)}...`
                     : search.query}
@@ -164,10 +149,6 @@ const ReturningUser = ({ userQueries, data }) => {
                   <span className="text-sm text-gray-500">
                     {new Date(search.updated_at).toLocaleDateString()}
                   </span>
-                  {/* <RiDeleteBin6Line
-                      className="text-red-600 font-bold text-5xl  bg-white py-2"
-                      onClick={() => handleDelete(search.id)}
-                    /> */}
                 </span>
               </li>
             </ul>

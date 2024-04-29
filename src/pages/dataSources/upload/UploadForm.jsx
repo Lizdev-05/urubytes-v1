@@ -81,29 +81,29 @@ const UploadSource = () => {
           <Spinner />
         </div>
       )}
-      <div className="flex justify-start gap-8">
-        {/* <UploadCard
+      {/* <div className="flex justify-start gap-8">
+        <UploadCard
           source="drive"
           title="Google Drive"
           handleClick={handleSourceClick}
           isSelected={selectedSource === "drive"}
-        /> */}
+        />
         <UploadCard
           source="document"
           title="Upload"
           handleClick={handleSourceClick}
           isSelected={selectedSource === "document"}
         />
-        {/* <UploadCard
+        <UploadCard
           source="link"
           title="Add Link"
           handleClick={handleSourceClick}
           isSelected={selectedSource === "link"}
-        /> */}
+        />
       </div>
       <div className="">
         <hr className=" border-t border-grey-bg w-full " />
-      </div>
+      </div> */}
       {selectedSource && (
         <div className="">
           {selectedSource === "document" && (
@@ -114,13 +114,14 @@ const UploadSource = () => {
                   Click or drag files to this area to upload PDF, <br /> DOCX,
                   XLSX, and PPTX files
                 </p>
-                <div className="flex justify-between items-center">
+                <div className="flex flex-col items-center m-auto">
                   <input
                     type="file"
                     multiple
                     onChange={handleFileChange}
                     accept=".pdf,.docx,.xlsx,.pptx"
                     name="source"
+                    className="font-bold py-2 rounded mt-4 w-3/4 border-2 border-gray-500 border-dotted p-4"
                   />
                   <button
                     onClick={handleFileUpload}

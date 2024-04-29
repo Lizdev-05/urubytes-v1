@@ -21,7 +21,7 @@ import EmailVerification from "./components/auth/emailVerification/EmailVerifica
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
-// import ReturningUser from "./pages/dashboard/ReturningUser";
+import ReturningUser from "./pages/dashboard/ReturningUser";
 
 function App() {
   const [isProfileModalOpen, setProfileModalOpen] = useState(false);
@@ -131,6 +131,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Billing />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/returningUser"
+          element={
+            <ProtectedRoute>
+              <ReturningUser />
             </ProtectedRoute>
           }
         />
