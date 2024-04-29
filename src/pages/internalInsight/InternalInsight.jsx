@@ -259,7 +259,7 @@ const InternalInsight = () => {
 
             {libraryItems.map((item, index) => (
               <ul key={index}>
-                <li className="text-xs leading mb-2 bg-[#F0F2F9] p-2 my-2">
+                <li className="text-sm leading mb-2 bg-[#F0F2F9] p-2 my-2">
                   <span onClick={() => handleQueryClick(item)}>
                     {item.query.length > 30
                       ? `${item.query.substring(0, 30)}...`
@@ -267,11 +267,11 @@ const InternalInsight = () => {
                   </span>
 
                   <span className="flex justify-between items-center">
-                    <span className="text-sm text-gray-500">
+                    <span className="text-xs text-gray-500">
                       {new Date(item.updated_at).toLocaleDateString()}
                     </span>
                     <RiDeleteBin6Line
-                      className="text-red-600 font-bold text-5xl  bg-white py-2"
+                      className="text-red-600 font-bold text-3xlpy-2"
                       onClick={() => handleDelete(item.searchID)}
                     />{" "}
                   </span>
@@ -320,7 +320,7 @@ const InternalInsight = () => {
               <h1 className="m-4 text-3xl font-bold">
                 Ask Urubytes A Question
               </h1>
-              <p className="px-32 text-gray-600">
+              <p className="px-24 text-gray-600">
                 Get started extracting bytes-sized insights from your business
                 data. Just tell us where to look first and you can ask any
                 question about your business.
