@@ -8,13 +8,14 @@ import uruVideo from "../../assets/urubytes.mp4";
 
 const NewUser = () => {
   return (
-    <div className="bg-grey-bg h-screen w-screen  overflow-auto">
+    <div className="bg-grey-bg min-h-screen w-screen  overflow-hidden">
+
       <Navbar />
-      <div className="grid grid-cols-1 sm:grid-cols-4 p-2 my-2 overflow-hidden">
+      <div className="grid grid-cols-1 sm:grid-cols-4 p-2 overflow-hidden">
         <div className="sm:col-span-3 py-6 sm:px-16 bg-white border border-gray-200 rounded-lg shadow dark:bg-white dark:border-gray-300">
           <div className="mt-6 ">
             <h1 className="text-3xl font-semibold">Welcome To Urubytes</h1>
-            <div className="px-2 py-8 my-10 border border-gray-200 rounded-lg shadow bg-primary-blue dark:border-gray-300 dark:hover:bg-blue-500">
+            <div className="px-2 py-8 my-4 border border-gray-200 rounded-lg shadow bg-primary-blue dark:border-gray-300 dark:hover:bg-blue-500">
               <div className="flex flex-col-reverse sm:flex-row justify-between px-8">
                 <div className="my-8 leading-10 text-white">
                   <h2 className="text-3xl font-semibold mb-4">
@@ -65,6 +66,17 @@ const NewUser = () => {
               </div>
             </div>
           </div>
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              {/* other content */}
+            </div>
+            <div class="mt-auto">
+              {/* empty div */}
+            </div>
+            <div class="mt-auto">
+              <p class="box-border mt-16 text-l text-gray-900 border-solid sm:text-l italic">To get additional Tokens, Contact Us!</p>
+            </div>
+          </div>
         </div>
         <div className="block sm:col-span-1 py-4  px-2 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-100">
           <div className="block overflow-hidden bg-white border border-gray-200 rounded-lg shadow  dark:border-gray-100 transition-transform transform hover:scale-105">
@@ -77,7 +89,7 @@ const NewUser = () => {
               controls
             />
           </div>
-          <div className="my-6 rounded-xl ">
+          <div className="mt-6 rounded-xl ">
             <div className="py-4 pb-8 px-4  border  border-gradient ">
               <h2 className="text-sm font-bold">Sources Connected</h2>
               <p className="mt-4 ml-6 font-thin text-gray-600">
