@@ -16,14 +16,15 @@ const Billing = () => {
             >
               Pricing
             </h2>
-            <p class="box-border mt-2 text-xl text-gray-900 border-solid sm:text-2xl"></p>
+            <p class="box-border mt-4 text-xl text-gray-900 border-solid sm:text-2xl"></p>
           </div>
 
           <div
             id="pricing"
             class="grid grid-cols-1  text-gray-900 border-0 border-gray-200 sm:mt-6 sm:gap-2  md:gap-4 lg:grid-cols-3"
           >
-            <div class="flex flex-col items-center max-w-md  mx-auto bg-primary-blue text-white my-0 border-solid rounded-lg border-0 shadow  sm:my-0 sm:p-6  md:py-4 md:px-12">
+            
+            <div class="flex flex-col justify-between items-center max-w-md mx-auto bg-primary-blue text-white my-0 border-solid rounded-lg border-0 shadow sm:my-0 sm:p-6 md:py-4 md:px-12">
               <h3 class="m-0 text-2xl font-semibold leading-tight tracking-tight text-white border-0 border-gray-200 sm:text-3xl md:text-2xl">
                 Basic
               </h3>
@@ -33,34 +34,31 @@ const Billing = () => {
                 $14.99
               </p>
               <hr
-                style={{ borderTop: "1px solid gray", width: "100%" }}
+                style={{ borderTop: "1px solid lightgray", width: "100%" }}
                 className="my-4"
               />
               <ul class="flex flex-col items-center text-white leading-7 border-0 border-gray-200 gap-2">
                 <li class="text-2">Free Setup</li>
                 <li class=" ">Bandwidth Limit 10 GB</li>
                 <li class=" ">20 User Connection</li>
-                <li class="text-gray-300 ">Analytics Report</li>
-                <li class="text-gray-300 ">Public API Access</li>
-                <li class=" text-gray-300">Plugins Intregation</li>
-                <li class="text-gray-300 ">Custom Content Management</li>
               </ul>
 
+              <div class="mt-auto">
               <hr
-                style={{ borderTop: "1px solid gray", width: "100%" }}
+                style={{ borderTop: "1px solid lightgray", width: "100%" }}
                 className="my-4"
               />
-
-              <a
-                href="#"
-                class="inline-flex justify-center w-full px-4 py-3 font-sans text-sm leading-none text-center text-primary-blue no-underline bg-white border border-blue-600 rounded-full cursor-pointer hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700 focus-within:text-white sm:text-base md:text-lg"
-              >
-                Your Current Plan
-              </a>
-              <p className="py-3">Start Your 30 Day Free Trial</p>
+                <a
+                  href="#"
+                  className="inline-flex justify-center w-full px-4 py-3 text-sm leading-none text-center text-primary-blue bg-white border border-blue-600 rounded-full cursor-pointer hover:bg-blue-700 hover:border-blue-700 hover:text-white focus:outline-none focus:bg-blue-700 focus:border-blue-700 focus:text-white sm:text-base md:text-lg"
+                >
+                  Your Current Plan
+                </a>
+                <p className="py-3 text-primary-blue">Start Your 30 Day Free Trial</p>
+              </div>
             </div>
 
-            <div class="flex flex-col items-center max-w-md  mx-auto my-0 border-solid rounded-lg border-0 shadow  sm:my-0 sm:p-6  md:py-4 md:px-8">
+           <div class="flex flex-col justify-between items-center max-w-md mx-auto my-0 border-solid rounded-lg border-0 shadow sm:my-0 sm:p-6 md:py-4 md:px-8">
               <h3 class="m-0 text-2xl font-semibold leading-tight tracking-tight text-black border-0 border-gray-200 sm:text-3xl md:text-2xl">
                 Standard
               </h3>
@@ -70,7 +68,7 @@ const Billing = () => {
                 $49.99
               </p>
               <hr
-                style={{ borderTop: "1px solid gray", width: "100%" }}
+                style={{ borderTop: "1px solid lightgray", width: "100%" }}
                 className="my-4"
               />
               <ul class="flex flex-col items-center leading-7 text-gray-600 border-0 border-gray-200 gap-2">
@@ -79,21 +77,27 @@ const Billing = () => {
                 <li class=" ">20 User Connection</li>
                 <li class=" ">Analytics Report</li>
                 <li class=" ">Public API Access</li>
-                <li class=" text-gray-400">Plugins Intregation</li>
-                <li class="text-gray-400 ">Custom Content Management</li>
               </ul>
 
+              
+
+              <div class="mt-auto">
               <hr
-                style={{ borderTop: "1px solid gray", width: "100%" }}
+                style={{ borderTop: "1px solid white", width: "100%" }}
                 className="my-4"
               />
-              <a
-                href="#"
-                class="inline-flex justify-center w-full px-4 py-3 font-sans text-sm leading-none text-center text-blue-600 no-underline bg-transparent border border-blue-600 rounded-full cursor-pointer hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700 focus-within:text-white sm:text-base md:text-lg"
-              >
-                Upgrade to Standard
-              </a>
-              <p className="py-3">Start Your 30 Day Free Trial</p>
+              <hr
+                style={{ borderTop: "1px solid lightgray", width: "100%" }}
+                className="my-4"
+              />
+                <a
+                  href="#"
+                  class="inline-flex justify-center w-full px-4 py-3 font-sans text-sm leading-none text-center text-blue-600 no-underline bg-transparent border border-blue-600 rounded-full cursor-pointer hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700 focus-within:text-white sm:text-base md:text-lg"
+                >
+                  Upgrade to Standard
+                </a>
+                <p className="py-3">Start Your 30 Day Free Trial</p>
+              </div>
             </div>
 
             <div class="flex flex-col items-center max-w-md  mx-auto my-0 border-solid rounded-lg border-0 shadow  sm:my-0 sm:p-6  md:py-4 md:px-8">
@@ -106,7 +110,7 @@ const Billing = () => {
                 $89.99
               </p>
               <hr
-                style={{ borderTop: "1px solid gray", width: "100%" }}
+                style={{ borderTop: "1px solid lightgray", width: "100%" }}
                 className="my-4"
               />
               <ul class="flex flex-col items-center leading-7 text-gray-600 border-0 border-gray-200 gap-2">
@@ -120,7 +124,7 @@ const Billing = () => {
               </ul>
 
               <hr
-                style={{ borderTop: "1px solid gray", width: "100%" }}
+                style={{ borderTop: "1px solid lightgray", width: "100%" }}
                 className="my-4"
               />
 
@@ -132,6 +136,9 @@ const Billing = () => {
               </a>
               <p className="py-3">Start Your 30 Day Free Trial</p>
             </div>
+
+            <p class="box-border mt-4 text-l text-gray-900 border-solid sm:text-l italic">To get additional Tokens, Contact Us!</p>
+
           </div>
         </div>
       </section>

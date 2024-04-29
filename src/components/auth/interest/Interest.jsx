@@ -48,7 +48,7 @@ const Interest = () => {
       setTimeout(() => {
         navigate("/dashboard");
       }, 2000);
-      navigate("/dashboard");
+     // navigate("/dashboard");
     } catch (error) {
       console.error("Failed to send data to backend:", error);
 
@@ -88,7 +88,7 @@ const Interest = () => {
             <div
               className={`w-full rounded-xl shadow dark:border md:mt-0 sm:max-w-lg xl:p-0 bg-white dark:bg-white-700  ${style.formBackground}`}
             >
-              <div className="p-6 space-y-4 md:space-y-2 sm:p-8">
+              <div className="p-4 space-y-4 md:space-y-2 sm:p-4">
                 <h1 className="text-xl font-medium leading-tight tracking-tight text-blue-700 md:text-3xl dark:text-blue-500 py-8">
                   What is your interest?
                 </h1>
@@ -139,7 +139,7 @@ const Interest = () => {
                 </div>
               </div>
 
-              <div className="p-6 space-y-4 md:space-y-2 sm:p-8">
+              <div className="p-6 space-y-4 md:space-y-2 sm:p-4">
                 <h1 className="text-xl font-medium leading-tight tracking-tight text-blue-700 md:text-3xl dark:text-blue-500 pb-4">
                   How did you hear about us?
                 </h1>
@@ -190,6 +190,7 @@ const Interest = () => {
                     Social media
                   </button>
                   <button
+
                     className={`mr-2 text-sm text-gray-700 border border-gray-400 rounded-xl py-3 px-3 inline-block mb-2 ${
                       selectedReferrer === "onlinesearch"
                         ? "bg-blue-600 text-white"
