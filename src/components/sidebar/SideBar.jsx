@@ -7,7 +7,6 @@ import dashbordIcon from "../../assets/Dashboard.svg";
 import internalInsightsIcon from "../../assets/ic_baseline-insights.png";
 import dataSourcesIcon from "../../assets/data-sources.png";
 import getHelpIcon from "../../assets/help-icon.png";
-import brightIcon from "../../assets/bright.png";
 import billingImg from "../../assets/marketInsight/billing.png";
 import teamImg from "../../assets/marketInsight/team.png";
 import accountSettingImg from "../../assets/marketInsight/setting.png";
@@ -23,7 +22,6 @@ const SideBar = () => {
   const [showModalCard, setShowModalCard] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
 
-  // const userName = useSelector((state) => state.login.name);
   const userName = useSelector((state) => state.login.name);
   const capitalizedUserName =
     userName.charAt(0).toUpperCase() + userName.slice(1);
@@ -35,7 +33,6 @@ const SideBar = () => {
       src: internalInsightsIcon,
     },
     { title: "Data Sources", link: "/dataSource", src: dataSourcesIcon },
-    // { title: "Billing", link: "/billing", src: billingImg },
   ];
 
   const bottomMenus = [
@@ -117,46 +114,6 @@ const SideBar = () => {
         <ul className="mt-auto">
           <hr className="border-t border-white my-2" />
 
-          {/* {bottomMenus.map((Menu, i) => (
-            <React.Fragment key={i}>
-              {Menu.title === "Bright ahedor" ? (
-                <div
-                  className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm-center gap-x-4`}
-                  onClick={() => setShowModalCard(!showModalCard)}
-                >
-                  <img src={Menu.src} alt={Menu.title} />
-                  <span
-                    style={{
-                      transitionDelay: `${i + 3}00ms`,
-                    }}
-                    className={` ${
-                      !open && "opacity-0 translate-x-28 overflow-hidden"
-                    } origin-left duration-200`}
-                  >
-                    {Menu.title}
-                  </span>
-                </div>
-              ) : (
-                <Link
-                  to={Menu.link}
-                  className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm-center gap-x-4`}
-                >
-                  <img src={Menu.src} alt={Menu.title} />
-                  <span
-                    style={{
-                      transitionDelay: `${i + 3}00ms`,
-                    }}
-                    className={` ${
-                      !open && "opacity-0 translate-x-28 overflow-hidden"
-                    } origin-left duration-200`}
-                  >
-                    {Menu.title}
-                  </span>
-                </Link>
-              )}
-              <hr className="border-t border-white my-2" />
-            </React.Fragment>
-          ))} */}
           {bottomMenus.map((Menu, i) => (
             <React.Fragment key={i}>
               {Menu.title === userName ? (
@@ -192,7 +149,6 @@ const SideBar = () => {
               ) : (
                 <Link
                   to={Menu.link}
-                  // className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm-center gap-x-4`}
                   className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm items-center gap-x-4 
                   ${Menu.gap ? "mt-9" : "mt-2"} `}
                 >
@@ -230,30 +186,7 @@ const SideBar = () => {
             </button>
 
             <h3 className="text-xl font-semibold mb-4">Organizations</h3>
-            {/* <ul>
-              <li className="flex items-center gap-3 text-[18px] cursor-pointer">
-                <img src={teamImg} alt={teamImg} />
-                Team
-              </li>
 
-              <Link
-                to="/billing"
-                className="flex items-center gap-3 text-[18px] cursor-pointer"
-              >
-                <img src={billingImg} alt={billingImg} />
-                Billing
-              </Link>
-
-              <hr className="border-t border-gray-400 my-4" />
-              <li className="flex items-center gap-3 text-[18px] cursor-pointer mb-2">
-                <img src={accountSettingImg} alt={accountSettingImg} />
-                Account Setting
-              </li>
-              <li className="flex items-center text-red-500 text-[18px] cursor-pointer">
-                <img src={logoutImg} alt={logoutImg} />
-                <Logout />
-              </li>
-            </ul> */}
             <ul>
               <li
                 className="flex items-center gap-3 text-[18px] cursor-pointer"

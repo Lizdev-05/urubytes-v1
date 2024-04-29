@@ -145,7 +145,8 @@ const InternalInsight = () => {
     setMode((prevMode) => (prevMode === "internal" ? "external" : "internal"));
   };
 
-  // const handleDelete = async (searchID) => {
+  // const handleDelete = async (searchID, event) => {
+  //   event.preventDefault();
   //   try {
   //     const response = await fetch(
   //       `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${searchID}/`,
@@ -191,7 +192,6 @@ const InternalInsight = () => {
           prevLibraryItems.filter((item) => item.searchID !== searchID)
         );
         toast.success("Query deleted successfully");
-        setForceUpdate(!forceUpdate);
       } else {
         toast.error("Failed to delete query");
       }
@@ -377,7 +377,10 @@ const InternalInsight = () => {
             </form>
 
             {feedback && (
-              <div className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
+              <div
+                key={feedback}
+                className="p-4 my-4 bg-gray-100 rounded-lg shadow-md "
+              >
                 <div className="text-gray-600 mb-4 insights">
                   <Markdown remarkPlugins={[remarkGfm]}>
                     {feedback.insights}
