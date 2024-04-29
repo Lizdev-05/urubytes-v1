@@ -11,7 +11,6 @@ import { useLocation } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { ToastContainer, toast } from "react-toastify";
 import { BeatLoader } from "react-spinners";
-import { CiStop1 } from "react-icons/ci";
 
 const InternalInsight = () => {
   const [query, setQuery] = useState("");
@@ -22,11 +21,36 @@ const InternalInsight = () => {
   const location = useLocation();
   const selectedQuery = location.state?.selectedQuery;
   const [isLibraryLoading, setIsLibraryLoading] = useState(false);
-  const [abortController, setAbortController] = useState(null);
 
   const token = useSelector((state) => state.login.token);
   const orgId = useSelector((state) => state.login.orgID);
   const [forceUpdate, setForceUpdate] = useState(false);
+
+  // useEffect(() => {
+  //   async function fetchLibraryItems() {
+  //     try {
+  //       const response = await fetch(
+  //         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/",
+  //         {
+  //           headers: {
+  //             Authorization: `Token ${token}`,
+  //           },
+  //         }
+  //       );
+
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         setLibraryItems(data);
+  //       } else {
+  //         console.error("Failed to fetch library items:", response);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching library items:", error);
+  //     }
+  //   }
+
+  //   fetchLibraryItems();
+  // }, [token]);
 
   useEffect(() => {
     const fetchLibraryItems = async () => {
@@ -61,15 +85,12 @@ const InternalInsight = () => {
     event.preventDefault();
     setLoading(true);
     setForceUpdate(!forceUpdate);
-    setFeedback(null);
+    // setFeedback(null);
 
     const url =
       mode === "internal"
         ? "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/internal/"
         : "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/market/";
-
-    const controller = new AbortController();
-    setAbortController(controller);
 
     try {
       const response = await fetch(url, {
@@ -79,34 +100,28 @@ const InternalInsight = () => {
           Authorization: `Token ${token}`,
         },
         body: JSON.stringify({ query, orgId }),
-        signal: controller.signal,
       });
 
       if (response.ok) {
         const data = await response.json();
         setFeedback(data);
+        console.log("Feedback:", data);
+        setLoading(false);
+        setQuery("");
+        setForceUpdate(!forceUpdate);
       } else {
         console.error("Failed to receive feedback:", response);
+        setLoading(false);
       }
     } catch (error) {
-      if (error.name === "AbortError") {
-        console.log("Fetch aborted");
-        toast.error("Request aborted");
-      } else {
-        console.error("Error sending request:", error);
-      }
-    } finally {
+      console.error("Error sending request:", error);
       setLoading(false);
     }
   };
 
-  const handleStop = () => {
-    if (abortController) {
-      abortController.abort();
-      setLoading(false);
-    }
-  };
-
+  // const handleQueryClick = (item) => {
+  //   setFeedback(item.feedback);
+  // };
   const handleQueryClick = async (item) => {
     setLoading(true);
 
@@ -122,17 +137,20 @@ const InternalInsight = () => {
 
       if (response.ok) {
         const data = await response.json();
+
+        console.log("Feedback:", data);
+
         setFeedback({
           insights: data.insight,
           metadata: data.metadata,
           sources: data.sources,
         });
+
+        setLoading(false);
       } else {
-        console.error("Failed to fetch library item:", response);
+        setLoading(false);
       }
     } catch (error) {
-      console.error("Error fetching library item:", error);
-    } finally {
       setLoading(false);
     }
   };
@@ -158,23 +176,24 @@ const InternalInsight = () => {
   //     );
 
   //     if (response.ok) {
-  //       setLibraryItems((prevLibraryItems) =>
-  //         prevLibraryItems.filter((item) => item.searchID !== searchID)
+  //       const newLibraryItems = [...libraryItems];
+  //       const index = newLibraryItems.findIndex(
+  //         (item) => item.searchID === searchID
   //       );
+  //       newLibraryItems.splice(index, 1);
+  //       setLibraryItems(newLibraryItems);
   //       toast.success("Query deleted successfully");
-  //       setForceUpdate(!forceUpdate);
+  //       console.log("Deleted query:", searchID);
+  //       console.log(response);
   //     } else {
-  //       toast.error("Failed to delete query");
+  //       console.error("Failed to delete query:", response);
   //     }
   //   } catch (error) {
-  //     toast.error("Error deleting query");
   //     console.error("Error deleting query:", error);
   //   }
   // };
 
-  const handleDelete = async (searchID, event) => {
-    event.preventDefault();
-    event.stopPropagation();
+  const handleDelete = async (searchID) => {
     try {
       const response = await fetch(
         `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${searchID}/`,
@@ -238,30 +257,23 @@ const InternalInsight = () => {
             </form>
             <h1 className="mt-4 text-3xl font-bold">Library</h1>
 
-            {libraryItems.map((item) => (
-              <ul key={item.searchID}>
-                <li className="text-xs leading mb-2 bg-[#F0F2F9] p-2 my-2">
-                  <span
-                    onClick={() => handleQueryClick(item)}
-                    className="cursor-pointer font-semibold"
-                  >
+            {libraryItems.map((item, index) => (
+              <ul key={index}>
+                <li className="text-sm leading mb-2 bg-[#F0F2F9] p-2 my-2">
+                  <span onClick={() => handleQueryClick(item)}>
                     {item.query.length > 30
                       ? `${item.query.substring(0, 30)}...`
                       : item.query}
                   </span>
 
                   <span className="flex justify-between items-center">
-                    <span className="text-sm text-gray-500">
+                    <span className="text-xs text-gray-500">
                       {new Date(item.updated_at).toLocaleDateString()}
                     </span>
-                    {/* <RiDeleteBin6Line
-                      className="text-red-600 font-bold text-5xl  bg-white py-2 cursor-pointer"
-                      onClick={() => handleDelete(item.searchID)}
-                    /> */}
                     <RiDeleteBin6Line
-                      className="text-red-600 font-bold text-3xl  bg-white py-2 cursor-pointer"
-                      onClick={(event) => handleDelete(item.searchID, event)}
-                    />
+                      className="text-red-600 font-bold text-3xlpy-2"
+                      onClick={() => handleDelete(item.searchID)}
+                    />{" "}
                   </span>
                 </li>
               </ul>
@@ -308,7 +320,7 @@ const InternalInsight = () => {
               <h1 className="m-4 text-3xl font-bold">
                 Ask Urubytes A Question
               </h1>
-              <p className="px-22 text-gray-600">
+              <p className="px-24 text-gray-600">
                 Get started extracting bytes-sized insights from your business
                 data. Just tell us where to look first and you can ask any
                 question about your business.
@@ -350,22 +362,11 @@ const InternalInsight = () => {
                   value={query}
                   onChange={handleChange}
                 />
-                {/* <button
+                <button
                   type="submit"
                   className="text-white absolute end-2.5 bottom-2.5 bg-grey-color hover:bg-gray-500 font-medium rounded-lg text-sm px-2 py-2"
                 >
                   <FaArrowUpLong size={20} />
-                </button> */}
-                <button
-                  type="submit"
-                  className="text-white absolute end-2.5 bottom-2.5 bg-grey-color hover:bg-gray-500 font-medium rounded-lg text-sm px-2 py-2"
-                  onClick={loading ? handleStop : handleSubmit}
-                >
-                  {loading ? (
-                    <CiStop1 size={20} />
-                  ) : (
-                    <FaArrowUpLong size={20} />
-                  )}
                 </button>
               </div>
               {loading && (
