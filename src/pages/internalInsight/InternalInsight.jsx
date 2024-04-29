@@ -175,7 +175,6 @@ const InternalInsight = () => {
 
   const handleDelete = async (searchID, event) => {
     event.preventDefault();
-    event.stopPropagation();
     try {
       const response = await fetch(
         `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${searchID}/`,
@@ -200,6 +199,9 @@ const InternalInsight = () => {
       console.error("Error deleting query:", error);
     }
   };
+  <div key={feedback} className="p-4 my-4 bg-gray-100 rounded-lg shadow-md ">
+    {/* ... */}
+  </div>;
 
   return (
     <>
