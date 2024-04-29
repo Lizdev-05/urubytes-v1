@@ -26,7 +26,6 @@ const InternalInsight = () => {
 
   const token = useSelector((state) => state.login.token);
   const orgId = useSelector((state) => state.login.orgID);
-  const [forceUpdate, setForceUpdate] = useState(false);
 
   useEffect(() => {
     const fetchLibraryItems = async () => {
@@ -60,7 +59,6 @@ const InternalInsight = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-    setForceUpdate(!forceUpdate);
     setFeedback(null);
 
     const url =
@@ -100,7 +98,6 @@ const InternalInsight = () => {
       setLoading(false);
     }
   };
-
   const handleStop = () => {
     if (abortController) {
       abortController.abort();
