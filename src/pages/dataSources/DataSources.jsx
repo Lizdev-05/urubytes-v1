@@ -78,9 +78,10 @@ const DataSources = () => {
   return (
     <>
       <ToastContainer />
-      <div className="bg-grey-bg h-screen w-screen overflow-hidden">
+      <div className="bg-grey-bg h-screen w-screen overflow-y-auto">
         <Navbar />
-        <div className=" p-8 px-12 m-4 bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300 h-full">
+
+        <div className=" p-8 px-12 m-4 bg-white border border-gray-200 rounded-lg shadow  dark:bg-white dark:border-gray-300 h-full overflow-auto">
           <div className=" ">
             <div className="flex justify-between items-center">
               <h1 className="text-3xl font-semibold ">Data Sources</h1>

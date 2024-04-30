@@ -27,35 +27,6 @@ const InternalInsight = () => {
   const token = useSelector((state) => state.login.token);
   const orgId = useSelector((state) => state.login.orgID);
 
-  // useEffect(() => {
-  //   const fetchLibraryItems = async () => {
-  //     setIsLibraryLoading(true);
-  //     try {
-  //       const response = await fetch(
-  //         "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/",
-  //         {
-  //           headers: {
-  //             Authorization: `Token ${token}`,
-  //           },
-  //         }
-  //       );
-
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         setLibraryItems(data);
-  //       } else {
-  //         console.error("Failed to fetch library items:", response);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching library items:", error);
-  //     } finally {
-  //       setIsLibraryLoading(false);
-  //     }
-  //   };
-
-  //   fetchLibraryItems();
-  // }, [token]);
-
   const fetchLibraryItems = async () => {
     setIsLibraryLoading(true);
     try {
