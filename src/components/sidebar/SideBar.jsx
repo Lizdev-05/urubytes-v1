@@ -57,7 +57,7 @@ const SideBar = () => {
   return (
     <div
       className={` ${
-        open ? "409px" : "80px"
+        open ? "w-72" : "w-20 "
       } bg-primary-blue p-5  pt-12 relative duration-300 overflow-y-auto h-screen flex flex-col `}
     >
       <img
@@ -121,16 +121,6 @@ const SideBar = () => {
                   className={`flex  rounded-md p-2 cursor-pointer hover:bg-blue-300 text-light-white text-sm-center gap-x-4`}
                   onClick={() => setShowModalCard(!showModalCard)}
                 >
-                  {/* <span
-                    style={{
-                      transitionDelay: `${i + 3}00ms`,
-                    }}
-                    className={` ${
-                      !open && "opacity-0 translate-x-28 overflow-hidden"
-                    } origin-left duration-200`}
-                  >
-                    {Menu.title}
-                  </span> */}
                   <div className="flex items-center gap-6">
                     <FaRegUserCircle />
                     <span
@@ -141,7 +131,6 @@ const SideBar = () => {
                         !open && "opacity-0 translate-x-28 overflow-hidden"
                       } origin-left duration-200`}
                     >
-                      {/* {userName} */}
                       {capitalizedUserName}
                     </span>
                   </div>
@@ -165,7 +154,6 @@ const SideBar = () => {
                   </span>
                 </Link>
               )}
-              {/*<hr className="border-t border-white my-2" />*/}
             </React.Fragment>
           ))}
         </ul>
