@@ -165,7 +165,7 @@ const DataSources = () => {
                               key={id}
                               className="even:bg-gray-200 odd:bg-white p-4"
                             >
-                              <td className="p-4 flex items-center">
+                              <td className="p-4">
                                 <Typography
                                   variant="small"
                                   color="blue-gray"
@@ -174,7 +174,7 @@ const DataSources = () => {
                                   <input type="checkbox" />
                                 </Typography>
                               </td>
-                              <td className="p-4 flex items-center">
+                              <td className="p-4">
                                 <Typography
                                   variant="small"
                                   color="blue-gray"
@@ -192,7 +192,7 @@ const DataSources = () => {
                                   {name}
                                 </Typography>
                               </td>
-                              <td className="p-4 flex items-center">
+                              <td className="p-4">
                                 <Typography
                                   variant="small"
                                   color="blue-gray"
@@ -201,7 +201,7 @@ const DataSources = () => {
                                   {status}
                                 </Typography>
                               </td>
-                              <td className="p-4 flex items-center">
+                              <td className="p-4">
                                 <Typography
                                   variant="small"
                                   color="blue-gray"
@@ -210,7 +210,7 @@ const DataSources = () => {
                                   {new Date(created_at).toLocaleDateString()}
                                 </Typography>
                               </td>
-                              <td className="p-4 flex items-center">
+                              <td className="p-4">
                                 <Typography
                                   variant="small"
                                   color="blue-gray"
@@ -219,7 +219,7 @@ const DataSources = () => {
                                   {new Date(updated_at).toLocaleDateString()}
                                 </Typography>
                               </td>
-                              <td className="p-4 flex items-center">
+                              <td className="p-4">
                                 <Typography
                                   variant="small"
                                   color="blue-gray"
