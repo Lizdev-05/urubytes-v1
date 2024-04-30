@@ -165,16 +165,16 @@ const DataSources = () => {
                               key={id}
                               className="even:bg-gray-200 odd:bg-white p-4"
                             >
-                              <td className="p-4">
+                              <td className="p-4 flex items-center">
                                 <Typography
                                   variant="small"
                                   color="blue-gray"
-                                  className="font-normal"
+                                  className="font-normal "
                                 >
                                   <input type="checkbox" />
                                 </Typography>
                               </td>
-                              <td className="p-4">
+                              <td className="p-4 flex items-center">
                                 <Typography
                                   variant="small"
                                   color="blue-gray"
@@ -192,7 +192,7 @@ const DataSources = () => {
                                   {name}
                                 </Typography>
                               </td>
-                              <td className="p-4">
+                              <td className="p-4 flex items-center">
                                 <Typography
                                   variant="small"
                                   color="blue-gray"
@@ -201,7 +201,7 @@ const DataSources = () => {
                                   {status}
                                 </Typography>
                               </td>
-                              <td className="p-4">
+                              <td className="p-4 flex items-center">
                                 <Typography
                                   variant="small"
                                   color="blue-gray"
@@ -210,7 +210,7 @@ const DataSources = () => {
                                   {new Date(created_at).toLocaleDateString()}
                                 </Typography>
                               </td>
-                              <td className="p-4">
+                              <td className="p-4 flex items-center">
                                 <Typography
                                   variant="small"
                                   color="blue-gray"
@@ -219,11 +219,11 @@ const DataSources = () => {
                                   {new Date(updated_at).toLocaleDateString()}
                                 </Typography>
                               </td>
-                              <td className="p-4">
+                              <td className="p-4 flex items-center">
                                 <Typography
                                   variant="small"
                                   color="blue-gray"
-                                  className="text-red-600 font-bold text-3xl py-2 cursor-pointer"
+                                  className="text-red-600 font-bold text-2xl py-2 cursor-pointer"
                                 >
                                   <RiDeleteBin6Line
                                     onClick={() => handleDelete(id)}
