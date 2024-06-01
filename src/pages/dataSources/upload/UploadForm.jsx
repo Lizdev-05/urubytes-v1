@@ -53,7 +53,7 @@ const UploadSource = () => {
 
     try {
       const response = await axios.post(
-        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/datasources/static/",
+        "https://urubytes-origin.azurewebsites.net/datasources/static/",
         formData,
         {
           headers: {

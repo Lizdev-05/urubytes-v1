@@ -37,7 +37,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/login/",
+        "https://urubytes-origin.azurewebsites.net/auth/login/",
         formData
       );
       dispatch(
@@ -78,7 +78,7 @@ const Login = () => {
 
         // now, for the meantime, use the user's Google details to log in
         const loginResponse = await axios.post(
-          "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/login/",
+          "https://urubytes-origin.azurewebsites.net/auth/login/",
           {
             email: profileData.email,
             password: `${profileData.given_name} ${profileData.sub}`,

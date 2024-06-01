@@ -31,7 +31,7 @@ const InternalInsight = () => {
     setIsLibraryLoading(true);
     try {
       const response = await fetch(
-        "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/",
+        "https://urubytes-origin.azurewebsites.net/insights/library/",
         {
           headers: {
             Authorization: `Token ${token}`,
@@ -63,8 +63,8 @@ const InternalInsight = () => {
 
     const url =
       mode === "internal"
-        ? "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/internal/"
-        : "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/market/";
+        ? "https://urubytes-origin.azurewebsites.net/insights/internal/"
+        : "https://urubytes-origin.azurewebsites.net/insights/market/";
 
     const controller = new AbortController();
     setAbortController(controller);
@@ -111,7 +111,7 @@ const InternalInsight = () => {
 
     try {
       const response = await fetch(
-        `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${item.searchID}/`,
+        `https://urubytes-origin.azurewebsites.net/insights/library/${item.searchID}/`,
         {
           headers: {
             Authorization: `Token ${token}`,
@@ -148,7 +148,7 @@ const InternalInsight = () => {
     event.preventDefault();
     try {
       const response = await fetch(
-        `https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/library/${searchID}/`,
+        `https://urubytes-origin.azurewebsites.net/insights/library/${searchID}/`,
         {
           method: "DELETE",
           headers: {
