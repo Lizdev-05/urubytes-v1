@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetch(
-      "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auxi/dashboard/",
+      "https://urubytes-origin.azurewebsites.net/auxi/dashboard/",
       {
         headers: {
           Authorization: `Token ${token}`,

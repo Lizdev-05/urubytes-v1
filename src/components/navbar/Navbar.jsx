@@ -24,7 +24,7 @@ const Navbar = () => {
   //   try {
   //     console.log("Logging out with token:", token);
   //     const response = await axios.post(
-  //       "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/auth/logout/",
+  //       "https://urubytes-origin.azurewebsites.net/auth/logout/",
   //       {},
   //       {
   //         headers: {

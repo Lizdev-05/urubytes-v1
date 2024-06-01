@@ -16,8 +16,8 @@ const ExternalInsight = () => {
 
     const url =
       mode === "internal"
-        ? "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/internal/"
-        : "https://urubytes-backend-v2-r6wnv.ondigitalocean.app/insights/market/";
+        ? "https://urubytes-origin.azurewebsites.net/insights/internal/"
+        : "https://urubytes-origin.azurewebsites.net/insights/market/";
 
     try {
       const response = await fetch(url, {
