@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetch(
-      "https://urubytes-origin.azurewebsites.net/auxi/dashboard/",
+      "https://urubytes.azurewebsites.net/auxi/dashboard/",
       {
         headers: {
           Authorization: `Token ${token}`,

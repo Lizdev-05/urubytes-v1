@@ -26,7 +26,7 @@ const DataSources = () => {
       setIsLoading(true);
       try {
         const response = await axios.get(
-          `https://urubytes-origin.azurewebsites.net/datasources/static/?orgID=${orgId}`,
+          `https://urubytes.azurewebsites.net/datasources/static/?orgID=${orgId}`,
           {
             headers: {
               Authorization: `Token ${token}`,
@@ -47,7 +47,7 @@ const DataSources = () => {
   const handleDelete = async (sourceID) => {
     try {
       const response = await axios.delete(
-        `https://urubytes-origin.azurewebsites.net/datasources/static/${sourceID}/`,
+        `https://urubytes.azurewebsites.net/datasources/static/${sourceID}/`,
         {
           headers: {
             Authorization: `Token ${token}`,

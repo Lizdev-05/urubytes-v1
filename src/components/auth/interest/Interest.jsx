@@ -31,7 +31,7 @@ const Interest = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://urubytes-origin.azurewebsites.net/auth/register/",
+        "https://urubytes.azurewebsites.net/auth/register/",
         registrationData
       );
 

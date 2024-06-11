@@ -14,7 +14,7 @@ const EmailVerification = () => {
   const handleResendEmail = async () => {
     try {
       const response = await axios.post(
-        "https://urubytes-origin.azurewebsites.net/accounts/register/"
+        "https://urubytes.azurewebsites.net/accounts/register/"
       );
       console.log("Email sent:", response.data);
       toast.success("Verification email sent");
